@@ -1,0 +1,7 @@
+#cadrePrincipal
+{
+	border:solid 3px rgba(255,255,255,0.7);
+	background-color:green;/*temporaire */
+	background:url(image/ciel.jpg);
+	background-repeat: no-repeat;
+}

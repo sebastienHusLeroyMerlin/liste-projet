@@ -1,0 +1,177 @@
+/* POUR GRANDE RESOLUTION D'ECRAN */
+
+html
+{
+	background-color: rgba(200, 200, 200);
+}
+
+body
+{
+	width:80%;
+	/* text-align:center; */
+	margin :auto;
+	border : solid pink ;
+	background-color:white;
+}
+
+form
+{
+	border:solid red ;
+}
+
+
+footer,header
+{
+	border : solid black ;
+	text-align:center;
+}
+
+header
+{
+	background-image:url(image/potager.jpg);
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	
+}
+
+#connexionBarre
+{
+	border:solid white 3px;
+	border-radius:5px;
+	padding:5px;
+	background-color:rgba(255,255,255,0.5);
+	display:flex;
+	flex-direction:column;
+	flex-wrap:wrap;
+	align-self:flex-end ;
+	/* position:relative; */
+} 
+
+#divConnexionBarre
+{
+	border:solid blue;
+}
+
+
+footer,header,#corpsDePage
+{
+	margin:10px;
+}
+
+#entete
+{
+	border:solid green;
+	width:35%;
+	background-color: rgba(255, 255, 255);
+	margin-top:25px;
+}
+
+img
+{
+	max-width:100%
+}
+
+section
+{
+	border : solid green ;
+}
+
+nav
+{
+	border : solid blue ;
+}
+
+.button
+{
+	border : solid red ;
+	display: block ;
+}
+
+a
+{
+	text-decoration:none;
+}
+
+#central
+{
+	border : solid purple ;
+	text-align:center;
+	margin-left:10px;
+	flex:4;
+}
+
+#navigation
+{
+	text-align:center;
+	border : solid yellow;
+	max-width:100%;
+	flex:1;
+}
+
+#corpsDePage
+{
+	border : solid red;
+	display:flex;
+	flex-wrap: wrap;
+}
+
+#miseEnPageFormulaire
+{
+	display:flex;
+	flex-wrap: wrap;/*les element passent a la ligne*/
+	
+}
+
+#infoCo
+{
+	flex:1;
+}
+
+#infoPerso
+{
+	flex:1;
+}
+
+#adresse
+{
+	flex:1;
+}
+
+
+.buttonValidation
+{
+	cursor:pointer;/*change le pointeur sur le submit*/
+	background-color:cyan;
+	border:none;
+	width:50%;
+	height:50px;
+	
+	margin:auto;
+}
+
+#buttonValidationBarreConnexion
+{
+	cursor:pointer;/*change le pointeur sur le submit*/
+	background-color:cyan;
+	border:none;
+	width:100%;
+	height:50px;
+}
+
+#aBarre
+{
+	text-align:center;
+	border:solid red;
+}
+
+#connexionAccueil
+{
+	width:50%;
+	margin:auto;
+}
+
+fieldset
+{
+	margin:10px;
+}

@@ -1,0 +1,53 @@
+body
+{
+	margin :0;
+	padding:0;
+	font-family:sans-serif;
+	font-size: 50px;
+	text-align:center;
+	color:green;
+}
+
+.section
+{
+	height:500px;
+	line-height :500px;
+	background-color:cyan;
+}
+
+.loader_quart
+{
+	height : 100px;
+	width : 100px;
+	display: inline-block; /*pour qu'il se mettent a gauche du texte chargement*/
+	vertical-align: middle;
+	position : relative;
+}
+
+/**  Loader quart de cercle **/
+
+.loader_quart
+{
+	border-radius:100px;
+	border: solid rgba(255,255,255,0.6) 12px;
+}
+
+.loader_quart:after{
+	content:'';
+	bottom:-12px;
+	right:-12px;
+	position:absolute;
+	top : -12px;
+	left:-12px;
+	border: 12px solid transparent;
+	border-top-color:green;
+	border-radius:100px;
+	animation:rotation 1s linear 0s infinite;
+}
+
+@keyframes rotation
+{
+	0%{ transform: rotate(0deg);}
+	100%{ transform: rotate(360deg);}
+}
+
