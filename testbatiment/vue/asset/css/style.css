@@ -1,0 +1,376 @@
+body
+{
+	margin:0 auto;
+	
+	border:solid aqua ;
+}
+
+html
+{
+	border:solid red;
+}
+
+h1
+{
+	border:solid blue;
+}
+
+.message
+{
+	text-align:center;
+	color:red;
+	font-size:20px;
+	background-color:yellow;
+	border:solid red ;
+	border-radius:10px ;
+	padding:4px;
+	margin:10px;
+}
+
+.conteneurRessource
+{
+	border:solid aqua ;
+	text-align:center;
+	display:flex;
+	flex-wrap:wrap;
+	justify-content:center;
+}	
+
+.ressource
+{
+	
+	text-align:center;
+	color:white;
+	width:19%;
+	margin:4px;
+	border:solid black ;
+	background-color:purple;
+	border-radius:15px;
+	 
+	text-align:center;
+}
+
+
+.conteneur
+{
+	display:flex;
+	border:solid grey;
+	margin-top:10px;
+	text-align:center;
+}
+
+.conteneurNavigation
+{
+	
+	border:solid green 2px;  
+	text-align:center; 
+	width:24%; 
+}
+
+.navigation
+{
+	
+	border:solid black 2px;
+	text-align:center;
+	border-radius: 10px;
+	background-color:purple;
+}
+
+.navigation:hover
+{
+	background-color:blue;
+}
+
+.nav:hover
+{
+	color:white;
+}
+
+.nav
+{
+	color:black;
+	text-decoration:none;
+}
+
+
+
+
+
+/*************** mise en forme des vues sur les materiaux  ******************/
+.terrain
+{
+	border:solid black ;
+	border-radius:10px;
+	height :250px;
+	display:flex;
+	flex-wrap:wrap;
+	justify-content:space-around;
+	align-items:center;
+}
+
+.conteneurMateriaux
+{
+	
+	border:solid pink 2px;
+	min-width:75%;
+	
+	margin-right:0px;
+}
+
+
+.materiaux
+{
+	border:solid black 3px;
+	border-radius:10px;
+	width:100%;
+	text-align:center;
+	margin:0px;
+	overflow:hidden;
+	
+	
+}
+
+
+.infoMarecage,.infoPlaine,.infoForet,.infoColonie
+{
+	border:solid green;
+	/* flex-wrap:wrap; */
+	display:flex;
+	flex-direction:column;
+	text-align:center;
+	
+}
+
+.paragraphe
+{
+	flex:1;
+}
+
+.cadreRecap
+{
+	width:100%;
+	display:flex;
+	justify-content:space-between;
+	align-items:stretch;
+	border:solid yellow 3px;
+	box-sizing:border-box;
+}
+
+.cadreRessource
+{
+	border:solid brown ;
+	box-sizing:border-box;
+	padding:10px;
+	padding-bottom:10px;
+	height:50px;
+}
+
+.boutton
+{
+	margin-right:10px;
+	margin-left:10px;
+	
+}
+
+.boutton:hover
+{
+	width:90px;
+	height:25px;
+	box-shadow: 0px 0px 15px 4px aqua;
+}
+
+
+.infoPhoto
+{
+	
+	border:solid orange 3px;
+	
+}
+
+.titre
+{
+	border:solid brown;
+	
+}
+
+
+
+form
+{
+	border:solid black 2px;
+	border-radius:10px;
+	box-sizing:border-box;
+	
+	flex-direction:column;
+}
+
+.formRessource
+{
+	border:none;
+	border-radius:0;
+}
+
+#bois
+{
+    height:auto;
+	border:solid red;
+	display:flex;
+}
+
+
+
+#eau
+{
+    
+	height:auto;
+	border:solid red;
+	display:block
+}
+
+
+
+#cadre:target 
+{
+    
+	height:380px;
+	border:solid red;
+	display:block
+}
+
+#cadre
+{
+    overflow:hidden;
+	height: 0px;
+	display:none;
+}
+
+#argile
+{
+    
+	height:auto;
+	border:solid red;
+	display:block
+}
+
+#cire
+{
+    
+	height:auto;
+	border:solid red;
+	display:block
+}
+
+#nourriture
+{
+    
+	height:auto;
+	border:solid red;
+	display:block
+}
+
+
+
+
+
+
+
+
+.formRessource:hover
+{
+	
+	 box-shadow: 0px 0px 5px 5px red;
+	 
+	
+}
+
+.encadreGeneral
+{
+	text-align:center;
+     margin: 0 auto;
+     width: 300px; 
+
+}
+
+.encadrePhoto
+{
+	border:solid black 4px;
+	border-radius: 15px;
+	box-shadow: 6px 6px 9px grey;
+	margin-bottom:15px ;
+	 width:0 auto;
+	height:0 auto;
+	background-color:purple;
+	color:white;
+}
+
+h3
+{
+	color:black;
+}
+
+
+
+h1,h2,h3
+{
+	color:blue;
+	text-align:center;
+}
+
+.tchat
+{
+	border:solid black 2px;
+	border-radius:10px;
+	background-color:teal;
+	text-align:center;
+	padding:10px;
+}
+
+#tchatAlli,#tchatGeneral
+{
+	display:inline-block;
+	border:solid black 2px;
+	border-radius:10px;
+	background-color:grey;
+	width:20%;
+	text-decoration:none;
+}
+
+#fenetreAlliance:target 
+{
+    height: 100px;
+	border:solid red;
+	display:block;
+}
+
+#fenetreAlliance
+{
+    overflow:hidden;
+	height: 0px;
+	display:none;
+}
+
+
+#fenetreGenerale:target 
+{
+    height: 100px;
+	border:solid red;
+	display:block;
+}
+
+#fenetreGenerale
+{
+    overflow:hidden;
+	height: 0px;
+	display:none;
+}
+
+#tchatAlli:hover,#tchatGeneral:hover
+{
+	display:inline-block;
+	border:solid black 2px;
+	border-radius:10px;
+	background-color:aqua;
+	width:20%;
+}
+
+
