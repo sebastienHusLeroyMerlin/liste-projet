@@ -2,13 +2,13 @@
 
 <html>
 
-	<?php include('component/head.php'); ?>
+	<?php require_once('../vue/component/head.php'); ?>
 	
 	<body>
 	
 		<h1>Connexion</h1>
-		
-		<form method='post' action='controleur/controleurConnexion.php' >
+		<!--../controleur/controleurConnexion.php-->
+		<form method='post' action='../controleur/routeur.php' >
 		
 			<label for="pseudo">Pseudo : <label><input type="text" name="pseudo" id="pseudo" placeholder="Entrez vôtre pseudo ICI" title="Entrez vôtre pseudo ICI" /></br>
 								

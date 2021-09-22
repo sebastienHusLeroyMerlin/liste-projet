@@ -15,6 +15,14 @@ h1
 	border:solid blue;
 }
 
+.divGeneral
+{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	border:solid red;
+}
+
 .message
 {
 	text-align:center;
@@ -373,4 +381,7 @@ h1,h2,h3
 	width:20%;
 }
 
-
+.img
+{
+	width:100%;
+}

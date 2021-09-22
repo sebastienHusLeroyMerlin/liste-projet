@@ -1,8 +1,9 @@
 <?php
-
+	require_once('Bdd.php');
+	require_once('Tools.php');
 	session_start();
 
-	if(isset($_SESSION['pseudo']) AND isset($_SESSION['mail']) AND isset($_SESSION['droit']) AND isset($_SESSION['pass']))
+	if(isset($_SESSION['Auth']) AND $_SESSION['Auth'] == true)
 	{
 	
 		if(isset($_POST['nomBatiment']))
@@ -10,7 +11,7 @@
 			if(!empty($_POST['nomBatiment']))
 			{
 				
-				$nomBatiment = htmlspecialchars($_POST['nomBatiment']);
+				$nomBatiment = Tools::validData($_POST['nomBatiment']);
 				
 				$bois  = (int) $_SESSION['bois_total'] ;
 				$cire  = (int) $_SESSION['cire_total'] ;
@@ -22,15 +23,8 @@
 					if($bois >= $_SESSION['boisCouveuse'] AND $cire >= $_SESSION['cireCouveuse'] AND $eau >= $_SESSION['eauCouveuse'])
 					{
 						//connexion a la bdd
-						try
-						{
-							$bdd = new PDO('mysql:host=localhost;dbname=batiment;charset=utf8','root','',
-							array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
-						}
-						catch(Exception $e)
-						{
-							die('Erreur : '.$e->getMessage());
-						}
+						
+						$bdd =  Bdd::getBdd();
 						
 						//recuper le niveau actuel du batiment concerné
 						$req = $bdd->prepare('SELECT '.$nomBatiment.' FROM recap WHERE id_joueur = :id_joueur');

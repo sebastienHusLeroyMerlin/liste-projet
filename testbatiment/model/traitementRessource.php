@@ -1,8 +1,9 @@
 <?php
 	
 	session_start();
+	require_once('Bdd.php');
 	
-	if(isset($_SESSION['pseudo']) AND isset($_SESSION['mail']) AND isset($_SESSION['droit']) AND isset($_SESSION['pass']))
+	if(isset($_SESSION['Auth']) AND $_SESSION['Auth'] == true)
 	{
 		
 		if(isset($_POST['affectation_cire']) OR isset($_POST['affectation_bois']) OR isset($_POST['affectation_eau']) OR isset($_POST['affectation_argile']) OR isset($_POST['affectation_nourriture']) OR isset($_POST['ouvriere_bois']) OR isset($_POST['ouvriere_cire']) OR isset($_POST['ouvriere_eau']) OR isset($_POST['ouvriere_argile']) OR isset($_POST['ouvriere_nourriture']))
@@ -11,15 +12,7 @@
 			{
 				
 				//connexion a la bdd
-				try
-				{
-					$bdd = new PDO('mysql:host=localhost;dbname=batiment;charset=utf8','root','',
-					array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
-				}
-				catch(Exception $e)
-				{
-					die('Erreur : '.$e->getMessage());
-				}
+				$bdd =  Bdd::getBdd();
 
 					/* ---------------------------------------------------------- */
 					/* --- REVOIR TOUT LES ECHAPEMENT DE POST !!! --- */

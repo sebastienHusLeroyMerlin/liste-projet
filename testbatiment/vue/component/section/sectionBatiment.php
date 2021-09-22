@@ -1,20 +1,7 @@
 <section class="conteneurBatiment" >
 
-    <?php 
-        if(isset($_SESSION['message']))
-		{
-			?>
-			
-            <div class="message">
-				<p>
-					<?= $_SESSION['message'] ; ?>
-											
-				</p>
-			</div>
-		    
-            <?php
-		}
-		unset($_SESSION['message']) ;						
+	<?php 
+		require_once('alerteMessage.php');
 	?>
 							
 	<div class="encadreGeneral"><!-- Ne devra pas etre visible  -->
@@ -23,9 +10,9 @@
 							
 		<div class="encadrePhoto" title="couveuse"><!-- contient la photo et le cout en ressource du batiment  -->
 						
-			<img src="asset/image/couveuse.png" title="couveuse" alt="couveuse" class="img"/>
+			<img src="../vue/asset/image/couveuse.png" title="couveuse" alt="couveuse" class="img"/>
 								
-			<h3>Coût pour le Niv <?php $nSup = $resultatInfoAffichage['couveuse']+1; echo $nSup ;?> </h3>
+			<h3>Coût pour le Niv <?= $nSup = $resultatInfoAffichage['couveuse']+1;?> </h3>
 								
 			<p>
 								
@@ -37,13 +24,13 @@
 					$_SESSION['boisCouveuse'] = $boisCouveuse ;
 					$_SESSION['cireCouveuse'] = $cireCouveuse ;
 					$_SESSION['eauCouveuse'] = $eauCouveuse ;
-										
-										
-					echo 	'Bois</br>'.$boisCouveuse.'</br></br>'.
-							'Cire</br>'.$cireCouveuse.'</br></br>'.
-							'Eau</br>'.$eauCouveuse.'</br></br>'.
-							'Durée</br>'.$dureeConstructionCouveuse ;
+
 				?>
+
+				Bois</br><?= $boisCouveuse ; ?></br></br>
+				Cire</br><?= $cireCouveuse; ?></br></br>
+				Eau</br><?=$eauCouveuse; ?></br></br>
+				Durée</br><?=$dureeConstructionCouveuse ; ?>
 									
 			</p>
 											

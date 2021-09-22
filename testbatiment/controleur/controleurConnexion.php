@@ -1,16 +1,19 @@
 <?php
 
 	require_once('../model/User.php');
+	require_once('../model/Tools.php');
 	
 	if(isset($_POST['pseudo']) And isset($_POST['pass']))
 	{
 		if(!empty($_POST['pseudo']) And !empty($_POST['pass']))
 		{
-			$_POST['pseudo'] = htmlspecialchars($_POST['pseudo']);
-			$_POST['pass'] = htmlspecialchars($_POST['pass']);
+			$_POST['pseudo'] = Tools::validData($_POST['pseudo']);
+			$_POST['pass'] = Tools::validData($_POST['pass']);
 			
 			
-			User::Auth();
+			$auth = User::Auth();
+			if($auth == true)
+				header('Location:../controleur/routeur.php');
 			
 		}
 		elseif(empty($_POST['pseudo']) OR empty($_POST['pass']))

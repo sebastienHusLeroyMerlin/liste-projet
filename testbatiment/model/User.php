@@ -44,7 +44,8 @@
 				$_SESSION['droit'] = $variableDeSession['droit'] ;
 				$_SESSION['id_joueur'] = $resultatConnexion['id'] ;
 				
-				header('Location:../vue/accueil.php');
+				$_SESSION['destination'] = 'accueil';
+				return $auth = true;
 			}
 			elseif(!isset($resultat))
 			{

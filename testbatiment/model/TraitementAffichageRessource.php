@@ -2,7 +2,7 @@
 
 	session_start();
 
-	if(isset($_SESSION['pseudo']) AND isset($_SESSION['mail']) AND isset($_SESSION['droit']) AND isset($_SESSION['pass']))
+	if(isset($_SESSION['Auth']) AND $_SESSION['Auth'] == true)
 	{
 			if(isset($_POST['bouttonRessource']))
 			{

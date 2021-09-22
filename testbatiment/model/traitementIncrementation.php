@@ -1,24 +1,17 @@
 <?php
-
+	require_once('Bdd.php');
 	session_start();
 
-	if(isset($_SESSION['pseudo']) AND isset($_SESSION['mail']) AND isset($_SESSION['droit']) AND isset($_SESSION['pass']))
+	if(isset($_SESSION['Auth']) AND $_SESSION['Auth'] == true)
 	{
 			if(isset($_POST['incremente'] ) AND $_POST['incremente']== 'incremente')
 			{
-				$page = $_POST['localisation'] ;
-				
-				
+				$_SESSION['destination'] = $_POST['localisation'] ;
+				/*var_dump($_SESSION['destination'] );
+				exit;*/
 				// connexion a la bdd
-				try
-				{
-					$bdd = new PDO('mysql:host=localhost;dbname=batiment;charset=utf8','root','',
-				array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
-				}
-				catch(exception $e)
-				{
-					die('Erreur :'.$e->getMessage());
-				}
+				
+				$bdd =  Bdd::getBdd();
 				
 				//voir si les ouvriere affecte aux terrain sont deja recuperer quelque part avant de poursuivre sinon les recupere par requete
 				
@@ -70,7 +63,7 @@
 				 
 				
 				
-				header('Location:../vue/'.$page);
+				header('Location:../index.php');
 			}
 			else
 			{

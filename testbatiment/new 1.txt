@@ -1,90 +1,65 @@
-<form id="argile" action="traitementRessource.php" method="post">
-								
-									<div class="titre">
-									
-										<a href="#">Fermer</a>
-									
-										<h2>Nom de la ressource</h2>
-									
-									</div>
-									
-									<div class="cadreRecap">
+regle de jeux 
 
-										<div class="infoPhoto" >
-					
-											<img src="image/bois.png" title="bois" alt="bois" />
-											<p>Ouvrière affecté a la recolte de la cire : <?php echo $_SESSION['ouvriere_cire'] ; ?></p>
-											<p>Nombre d'ouvrières disponible : <?php echo $_SESSION['ouvriereDisponible'];?></p>
-											<p>Production Total : </p>
-										
-										</div>
 
-											<label for="Marecage" class="infoMarecage">
-											
-												<!--<div class="infoMarecage" >-->
+1 tour = 15 min = 1 journée dans le jeu 
+une saison = 1 semaine dans le jeu  saison = hiver, printemps, ete , automne
 
-													<div class="paragraphe"><h3>Marecage</h3></div>
-													
-													<div class="paragraphe"><p>Vous produisez ....  </p></div>
-												
-													<div class="paragraphe"><p>avec ..... ouvrieres</p></div>
-													
-													<div class="paragraphe"><input type="text" name="affectationCireMarecage" id="affectationCireMarecage" placeholder="Affecter un nombre d'ouvrière a la récolte de la cire" title="Affectation des ouvrière à la récolte de la cire" /></div>
-													
-													<div class="paragraphe"><input type="checkbox" name="terrain" id="Marecage" value="Marecage" /></div>
-											
-												<!--</div>-->
-												
-											</label>	
-											
-											<label for="Plaine">
-										
-												<div class="infoPlaine" >
+loge royale:
+un level de batiment de logge royal permet d augmenter le nombre d oeuf produit de base , 
+la techno soin permet de diminuer le temps de prod, le niveau de la couveuse permet de debloquer plus de place de formation simultanée  
 
-													<h3>Plaine</h3>
-													
-													<p>production_plaine</p>
-												
-													<p>ouvriere_plaine</p>
-													
-													<input type="text" name="affectationCirePlaine" id="affectationCirePlaine" placeholder="Affecter un nombre d'ouvrière a la récolte de la cire" title="Affectation des ouvrière à la récolte de la cire" />
-													
-													</br><input type="checkbox" name="terrain" id="Plaine" value="Plaine" />
-													
-												</div>
-												
-											</label>
-											
-											
-											<label for="Foret">
-										
-												<div class="infoForet" >
-												
-													<h3>Foret</h3>
-													
-													<p>production_foret</p>
-												
-													<p>ouvriere_foret</p>
-													
-													<input type="text" name="affectationCireForet" id="affectationCireForet" placeholder="Affecter un nombre d'ouvrière a la récolte de la cire" title="Affectation des ouvrière à la récolte de la cire" />
-													
-													</br><input type="checkbox"  name="terrain" id="Foret" value="Foret" />
-												
-												</div>
-												
-											</label>
-																				
-									</div><!--  fermeture cadre recap -->
-									
-									<div class="cadreRessource" id="formulaire">
+Marché: 
+plus le marché est eleve plus on peut y mettre douvriere 
+la technologie permet de transporter plus de ressource par ouvri 
+vitesse de deplacement influ sur toute les unité 
+role  specifique commercante ect ...
 
-												
-										<input type="hidden" name="ouvriere_cire" id="ouvriere_cire" value="ouvriere_cire" />
-											
-										<input class="boutton" type="submit" name="affecter" value="Affecter" title="Affectation des ouvrières à la récolte" />
-										<input class="boutton" type="submit" name="retirer" value="Retirer" title="Retrait d'ouvrières de la récolte" />
-										<input class="boutton" type="submit" name="reset" value="Reset" title="Retrait de toutes les ouvrières des terrains de recolte" />
-										
-									</div>
-									
-								</form>
+chambre sexué pour faire des unité qui essaimeron et avoir d autre colonie ...
+
+
+regle general 
+un batiment dbloque des place ( pour y mettre des fourmis )
+le niveau d expertise de la fourmis permet de prendre en charge plus d element de base ) 
+la technologie debloque le niveau d expertise possible de la fourmis 
+la technologie permet les stat de base d un batiment
+
+
+inserer une durée de vie pour les fourmis et autre 
+ouvri 1 ans
+chaque ouvri specialise voit sa vie augmenté selon son grade de 10% 
+
+
+
+si plus asser de nourriture:
+- ponte de la reine stopé
+- a chaque nouveau tour perte d'une partie et des ouvriere ete entre 5 et 10% automne 10 -20 hivert 20 - 40 printemps 15 - 30
+( la technologie cannibalisme permet de reduire la probabilité de declencher un evenement cannibal en cas de manque de nourriture)
+
+possibilité de mettre des priorité pour les ouvriere et armée
+en cas de manque de nourriture les secteur a la priorité la plus basse meurent en premiere
+
+
+chaque unité a sa propre consommation de nourriture par tour 
+
+nourriture et miella  sont different 
+le miellat sert de booster de morale pour l armée 
+plus ils en ont plus ils restent motivé meme apres un echec ou une defaite 
+
+
+les unité militaire et civile peuvent progresser de niveaux 
+ouvri = polyvalente 
+en revanche une ouvri specialisé ne peut plus redevenir autre chose et ne peux que faire le travail de sa specialisation
+le joueur qui determine si les unité peuvent etre promue ou non 
+exemple ouvri alloué a la couveuse il faut 30 exp pour evoluer une ouvri en nourrice une ouvrierre = 1 xp/j une nourrice 2xp/j
+60j de plus pour nourrice d elite 3xp/j
+90j de plus pour nourrice d'elite 2 etoile 4xp/j ect 
+plus l ouvri specialisé et haute plus elle gagne d xp par jour 
+un stock d xp max par batiment ( qui augmente avec le niveau du batiment puis par recherche )
+les unitépeuvent etre promu automatiquement 
+
+
+le joueur aura le choix de venerer une divinité 
+les divinité octroie des bonus 
+
+integrer un convertisseur de ressources -> acce pour les abo, % de collecte le % collecté servira a financer quelque chose mais quoi ?
+

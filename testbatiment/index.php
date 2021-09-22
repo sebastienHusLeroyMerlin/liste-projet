@@ -1,3 +1,3 @@
 <?php
 
-    require_once('controleur/routeur.php');
+    header('Location:controleur/routeur.php');

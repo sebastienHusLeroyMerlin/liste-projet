@@ -2,14 +2,15 @@
 
 <html>
 
-	<?php require_once('component/head.php'); ?>
+	<?php require_once('../vue/component/head.php'); ?>
 				
     <body>
 
         <?php 
-            require_once('component/header/header.php');
-            require_once('template/sectionGeneralTemplate.php');
-            require_once('component/footer/footer.php');
+            require_once('../vue/component/header/header.php');
+            require_once('sectionGeneralTemplate.php');
+            require_once('../vue/component/section/tchat.php');
+            require_once('../vue/component/footer/footer.php');
         ?>
 									
 	</body>

@@ -1,17 +1,9 @@
 <?php
 
-	if(isset($_SESSION['pseudo']) AND isset($_SESSION['mail']) AND isset($_SESSION['droit']) AND isset($_SESSION['pass']))
-	{
+	require_once('Bdd.php');
+
 	
-		try
-			{
-				$bdd = new PDO('mysql:host=localhost;dbname=batiment;charset=utf8','root','',
-				array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
-			}
-			catch(Exception $e)
-			{
-				die('Erreur : '.$e->getMessage());
-			}
+		$bdd = Bdd::getBdd();
 			
 			
 			//recuperation des information d'affichage
@@ -198,12 +190,5 @@
 			
 			
 			$reqInfoRessource->closeCursor();
-	}
-	else
-	{
-		echo'Dis t\'essairais pas de me hacker petit malin ? </br>
-			Si tu veux jouer inscrits toi ';?><a href="inscription.php">ICI</a><?php
-			
-			header('Refresh:3;connexion.php');
-	}
+
 
