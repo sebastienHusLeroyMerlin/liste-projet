@@ -1,0 +1,24 @@
+page CONNEXION
+
+crypter mot de passe 
+verifier pk possible de se co avec champ vide
+implementer systeme d inscruption 
+
+Page inscription 
+a implementer 
+
+Page de deco 
+a implementer 
+
+Note reflexion a avoir autour du message de deco doit il avoir sa propre page ou doit il etre afficher sur la page d accueil / connexion 
+
+
+Page accueil 
+fct incrementer ok qd compte existe
+
+menu nav
+accueil ok 
+reine ok 
+ressources ok 
+marché ok
+

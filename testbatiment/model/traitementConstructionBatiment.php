@@ -6,10 +6,8 @@
 	if(isset($_SESSION['Auth']) AND $_SESSION['Auth'] == true)
 	{
 	
-		if(isset($_POST['nomBatiment']))
+		if(isset($_POST['nomBatiment']) && !empty($_POST['nomBatiment']))
 		{
-			if(!empty($_POST['nomBatiment']))
-			{
 				
 				$nomBatiment = Tools::validData($_POST['nomBatiment']);
 				
@@ -63,7 +61,8 @@
 						$reqMiseAJourRessource->closeCursor();
 						echo'update';
 						
-						header('Location:../vue/accueil.php');
+						$_SESSION['destination'] = 'accueil';
+						header('Location:../controleur/routeur.php');
 						
 					}
 					else
@@ -88,7 +87,8 @@
 						
 						echo'message';
 						
-						header('Location:../vue/accueil.php');
+						$_SESSION['destination'] = 'accueil';
+						header('Location:../controleur/routeur.php');
 					}
 				}
 				else
@@ -96,11 +96,6 @@
 					echo 'Erreur : 3';
 				}
 				
-			}
-			else
-			{
-				echo 'erreur : 2 ';
-			}
 		}
 		else
 		{

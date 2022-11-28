@@ -1,4 +1,6 @@
 <div class="conteneurRessource">
+
+	<?php //var_dump($_SESSION); ?>
 					
 	<div class="ressource">
 						

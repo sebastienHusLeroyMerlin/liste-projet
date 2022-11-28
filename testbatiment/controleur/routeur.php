@@ -13,14 +13,14 @@
 		else
 			if(!empty($_GET['destination']))
 			{
-				$destination = $_GET['destination'];;
+				$destination = $_GET['destination'];
 
 			}else
 				$destination = 'accueil';
 
 
 		//var_dump($_SESSION);
-		//var_dump($destination);
+		var_dump($destination);
 		//var_dump($_SESSION);
 
         require_once('../vue/'.$destination.'.php');

@@ -7,9 +7,9 @@
 
 <?php 
 	//tempo
-	$_SESSION['queenName'] =  "Mirranda"; 
+	$_SESSION['queenName'] =  "Mirranda" ; 
 	$_SESSION['vitessePonte'] = 53 ; // dependra des technologie et batiment
-	$vitessePonteDeBase = 
+	$vitessePonteDeBase = 12 ; // voir note.txt
 ?>
 
 		<h3><?php echo $_SESSION['queenName']; ?> </h3>
