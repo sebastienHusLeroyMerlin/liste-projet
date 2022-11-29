@@ -107,7 +107,4 @@
                 var_dump('xCoordinate fin : ' . $xCoordinate);
                 var_dump('yCoordinate fin : ' . $yCoordinate);
 
-            /*
-                -> dans la table carte : definir le xMax = 6 , le yMax = 4 
-
-            */
+            // Logique a reprendre
