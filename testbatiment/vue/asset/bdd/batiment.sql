@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 29 nov. 2022 à 11:23
--- Version du serveur :  5.7.26
--- Version de PHP :  7.3.5
+-- Généré le : mar. 29 nov. 2022 à 18:41
+-- Version du serveur : 8.0.27
+-- Version de PHP : 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `batiment`
+-- Base de données : `batiment`
 --
 
 -- --------------------------------------------------------
@@ -30,12 +29,12 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `batiment`;
 CREATE TABLE IF NOT EXISTS `batiment` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `nomBatiment` varchar(255) NOT NULL,
-  `bois` int(11) NOT NULL,
-  `cire` int(11) NOT NULL,
-  `eau` int(11) NOT NULL,
-  `duree_construction` int(11) NOT NULL,
+  `bois` int NOT NULL,
+  `cire` int NOT NULL,
+  `eau` int NOT NULL,
+  `duree_construction` int NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
@@ -56,7 +55,7 @@ INSERT INTO `batiment` (`id`, `nomBatiment`, `bois`, `cire`, `eau`, `duree_const
 
 DROP TABLE IF EXISTS `billet`;
 CREATE TABLE IF NOT EXISTS `billet` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `auteur` varchar(255) NOT NULL,
   `titre` varchar(255) NOT NULL,
   `message` text NOT NULL,
@@ -96,11 +95,11 @@ INSERT INTO `billet` (`id`, `auteur`, `titre`, `message`, `dateMessage`) VALUES
 
 DROP TABLE IF EXISTS `commentaire`;
 CREATE TABLE IF NOT EXISTS `commentaire` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `auteur` varchar(255) NOT NULL,
   `commentaire` text NOT NULL,
   `dateCommentaire` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `idBillet` int(11) NOT NULL,
+  `idBillet` int NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=71 DEFAULT CHARSET=latin1;
 
@@ -157,12 +156,35 @@ INSERT INTO `commentaire` (`id`, `auteur`, `commentaire`, `dateCommentaire`, `id
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `infos_map`
+--
+
+DROP TABLE IF EXISTS `infos_map`;
+CREATE TABLE IF NOT EXISTS `infos_map` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nom_champ` tinytext NOT NULL,
+  `description` text NOT NULL,
+  `valeur` varchar(256) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
+
+--
+-- Déchargement des données de la table `infos_map`
+--
+
+INSERT INTO `infos_map` (`id`, `nom_champ`, `description`, `valeur`) VALUES
+(3, 'y_max', 'Détermine la taille de la carte sur l\'axe des y', NULL),
+(4, 'x_max', 'Détermine la taille de la carte sur l\'axe des x', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `membre`
 --
 
 DROP TABLE IF EXISTS `membre`;
 CREATE TABLE IF NOT EXISTS `membre` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `pseudo` varchar(255) NOT NULL,
   `mail` varchar(255) NOT NULL,
   `pass` text NOT NULL,
@@ -186,10 +208,10 @@ INSERT INTO `membre` (`id`, `pseudo`, `mail`, `pass`, `droit`) VALUES
 
 DROP TABLE IF EXISTS `recap`;
 CREATE TABLE IF NOT EXISTS `recap` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `couveuse` int(11) NOT NULL,
-  `solarium` int(11) NOT NULL,
-  `id_joueur` int(11) NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `couveuse` int NOT NULL,
+  `solarium` int NOT NULL,
+  `id_joueur` int NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
@@ -208,29 +230,29 @@ INSERT INTO `recap` (`id`, `couveuse`, `solarium`, `id_joueur`) VALUES
 
 DROP TABLE IF EXISTS `ressource`;
 CREATE TABLE IF NOT EXISTS `ressource` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_joueur` int(11) NOT NULL,
-  `bois_total` int(11) NOT NULL,
-  `cire_total` int(11) NOT NULL,
-  `eau_total` int(11) NOT NULL,
-  `argile_total` int(11) NOT NULL,
-  `nourriture_total` int(11) NOT NULL,
-  `ouvriere_bois_plaine` int(11) NOT NULL,
-  `ouvriere_bois_marecage` int(11) NOT NULL,
-  `ouvriere_bois_foret` int(11) NOT NULL,
-  `ouvriere_cire` int(11) NOT NULL,
-  `ouvriere_argile` int(11) NOT NULL,
-  `ouvriere_argile_plaine` int(11) NOT NULL,
-  `ouvriere_argile_foret` int(11) NOT NULL,
-  `ouvriere_argile_marecage` int(11) NOT NULL,
-  `ouvriere_eau` int(11) NOT NULL,
-  `ouvriere_eau_plaine` int(11) NOT NULL,
-  `ouvriere_eau_foret` int(11) NOT NULL,
-  `ouvriere_eau_marecage` int(11) NOT NULL,
-  `ouvriere_nourriture_plaine` int(11) NOT NULL,
-  `ouvriere_nourriture_foret` int(11) NOT NULL,
-  `ouvriere_nourriture_marecage` int(11) NOT NULL,
-  `ouvriere_total` int(11) NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `id_joueur` int NOT NULL,
+  `bois_total` int NOT NULL,
+  `cire_total` int NOT NULL,
+  `eau_total` int NOT NULL,
+  `argile_total` int NOT NULL,
+  `nourriture_total` int NOT NULL,
+  `ouvriere_bois_plaine` int NOT NULL,
+  `ouvriere_bois_marecage` int NOT NULL,
+  `ouvriere_bois_foret` int NOT NULL,
+  `ouvriere_cire` int NOT NULL,
+  `ouvriere_argile` int NOT NULL,
+  `ouvriere_argile_plaine` int NOT NULL,
+  `ouvriere_argile_foret` int NOT NULL,
+  `ouvriere_argile_marecage` int NOT NULL,
+  `ouvriere_eau` int NOT NULL,
+  `ouvriere_eau_plaine` int NOT NULL,
+  `ouvriere_eau_foret` int NOT NULL,
+  `ouvriere_eau_marecage` int NOT NULL,
+  `ouvriere_nourriture_plaine` int NOT NULL,
+  `ouvriere_nourriture_foret` int NOT NULL,
+  `ouvriere_nourriture_marecage` int NOT NULL,
+  `ouvriere_total` int NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
@@ -249,7 +271,7 @@ INSERT INTO `ressource` (`id`, `id_joueur`, `bois_total`, `cire_total`, `eau_tot
 
 DROP TABLE IF EXISTS `section`;
 CREATE TABLE IF NOT EXISTS `section` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `sectionBlog` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
