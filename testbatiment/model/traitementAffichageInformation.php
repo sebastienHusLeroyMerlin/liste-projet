@@ -13,7 +13,7 @@
 			));
 			
 			$resultatInfoAffichage = $reqInfoAffichage->fetch();
-			var_dump($resultatInfoAffichage);
+
 			$_SESSION['niveauCouveuse'] = $resultatInfoAffichage['couveuse'];
 			$_SESSION['niveauSolarium'] = $resultatInfoAffichage['solarium'];
 			
