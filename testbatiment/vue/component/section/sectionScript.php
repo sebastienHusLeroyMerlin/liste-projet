@@ -10,7 +10,7 @@
 
         <?php
             //require_once('../model/traitementRemplissageCarte.php');
-			require_once('../model/traitementRemplissageCarte2.php');
+			require_once('../controleur/remplissageCarteControleur.php');
         ?>
        		
 	</div>

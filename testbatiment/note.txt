@@ -63,3 +63,12 @@ les divinité octroie des bonus
 
 integrer un convertisseur de ressources -> acce pour les abo, % de collecte le % collecté servira a financer quelque chose mais quoi ?
 
+-----
+
+carte
+
+les tuile possedes :
+    - un biomme chaud froid temperé influe sur la meteo
+    - un relief influe sur les ressources
+    - un point d'interet ( si colonisé ne peut pas faire apparaitre de point d interet ex evenement mission archeo, monstre, mine( a revendiquer pour pouvoir etre exploité), trésor  )
+    
