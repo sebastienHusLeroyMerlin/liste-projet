@@ -73,40 +73,57 @@
 
         }
 
-        public static function insertPlayer(){
+        public static function insertPlayerToWorldMap(){
 
             $nbEmptyBox = rand(1,4);
 
             // je recupere la position en x du dernier inscrit
             $xLastPlayer = WorldMap::getInfoWorldMap(X_LAST_PLAYER);
 
+            // je recupere la position de la limite de carte
+            $xLimitWorldMap = WorldMap::getInfoWorldMap(X_MAP);
+
             /*
                 SI $xLastPlayer n'est pas definis
-                aucun joueur n'existe la carte n'existe pas non plus
+                aucun joueur n'existe donc la carte n'existe pas non plus
                 J'instancie la carte
             */
             if(!isset($xLastPlayer)){
                 //J'instancie la carte
                 WorldMap::enlargeWorldMap();
-    
-                //J'insere mon joueur sur la carte
-                
             }
+
+             
+            // si j'essai d'inserer mon joueur en dehors de la carte
+            if($xNewPlayer > $xLimitWorldMap){
+                //j'ajoute une ligne à la carte 
+                // de que sur l'axe des y je suis = à l axe des x 
+                // je agrandis l axe des 5 de x_base
+            }
+            else{
+                //J'insere mon joueur sur la carte
+                //puisque c'est lepremier joueur je serai forcement sur la carte
+                $xNewPlayer = $xLastPlayer + $nbEmptyBox ;//TODO trouver comment definir x 
+
+
+            }
+        }
+
+        private static function updateWorldMap(){
+
         }
 
         private static function createTile($nbTile){
 
+
+            
+        }
+
+        private static function insertTile(/*prend un objet tuile */){
             $bdd = Bdd::getBdd();
 
-            for ($i=1; $i <= $nbTile; $i++) { 
-
-                //j'indique la position x
-                $x = //TODO trouver comment definir x 
-                //j'indique la position y
-             
-            }
-
-            $reqGetInfoWorldMap = $bdd->prepare('SELECT valeur FROM infos_map WHERE nom_champ = :nom_champ ');
+            //todo revoir la requete + nom requete ect 
+            $reqGetInfoWorldMap = $bdd->prepare('INSERT valeur FROM infos_map WHERE nom_champ = :nom_champ ');
             $reqGetInfoWorldMap->execute(array(
             'nom_champ' => $fieldName
             ));
