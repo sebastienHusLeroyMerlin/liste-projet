@@ -74,4 +74,23 @@
 				echo 'Erreur : 3 ';
             }
         }
+
+		public static function getPlayerRace($id){
+
+			$bdd = Bdd::getBdd();
+
+            $reqGetPlayerRace = $bdd->prepare('SELECT r.race_name FROM race r 
+			INNER JOIN membre m ON m.id_race = r.id  
+			WHERE m.id = :idPlayer ');
+            $reqGetPlayerRace->execute(array(
+            'idPlayer' => $id
+            ));
+                
+            $resultReq = $reqGetPlayerRace->fetch();
+
+            $reqGetPlayerRace->closeCursor();
+
+            return $resultReq[0];
+
+		}
 	}

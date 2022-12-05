@@ -1,6 +1,7 @@
 <?php
 
     require_once('constante.php');
+    require_once('User.php');
     require_once('Bdd.php');
 
     class WorldMap{
@@ -73,40 +74,21 @@
 
         }
 
-        public static function insertPlayerToWorldMap(){
+        public static function insertPlayerToWorldMap($idPlayer, $x, $y, idBiome){
 
-            $nbEmptyBox = rand(1,4);
+            $bdd = Bdd::getBdd();
 
-            // je recupere la position en x du dernier inscrit
-            $xLastPlayer = WorldMap::getInfoWorldMap(X_LAST_PLAYER);
+            //todo revoir la requete + nom requete ect 
+            $reqGetInfoWorldMap = $bdd->prepare('UPDATE world_map SET id_player = :idPlayer, id_biome = :id_biome WHERE  x_pos = :XXXX and y_pos = :YYYY');
+            $reqGetInfoWorldMap->execute(array(
+                'idPlayer' => $idPlayer, 
+                'id_biome'=> $idBiome,
+                'XXXX'=> $x,
+                'YYYY'=> $y
+            ));
 
-            // je recupere la position de la limite de carte
-            $xLimitWorldMap = WorldMap::getInfoWorldMap(X_MAP);
+            $reqGetInfoWorldMap->closeCursor();
 
-            /*
-                SI $xLastPlayer n'est pas definis
-                aucun joueur n'existe donc la carte n'existe pas non plus
-                J'instancie la carte
-            */
-            if(!isset($xLastPlayer)){
-                //J'instancie la carte
-                WorldMap::enlargeWorldMap();
-            }
-
-             
-            // si j'essai d'inserer mon joueur en dehors de la carte
-            if($xNewPlayer > $xLimitWorldMap){
-                //j'ajoute une ligne à la carte 
-                // de que sur l'axe des y je suis = à l axe des x 
-                // je agrandis l axe des 5 de x_base
-            }
-            else{
-                //J'insere mon joueur sur la carte
-                //puisque c'est lepremier joueur je serai forcement sur la carte
-                $xNewPlayer = $xLastPlayer + $nbEmptyBox ;//TODO trouver comment definir x 
-
-
-            }
         }
 
         private static function updateWorldMap(){
@@ -123,7 +105,7 @@
             $bdd = Bdd::getBdd();
 
             //todo revoir la requete + nom requete ect 
-            $reqGetInfoWorldMap = $bdd->prepare('INSERT valeur FROM infos_map WHERE nom_champ = :nom_champ ');
+            $reqGetInfoWorldMap = $bdd->prepare('INSERT INTO ... VALUES nom_champ = :nom_champ ');
             $reqGetInfoWorldMap->execute(array(
             'nom_champ' => $fieldName
             ));
@@ -131,5 +113,29 @@
             $resultReq = $reqGetInfoWorldMap->fetch();
 
             $reqGetInfoWorldMap->closeCursor();
+        }
+
+        public static function defineBiome($idPlayer){
+            $playerRace = User::getPlayerRace($idPlayer);
+
+            switch ($playerRace) {
+                case 1:
+                    $idBiome = 1 ;
+                    break;
+                case 2:
+                    $idBiome = 2 ;
+                    break;
+                case 3:
+                    $idBiome = 3 ;
+                    break;
+                case 4:
+                    $idBiome = 4 ;
+                    break;
+                case 5:
+                    $idBiome = 5 ;
+                    break;            
+            }
+
+            return $idBiome;
         }
     }

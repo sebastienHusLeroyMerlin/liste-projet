@@ -71,4 +71,7 @@ les tuile possedes :
     - un biomme chaud froid temperé influe sur la meteo
     - un relief influe sur les ressources
     - un point d'interet ( si colonisé ne peut pas faire apparaitre de point d interet ex evenement mission archeo, monstre, mine( a revendiquer pour pouvoir etre exploité), trésor  )
-    
+
+
+    Note : La race du nouveau joueur determine le biome de sa case ( qui l'avantage )
+        cases type merveille 1 chance sur 800 
