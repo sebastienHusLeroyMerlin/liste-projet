@@ -4,26 +4,87 @@
 		require_once('alerteMessage.php');
 	?>
 							
-	<div class="encadreGeneral"><!-- Ne devra pas etre visible  -->
+	<!--<div class="encadreGeneral">--><!-- Ne devra pas etre visible  -->
 							
         <h3>Test de script</h3>
+		<!--<div class="carre">
+   <div class="content">
+     <div class="pair ligne">
+       <div class="hexagon"></div>  
+       <div class="hexagon"></div>
+       <div class="hexagon"></div>  
+       <div class="hexagon"></div>
+     </div>
 
-		<div class="carre">
+      <div class="impair ligne">
+       <div class="hexagon"></div>  
+       <div class="hexagon"></div>
+        <div class="hexagon"></div>  
+       <div class="hexagon"></div>
+     </div>
 
-        <?php
-            //require_once('../model/traitementRemplissageCarte.php');
-			///require_once('../controleur/remplissageCarteControleur.php');
-			//require_once('../controleur/controleurTest.php');
-$index = 8 ;
+     <div class="pair ligne">
+       <div class="hexagon"></div>  
+       <div class="hexagon"></div>
+       <div class="hexagon"></div>  
+       <div class="hexagon"></div>
+     </div>
 
-			for ($i=0; $i < $index ; $i++) { 
-				?>
-					<div class="hexagon"></div>  
-				<?php
-			}
-        ?>
+     <div class="impair ligne">
+       <div class="hexagon"></div>  
+       <div class="hexagon"></div>
+       <div class="hexagon"></div>  
+       <div class="hexagon"></div>
+     </div>
 
+     <div class="pair ligne">
+       <div class="hexagon"></div>  
+       <div class="hexagon"></div>
+       <div class="hexagon"></div>  
+       <div class="hexagon"></div>
+     </div>
+  </div>-->
+<!--</div>-->
+	<div class="carre">
+		<div class="content">
+			<?php
+				//require_once('../model/traitementRemplissageCarte.php');
+				///require_once('../controleur/remplissageCarteControleur.php');
+				//require_once('../controleur/controleurTest.php');
+				$nbTilePerLigne = 7 ;
+				$nbLigne = 7;
+
+				//Nombre de lignes
+				for ($i=0; $i < $nbLigne ; $i++) { 
+
+					if($i % 2 > 0){
+						?>
+							<div class="impair ligne">
+						<?php
+					}
+					else{
+						?>
+							<div class="pair ligne">
+						<?php
+					}
+			
+					// nombre de tuile par ligne
+					for ($j=0; $j < $nbTilePerLigne ; $j++) { 
+						?>
+							<div class="hexagon"></div>
+						<?php
+					}
+
+					?>
+
+						</div>
+
+					<?php
+
+				}
+			?>
 		</div>
+	</div>
 <!--
 <canvas id ="canvas1" width="400" height="300" style="border:5px solid black;">
 </canvas>
