@@ -8,12 +8,23 @@
 							
         <h3>Test de script</h3>
 
+		<div class="carre">
+
         <?php
             //require_once('../model/traitementRemplissageCarte.php');
 			///require_once('../controleur/remplissageCarteControleur.php');
 			//require_once('../controleur/controleurTest.php');
+$index = 8 ;
+
+			for ($i=0; $i < $index ; $i++) { 
+				?>
+					<div class="hexagon"></div>  
+				<?php
+			}
         ?>
 
+		</div>
+<!--
 <canvas id ="canvas1" width="400" height="300" style="border:5px solid black;">
 </canvas>
 
@@ -154,6 +165,6 @@ function trace_map(pinceau, unit) {
 }
 </script>
        		
-	</div>
+	</div>-->
 					
 </section>

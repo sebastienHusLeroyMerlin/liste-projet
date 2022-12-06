@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 30 nov. 2022 à 23:54
+-- Généré le :  mar. 06 déc. 2022 à 00:16
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.3.5
 
@@ -192,6 +192,7 @@ CREATE TABLE IF NOT EXISTS `membre` (
   `mail` varchar(255) NOT NULL,
   `pass` text NOT NULL,
   `droit` varchar(255) NOT NULL,
+  `id_race` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
@@ -199,9 +200,34 @@ CREATE TABLE IF NOT EXISTS `membre` (
 -- Déchargement des données de la table `membre`
 --
 
-INSERT INTO `membre` (`id`, `pseudo`, `mail`, `pass`, `droit`) VALUES
-(1, 'seb', 'bastoun3@free.fr', '123', 'membre'),
-(2, 'roberto', 'roberto@gmail.com', '456', 'membre');
+INSERT INTO `membre` (`id`, `pseudo`, `mail`, `pass`, `droit`, `id_race`) VALUES
+(1, 'seb', 'bastoun3@free.fr', '123', 'membre', 2),
+(2, 'roberto', 'roberto@gmail.com', '456', 'membre', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `race`
+--
+
+DROP TABLE IF EXISTS `race`;
+CREATE TABLE IF NOT EXISTS `race` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `race_name` tinytext NOT NULL,
+  `description` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `race`
+--
+
+INSERT INTO `race` (`id`, `race_name`, `description`) VALUES
+(1, 'Araignées', ''),
+(2, 'Fourmis', ''),
+(3, 'Abeilles', ''),
+(4, 'Termites', ''),
+(5, 'Frelons', '');
 
 -- --------------------------------------------------------
 
