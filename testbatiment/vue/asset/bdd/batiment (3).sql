@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 06 déc. 2022 à 00:16
+-- Généré le :  jeu. 08 déc. 2022 à 00:53
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.3.5
 
@@ -91,6 +91,21 @@ INSERT INTO `billet` (`id`, `auteur`, `titre`, `message`, `dateMessage`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `biome`
+--
+
+DROP TABLE IF EXISTS `biome`;
+CREATE TABLE IF NOT EXISTS `biome` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `description` text NOT NULL,
+  `img_name` tinytext NOT NULL,
+  `name` tinytext NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `commentaire`
 --
 
@@ -167,7 +182,7 @@ CREATE TABLE IF NOT EXISTS `infos_map` (
   `description` text NOT NULL,
   `valeur` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `infos_map`
@@ -177,7 +192,11 @@ INSERT INTO `infos_map` (`id`, `nom_champ`, `description`, `valeur`) VALUES
 (3, 'y_limit_world_map', 'Détermine la taille de la carte sur l\'axe des y', NULL),
 (4, 'x_limit_world_map', 'Détermine la taille de la carte sur l\'axe des x', NULL),
 (5, 'x_last_player', 'Indique la position maximal en y ou l\'on trouve un joueur', NULL),
-(6, 'y_last_player', 'Indique la position maximal en y ou l\'on trouve un joueur', NULL);
+(6, 'y_last_player', 'Indique la position maximal en y ou l\'on trouve un joueur', NULL),
+(7, 'x_start', 'Permet de savoir à partir de quelle origine implanter les nouveaux joueurs sur l axe des x', NULL),
+(8, 'y_start', 'Permet de savoir à partir de quelle origine implanter les nouveaux joueurs sur l axe des y', NULL),
+(9, 'x_last_start', '', NULL),
+(10, 'y_last_start', '', NULL);
 
 -- --------------------------------------------------------
 
