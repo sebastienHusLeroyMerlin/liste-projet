@@ -9,3 +9,12 @@
     const Y_LAST_PLAYER =  'y_last_player'; 
     const X_START =  'x_start';
     const Y_START =  'y_start'; 
+
+/* ------------------------------- */ 
+
+    const X_POS = 'x_pos';
+    const Y_POS = 'y_pos';
+    const ID_HUM =  'id_humidite';
+    const ID_CLIM =  'id_climat';
+    const ID_RELIEF =  'id_relief';
+    const ID_BIOME =  'id_biome'; 

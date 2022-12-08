@@ -79,10 +79,10 @@
             $bdd = Bdd::getBdd();
 
             //todo revoir la requete + nom requete ect 
-            $reqGetInfoWorldMap = $bdd->prepare('UPDATE world_map SET id_player = :idPlayer, id_biome = :id_biome WHERE  x_pos = :XXXX and y_pos = :YYYY');
+            $reqGetInfoWorldMap = $bdd->prepare('UPDATE world_map SET id_player = :idPlayer, id_biome = :idBiome WHERE  x_pos = :XXXX and y_pos = :YYYY');
             $reqGetInfoWorldMap->execute(array(
                 'idPlayer' => $idPlayer, 
-                'id_biome'=> $idBiome,
+                'idBiome'=> $idBiome,
                 'XXXX'=> $x,
                 'YYYY'=> $y
             ));
@@ -102,11 +102,16 @@
             $idRelief = rand(1,3);
             $idHumidite = rand(1,8);
 
-            // je concatene pour definir le biome 
+            // je concatene pour definitBiomeForTileinir le biome 
             $concatIdForBiome = $idClimat . $idRelief . $idHumidite ;
             $idBiome = self::initBiomeForTile($concatIdForBiome);
 
-            $listParamsForCreateTile = array( $idClimat, $idRelief, $idHumidite, $idBiome);
+            $listParamsForCreateTile = array( 
+                ID_BIOME => $idClimat, 
+                ID_BIOME => $idRelief, 
+                ID_BIOME => $idHumidite, 
+                ID_BIOME => $idBiome
+            );
 
             //J'enregistre la tuile en bdd
             self::insertTile($listParamsForCreateTile);
@@ -114,12 +119,26 @@
         }
 
         private static function insertTile($arrayParamsForCreateTile){
+var_dump($arrayParamsForCreateTile);
+            $idBiome = $arrayParamsForCreateTile[ID_BIOME];
+            $x = $arrayParamsForCreateTile[X_POS];
+            $y = $arrayParamsForCreateTile[Y_POS];
+            $idHumidite = $arrayParamsForCreateTile[ID_HUM];
+            $idClimat = $arrayParamsForCreateTile[ID_CLIM];
+            
             $bdd = Bdd::getBdd();
-
             //todo revoir la requete + nom requete ect 
-            $reqGetInfoWorldMap = $bdd->prepare('INSERT INTO world_map VALUES nom_champ = :nom_champ ');
+            $reqGetInfoWorldMap = $bdd->prepare('INSERT INTO world_map VALUES x_pos = :x,	y_pos = :y,	
+                                                    id_biome = :idBiome, id_relief = :idRelief,
+                                                    id_humidite = :idHumidite, id_climat = :idClimat/*,	
+                                                    id_interest_point = :x*/');
             $reqGetInfoWorldMap->execute(array(
-            'nom_champ' => $fieldName
+                'idRelief' => $idPlayer, 
+                'idBiome'=> $idBiome,
+                'x'=> $x,
+                'y'=> $y,
+                'id_humidite' => $idHumidite, 
+                'id_climat'=> $idClimat
             ));
                 
             $resultReq = $reqGetInfoWorldMap->fetch();
@@ -172,6 +191,9 @@
         }
 
         private static function initBiomeForTile($idBiome){
+
+            var_dump($idBiome);
+
             switch ($idBiome) {
                 case '225':
                 case '326':
