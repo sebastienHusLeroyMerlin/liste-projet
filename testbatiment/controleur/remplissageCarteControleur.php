@@ -3,6 +3,7 @@
 /********** Note classe sans doute tempo ses etape seront faite a l inscription du joueur  *******/
 // controleur d insertion de joueur sur la carte
     require_once('../model/WorldMap.php');
+    require_once('../model/constante.php');
     
     /* 
         A l'inscription du premier joueur au moment de l inserer sur la carte
@@ -37,10 +38,10 @@
     $nbEmptyBox = rand(1,4);
 
     //Etape 1 
-    $xLimitWorldMap = WorldMap::getInfoWorldMap(X_MAP);
-    $yLimitWorldMap = WorldMap::getInfoWorldMap(Y_MAP);
+    $xLimitWorldMap = WorldMap::getInfoWorldMap(X_MAX_MAP);
+    $yLimitWorldMap = WorldMap::getInfoWorldMap(Y_MAX_MAP);
 
-    $xPosPlayer = $nbEmptyBox + $xLastPlayerControled;
+    //$xPosPlayer = $nbEmptyBox + $xLastPlayerControled;
 
     //------ TODO voir comment on recup cette infos
     $idPlayer = 1;
@@ -65,10 +66,10 @@
         $yLastLimitWorldMap = Y_BASE;
 
         // creation des tuiles
-        for ($i=0; $i < $yLastLimitWorldMap; $i++) { 
-            for ($j=0; $j < $xLastLimitWorldMap; $j++) { 
+        for ($y=0; $y < $yLastLimitWorldMap; $y++) { 
+            for ($x=0; $x < $xLastLimitWorldMap; $x++) { 
                 
-                $tile =  WorldMap::createTile();
+                WorldMap::createTile($x, $y);
 
             }
         }
@@ -110,7 +111,7 @@
 
     /******* controleur de creation de carte  *******/
 
-    public static function insertPlayerToWorldMap(){
+    /*public static function insertPlayerToWorldMap(){
 
         $nbEmptyBox = rand(1,4);
 
@@ -125,7 +126,7 @@
             aucun joueur n'existe donc la carte n'existe pas non plus
             J'instancie la carte
         */
-        if(!isset($xLastPlayer)){
+       /* if(!isset($xLastPlayer)){
             //J'instancie la carte
             WorldMap::enlargeWorldMap();
         }
@@ -144,4 +145,4 @@
 
 
         }
-    }
+    }*/

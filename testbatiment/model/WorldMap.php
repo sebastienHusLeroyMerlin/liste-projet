@@ -95,7 +95,7 @@
 
         }
 
-        private static function createTile($idPlayer, $xCoordinate, $yCoordinate){
+        PUBLIC static function createTile($xCoordinate, $yCoordinate){
             //$idBiome = rand(1,4); aquoi cela servira t ' il definir les especes qui vivent dessus 
             
             $idClimat = rand(1,5);
@@ -107,17 +107,17 @@
             $idBiome = self::initBiomeForTile($concatIdForBiome);
 
             $listParamsForCreateTile = array( $idClimat, $idRelief, $idHumidite, $idBiome);
-            
+
             //J'enregistre la tuile en bdd
-            self::insertTile();
+            self::insertTile($listParamsForCreateTile);
             
         }
 
-        private static function insertTile(/*prend un objet tuile */){
+        private static function insertTile($arrayParamsForCreateTile){
             $bdd = Bdd::getBdd();
 
             //todo revoir la requete + nom requete ect 
-            $reqGetInfoWorldMap = $bdd->prepare('INSERT INTO ... VALUES nom_champ = :nom_champ ');
+            $reqGetInfoWorldMap = $bdd->prepare('INSERT INTO world_map VALUES nom_champ = :nom_champ ');
             $reqGetInfoWorldMap->execute(array(
             'nom_champ' => $fieldName
             ));
@@ -163,11 +163,12 @@
                     break;            
             
 
-            return $idBiome;
+                return $idBiome;
+            }
         }
 
         public static function showWorldMap(){
-
+            return ;
         }
 
         private static function initBiomeForTile($idBiome){
@@ -235,7 +236,11 @@
                 default:
                     var_dump("PB DEFINITION BIOME");//TODO :  remplacer par un log 
                     break;
+
+                return $result;
             }
+
+            
         }
 
         /*public static function coordinateInit($coordinateToInit){
