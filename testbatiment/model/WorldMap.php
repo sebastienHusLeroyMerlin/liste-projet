@@ -96,8 +96,20 @@
         }
 
         private static function createTile($idPlayer, $xCoordinate, $yCoordinate){
-            $idBiome = rand(1,4);
+            //$idBiome = rand(1,4); aquoi cela servira t ' il definir les especes qui vivent dessus 
+            
+            $idClimat = rand(1,5);
+            $idRelief = rand(1,3);
+            $idHumidite = rand(1,8);
 
+            // je concatene pour definir le biome 
+            $concatIdForBiome = $idClimat . $idRelief . $idHumidite ;
+            $idBiome = self::initBiomeForTile($concatIdForBiome);
+
+            $listParamsForCreateTile = array( $idClimat, $idRelief, $idHumidite, $idBiome);
+            
+            //J'enregistre la tuile en bdd
+            self::insertTile();
             
         }
 
@@ -115,7 +127,7 @@
             $reqGetInfoWorldMap->closeCursor();
         }
 
-        public static function defineBiome($idPlayer){
+        public static function defineBiomeForPlayer($idPlayer){
             $playerRace = User::getPlayerRace($idPlayer);
 
             switch ($playerRace) {
@@ -133,14 +145,97 @@
                     break;
                 case 5:
                     $idBiome = 5 ;
+                    break;
+                case 6:
+                    $idBiome = 6 ;
+                    break;
+                case 7:
+                    $idBiome = 7 ;
+                    break;
+                case 8:
+                    $idBiome = 8 ;
+                    break;
+                case 9:
+                    $idBiome = 9 ;
+                    break;
+                case 10:
+                    $idBiome = 10 ;
                     break;            
-            }
+            
 
             return $idBiome;
         }
 
         public static function showWorldMap(){
 
+        }
+
+        private static function initBiomeForTile($idBiome){
+            switch ($idBiome) {
+                case '225':
+                case '326':
+                case '437':
+                case '539':
+                    $result = 1 ; // Desert
+                    break;
+                
+                case '114':
+                case '113':
+                case '112':
+                case '111':
+                    $result = 2 ; // Toundras.
+                    break;
+
+                case '222':
+                case '322':
+                case '432':
+                case '532':
+                    $result = 3 ; // Forêt Humide
+                    break;
+                
+                case '223':
+                case '323':
+                case '433':
+                case '533':
+                    $result = 4 ; // Forêt Tempérée
+                    break;
+
+                case '436':
+                case '325':
+                case '224':
+                    $result = 5 ; // Macquis sec
+                    break;
+                
+                case '324':
+                    $result = 6 ; // Steppe.
+                    break;
+
+                case '434':
+                case '534':
+                case '535':
+                    $result = 7 ; // Forêt Sèche
+                    break;
+                
+                case '537':
+                case '536':
+                case '435':
+                    $result = 8 ; // Macquis
+                break;
+
+                case '431':
+                case '531':
+                    $result = 9 ; // Forêt Tropicale
+                    break;
+                
+                case '221':
+                case '321':
+                    $result = 10 ; // Forêt pluviale
+                break;
+
+                default:
+                    var_dump("PB DEFINITION BIOME");//TODO :  remplacer par un log 
+                    break;
+            }
         }
 
         /*public static function coordinateInit($coordinateToInit){

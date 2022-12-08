@@ -47,7 +47,7 @@
 
     //Etape 2
     if(isset($xLimitWorldMap) && ($xPosPlayer <= $xLimitWorldMap)){
-        $idBiome = WorldMap::defineBiome($idPlayer);
+        $idBiome = WorldMap::defineBiomeForPlayer($idPlayer);
         WorldMap::insertPlayerToWorldMap($idPlayer, $xPosPlayer, $yPosPlayer, $idBiome);
     }
     elseif(!isset($xLimitWorldMap)){
@@ -68,11 +68,13 @@
         for ($i=0; $i < $yLastLimitWorldMap; $i++) { 
             for ($j=0; $j < $xLastLimitWorldMap; $j++) { 
                 
-                $tile =  WorldMap::createTile($idPlayer, $xCoordinate, $yCoordinate);
-                WorldMap::insertTile();
+                $tile =  WorldMap::createTile();
 
             }
         }
+
+        // ce dont on aura besoin pour update la tuile qui recevra le fichier
+                //$idPlayer, $xCoordinate, $yCoordinate
 
 
 
