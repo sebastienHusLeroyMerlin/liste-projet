@@ -7,8 +7,13 @@
     /* 
         A l'inscription du premier joueur au moment de l inserer sur la carte
         0 - je determine le nombre de case vide entre lui et le dernier joueur implanté
-        1 - je recupere la limite de la map sur x ( si x different de nul la carte est initialisée)
+        1 - je recupere les infos liées à la map ( pour x different de null = carte initialisée)
             je recupere le x du dernier joueur
+            je recupere le y du dernier joueur
+            je recupere le x definissant la limite de la carte 
+            je recupere le y definissant la limite de la carte 
+            je recupere le x maximum du dernier joueur inseré 
+            je recupere le y maximum du dernier joueur inseré
         2 - si la carte est deja initialisée et que la position du joueur se situe sur la ligne d insertion x
                 ->j insere le joueur 
             sinon sila carte n'est pas initialisés 
@@ -25,7 +30,7 @@
             sinon si joueur en dehors de la ligne
                 ->j'agrandis la carte
                 ->j'insere le joueur
-            sinon  log derreur
+            sinon  log d'erreur
     */
 
     //Etape 0 
@@ -33,32 +38,65 @@
 
     //Etape 1 
     $xLimitWorldMap = WorldMap::getInfoWorldMap(X_MAP);
-    $xLastPlayer = WorldMap::getInfoWorldMap(X_LAST_PLAYER);
+    $yLimitWorldMap = WorldMap::getInfoWorldMap(Y_MAP);
 
-    if(!isset($xLastPlayer))
-        $xLastPlayer = -1;
-
-    $xPosPlayer = $nbEmptyBox + $xLastPlayer;
-
-    if($xPosPlayer % 2 == 0 )
-        $yPosPlayer = ;
+    $xPosPlayer = $nbEmptyBox + $xLastPlayerControled;
 
     //------ TODO voir comment on recup cette infos
     $idPlayer = 1;
 
     //Etape 2
-    if(isset($xLimitWorldMap) && $xPosPlayer <= $xLimitWorldMap){
+    if(isset($xLimitWorldMap) && ($xPosPlayer <= $xLimitWorldMap)){
         $idBiome = WorldMap::defineBiome($idPlayer);
         WorldMap::insertPlayerToWorldMap($idPlayer, $xPosPlayer, $yPosPlayer, $idBiome);
     }
     elseif(!isset($xLimitWorldMap)){
+        /*
+            Pour créer la carte j'ai besoin:
+                - de definir :
+                        - xLimitWorldMap, yLimitWorldMap
+                        - xLastPlayer, yLastPlayer
+                        - xLastLimitWorldMap, yLastLimitWorldMap
+                - de créer chaque tuile de la carte
+        */
+        $xLimitWorldMap = X_BASE;
+        $yLimitWorldMap = Y_BASE;
+        $xLastLimitWorldMap = X_BASE;
+        $yLastLimitWorldMap = Y_BASE;
+
+        // creation des tuiles
+        for ($i=0; $i < $yLastLimitWorldMap; $i++) { 
+            for ($j=0; $j < $xLastLimitWorldMap; $j++) { 
+                
+                $tile =  WorldMap::createTile($idPlayer, $xCoordinate, $yCoordinate);
+                WorldMap::insertTile();
+
+            }
+        }
+
+
+
+        // A faire une fois le joueur inserer TODO a revoir
+        //$xLastPlayer = WorldMap::getInfoWorldMap(X_LAST_PLAYER);
+        $xLastPlayerControled = WorldMap::coordinateInit($xLastPlayer);
+
+        //$yLastPlayer = WorldMap::getInfoWorldMap(Y_LAST_PLAYER);
+        $yLastPlayerControled = WorldMap::coordinateInit($yLastPlayer);
 
     }
     elseif( $xPosPlayer  > $xLimitWorldMap){
 
-        $xPosPlayerUpdated = 
+        $yLastPlyLastPlayerControled += 1;
+        ///si yLastPlayerControled >$ylimit alors j agrandis la map
+        //si xpos> xlimit et ypos == y limit
+        // je remet y a 0 et je  
+        WorldMap::updateWorldMapInfos($yLastPlayerControled, Y_LAST_PLAYER);
+        //et x revient a l origine x_depart
+    
 
+        $xPosPlayerUpdated = $xLimitWorldMap - $xLastPlayerControled - $nbEmptyBox;
         WorldMap::insertPlayerToWorldMap($idPlayer, $xPosPlayerUpdated, $yPosPlayer);
+        WorldMap::updateWorldMapInfos($xPosPlayerUpdated, X_LAST_PLAYER);
     }
     else{
         //a transformer en log

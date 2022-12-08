@@ -1,9 +1,13 @@
+<?php 
+		require_once('../model/constante.php');
+?>
+
 <div class="carre">
 			<div class="content">
 				<?php
 
-					$nbTilePerLigne = 7 ;
-					$nbLigne = 7;
+					$nbTilePerLigne =  X_BASE;
+					$nbLigne = Y_BASE;
 
 					//Nombre de lignes
 					for ($i=0; $i < $nbLigne ; $i++) { 

@@ -9,8 +9,8 @@
         public static function enlargeWorldMap(){
 
             //Je recupere les valeurs x_max et y_max
-            $xMax = self::getInfoWorldMap(X_MAP);
-            $yMax = self::getInfoWorldMap(Y_MAP);
+            $xMax = self::getInfoWorldMap(X_MAX_MAP);
+            $yMax = self::getInfoWorldMap(Y_MAX_MAP);
 
             /*
                 si $xmax et $ ymax sont a null la carte n'est pas definie
@@ -24,8 +24,8 @@
                 $yMax = Y_BASE ;
 
                 //je mets à jour la bdd
-                self::updateWorldMapInfos($xMax, X_MAP);
-                self::updateWorldMapInfos($yMax, Y_MAP);
+                self::updateWorldMapInfos($xMax, X_MAX_MAP);
+                self::updateWorldMapInfos($yMax, Y_MAX_MAP);
 
                 //j'instancie chaque tuile de la carte
                 self::createTile($xMax);
@@ -37,8 +37,8 @@
                 $yMax += Y_BASE ;
     
                 //je mets à jour la bdd
-                self::updateWorldMapInfos($xMax, X_MAP);
-                self::updateWorldMapInfos($yMax, Y_MAP);
+                self::updateWorldMapInfos($xMax, X_MAX_MAP);
+                self::updateWorldMapInfos($yMax, Y_MAX_MAP);
             }
 
         }
@@ -74,7 +74,7 @@
 
         }
 
-        public static function insertPlayerToWorldMap($idPlayer, $x, $y, idBiome){
+        public static function insertPlayerToWorldMap($idPlayer, $x, $y, $idBiome){
 
             $bdd = Bdd::getBdd();
 
@@ -91,12 +91,12 @@
 
         }
 
-        private static function updateWorldMap(){
+        private static function updateTile(){
 
         }
 
-        private static function createTile($nbTile){
-
+        private static function createTile($idPlayer, $xCoordinate, $yCoordinate){
+            $idBiome = rand(1,4);
 
             
         }
@@ -138,4 +138,18 @@
 
             return $idBiome;
         }
+
+        public static function showWorldMap(){
+
+        }
+
+        /*public static function coordinateInit($coordinateToInit){
+
+            if(!isset($coordinateToInit))
+                $result = 0 ; 
+            else
+                $result = $coordinateToInit;
+
+            return $result;
+        }*/
     }

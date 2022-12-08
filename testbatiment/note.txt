@@ -75,3 +75,6 @@ les tuile possedes :
 
     Note : La race du nouveau joueur determine le biome de sa case ( qui l'avantage )
         cases type merveille 1 chance sur 800 
+
+chaque biome possede ses propre espece a chasser qui offre different item pour la personalisation de son armée
+( favorisera le commerce )
