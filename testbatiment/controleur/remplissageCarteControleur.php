@@ -23,7 +23,7 @@
                         -> creer la ligne
                         -> creer chaque nouvelle tuile 
                         ->insere chaue nouvelle tuile
-                ->j insere le joueur sur une tuile
+                TODO->j insere le joueur sur une tuile
                         -> j'écrase les parametres de biome de la tuile pur le biome du joueur
                         si la tuile est une tuile de type emplacement pour merveille alors l'insertion du joueur sera decalé de 1
                                 si nouvel emplacement en dehors de la limite x

@@ -109,12 +109,12 @@
             $nbEmptyBox = rand(1,4);
 
             //je recupere le x_limit_world_map
-            $xLimitWorldMap = WorldMap::getInfoWorldMap(X_MAX_MAP);
+            $xLimitWorldMap = self::getInfoWorldMap(X_MAX_MAP);
 
             //requete recup infos dujoueur grace a l 
-            $idRace = User::getPlayerRace($idPlayer);
-            $listParamsBiomeForPlayer = WorldMap::defineParamsBiomeForPlayer($idRace);
-
+            $idRace = User::getIdPlayerRace($idPlayer);
+            $listParamsBiomeForPlayer = self::defineParamsBiomeForPlayer($idRace);
+            var_dump($listParamsBiomeForPlayer);
             $y = 0 ;
             $x = $nbEmptyBox + $xLimitWorldMap ;
 
@@ -124,10 +124,10 @@
                 //self::enlargeWorldMap();
             }
 
-            /*self::updateTileToIntegratePlayer($x, $y, $listParamsBiomeForPlayer, $idPlayer);
+            self::updateTileToIntegratePlayer($x, $y, $listParamsBiomeForPlayer, $idPlayer);
 
             self::updateWorldMapInfos($x, X_LAST_PLAYER);
-            self::updateWorldMapInfos($y, Y_LAST_PLAYER);*/
+            self::updateWorldMapInfos($y, Y_LAST_PLAYER);
 
         }
 
@@ -137,16 +137,16 @@
             $idHumidity = $listParamsBiomeForPlayer[ID_HUM];
             $idClimat = $listParamsBiomeForPlayer[ID_CLIM];
             $idRelief = $listParamsBiomeForPlayer[ID_RELIEF];
-
+var_dump($listParamsBiomeForPlayer);
             $bdd = Bdd::getBdd();
 
-            $reqUpdateTile = $bdd->prepare('UPDATE world_map' . ID_BIOME . ',' . ID_HUM . ',' . ID_CLIM . ',' . ID_RELIEF . ',' . X_POS . ',' . Y_POS . ' 
+            $reqUpdateTile = $bdd->prepare('UPDATE world_map  
                                             SET ' . ID_BIOME . ' = :idBiome, 
                                             ' . ID_HUM . ' = :idHumidity, 
                                             ' . ID_CLIM . ' = :idClimat, 
                                             ' . ID_RELIEF . ' = :idRelief, 
-                                            ' . X_POS . ' = :xPos, 
-                                            ' . Y_POS . ' = :yPos WHERE id_player = :idPlayer ');
+                                            ' . ID_PLAYER . ' = :idPlayer
+                                             WHERE ' . Y_POS . ' = :yPos and ' . X_POS . ' = :xPos');
             $reqUpdateTile->execute(array(
                 'idBiome'=> $idBiome,
                 'idHumidity' => $idHumidity,
@@ -291,9 +291,9 @@
         }
 
         public static function defineParamsBiomeForPlayer($idRace){
-
+            var_dump($idRace);
             switch ($idRace) {
-                case 1;//arraignées -- Forêt Humide
+                case 1://arraignées -- Forêt Humide
                     $idClimat = rand(2,5);
 
                     if($idClimat = 2 || $idClimat = 3 )
@@ -305,7 +305,7 @@
                     $idBiome = 3;
                     break;
 
-                case 2;//fourmis -- Forêt temperée
+                case 2://fourmis -- Forêt temperée
                     $idClimat = rand(2,5);
 
                     if($idClimat = 2 || $idClimat = 3 )
@@ -315,9 +315,11 @@
 
                     $idHumidity = 3;
                     $idBiome = 4;
+                    var_dump("ici id = 2 ");
+                    var_dump($idBiome);
                     break;
 
-                case 3;//abeille -- Macquis
+                case 3://abeille -- Macquis
                     $idClimat = rand(4,5);
 
                     $idRelief = 3;
@@ -326,7 +328,7 @@
                     $idBiome = 8;
                     break;
 
-                case 4;//termite -- Forêt Tropicale
+                case 4://termite -- Forêt Tropicale
 
                     $idClimat = rand(4,5);
 
@@ -336,7 +338,7 @@
                     $idBiome = 9;
                     break;
 
-                case 5;//frelon -- Forêt Sèche
+                case 5://frelon -- Forêt Sèche
 
                     $idClimat = rand(4,5);
 
@@ -345,13 +347,14 @@
                     $idHumidity = $idClimat = rand(4,5);
                     $idBiome = 7;
                     break;
-
-                $listParamsBiome = self::generateListParamsBiome($idClimat, $idRelief, $idHumidity, $idBiome);
-
-                
-                return $listParamsBiome;
                         
             }
+
+            var_dump($idBiome);
+                $listParamsBiome = self::generateListParamsBiome($idClimat, $idRelief, $idHumidity, $idBiome);
+
+                var_dump($listParamsBiome);
+                return $listParamsBiome;
 
         }
 

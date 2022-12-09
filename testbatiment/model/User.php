@@ -75,6 +75,9 @@
             }
         }
 
+		/**
+		 * Get String player race
+		 */
 		public static function getPlayerRace($id){
 
 			$bdd = Bdd::getBdd();
@@ -82,6 +85,24 @@
             $reqGetPlayerRace = $bdd->prepare('SELECT r.race_name FROM race r 
 			INNER JOIN membre m ON m.id_race = r.id  
 			WHERE m.id = :idPlayer ');
+            $reqGetPlayerRace->execute(array(
+            'idPlayer' => $id
+            ));
+                
+            $resultReq = $reqGetPlayerRace->fetch();
+
+            $reqGetPlayerRace->closeCursor();
+
+            return $resultReq[0];
+
+		}
+
+		public static function getIdPlayerRace($id){
+
+			$bdd = Bdd::getBdd();
+
+            $reqGetPlayerRace = $bdd->prepare('SELECT id_race FROM membre   
+			WHERE id = :idPlayer ');
             $reqGetPlayerRace->execute(array(
             'idPlayer' => $id
             ));
