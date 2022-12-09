@@ -99,51 +99,88 @@
             //$idBiome = rand(1,4); aquoi cela servira t ' il definir les especes qui vivent dessus 
             
             $idClimat = rand(1,5);
-            $idRelief = rand(1,3);
-            $idHumidite = rand(1,8);
+            switch ($idClimat) {
+                case 1:
+                    $result = 1 ;
+                    break;
+
+                case 2:
+                case 3:
+                    $result = 2 ;
+                    break;
+
+                
+                default:
+                $result = 3 ;
+                    break;
+            }
+            $idRelief = $result;
+
+            switch ($idClimat . $idRelief) {
+                case 11:
+                    $resultIdHumidite = rand(1,4) ;
+                    break;
+
+                case 22:
+                    $resultIdHumidite = rand(1,5) ;
+                    break;
+
+                case 32:
+                    $resultIdHumidite = rand(1,6) ;
+                    break;
+
+                case 43:
+                    $resultIdHumidite = rand(1,7) ;
+                    break;
+
+                case 53:
+                    $resultIdHumidite = rand(1,8) ;
+                    break;
+
+                
+                default:
+                    var_dump("PB INIT BIOME") ;
+                    break;
+            }
+            $idHumidite = $resultIdHumidite;
 
             // je concatene pour definitBiomeForTileinir le biome 
             $concatIdForBiome = $idClimat . $idRelief . $idHumidite ;
             $idBiome = self::initBiomeForTile($concatIdForBiome);
-
+            var_dump($idBiome);
             $listParamsForCreateTile = array( 
-                ID_BIOME => $idClimat, 
-                ID_BIOME => $idRelief, 
-                ID_BIOME => $idHumidite, 
+                ID_CLIM => $idClimat, 
+                ID_RELIEF => $idRelief, 
+                ID_HUM => $idHumidite, 
                 ID_BIOME => $idBiome
             );
-
+            var_dump($listParamsForCreateTile);
             //J'enregistre la tuile en bdd
-            self::insertTile($listParamsForCreateTile);
+            self::insertTile($listParamsForCreateTile, $xCoordinate, $yCoordinate);
             
         }
 
-        private static function insertTile($arrayParamsForCreateTile){
-var_dump($arrayParamsForCreateTile);
+        private static function insertTile($arrayParamsForCreateTile, $xPos, $yPos){
+
             $idBiome = $arrayParamsForCreateTile[ID_BIOME];
-            $x = $arrayParamsForCreateTile[X_POS];
-            $y = $arrayParamsForCreateTile[Y_POS];
             $idHumidite = $arrayParamsForCreateTile[ID_HUM];
             $idClimat = $arrayParamsForCreateTile[ID_CLIM];
-            
+            $idRelief = $arrayParamsForCreateTile[ID_RELIEF];
+            //var_dump("---" . $idClimat);
             $bdd = Bdd::getBdd();
             //todo revoir la requete + nom requete ect 
-            $reqGetInfoWorldMap = $bdd->prepare('INSERT INTO world_map VALUES x_pos = :x,	y_pos = :y,	
-                                                    id_biome = :idBiome, id_relief = :idRelief,
-                                                    id_humidite = :idHumidite, id_climat = :idClimat/*,	
-                                                    id_interest_point = :x*/');
-            $reqGetInfoWorldMap->execute(array(
-                'idRelief' => $idPlayer, 
+            $reqInsertTileToWorldMap = $bdd->prepare('INSERT INTO world_map  (' . ID_BIOME . ',' . ID_HUM . ',' . ID_CLIM . ',' . ID_RELIEF . ',' . X_POS . ',' . Y_POS . ')
+                                                        VALUES (:idBiome, :idHumidite, :idClimat, :idRelief, :xPos, :yPos)');
+            $reqInsertTileToWorldMap->execute(array(
                 'idBiome'=> $idBiome,
-                'x'=> $x,
-                'y'=> $y,
-                'id_humidite' => $idHumidite, 
-                'id_climat'=> $idClimat
+                'idHumidite' => $idHumidite,
+                'idClimat'=> $idClimat,
+                'idRelief' => $idRelief, 
+                'xPos'=> $xPos,
+                'yPos'=> $yPos   
             ));
-                
-            $resultReq = $reqGetInfoWorldMap->fetch();
 
-            $reqGetInfoWorldMap->closeCursor();
+            $reqInsertTileToWorldMap->closeCursor();
         }
 
         public static function defineBiomeForPlayer($idPlayer){
@@ -198,7 +235,7 @@ var_dump($arrayParamsForCreateTile);
                 case '225':
                 case '326':
                 case '437':
-                case '539':
+                case '538':
                     $result = 1 ; // Desert
                     break;
                 
@@ -256,13 +293,13 @@ var_dump($arrayParamsForCreateTile);
                 break;
 
                 default:
-                    var_dump("PB DEFINITION BIOME");//TODO :  remplacer par un log 
+                    var_dump("PB D INITIALISATION DE BIOME");
                     break;
 
-                return $result;
             }
 
-            
+            return $result;
+
         }
 
         /*public static function coordinateInit($coordinateToInit){
