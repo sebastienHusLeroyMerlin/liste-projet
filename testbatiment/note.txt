@@ -78,3 +78,19 @@ les tuile possedes :
 
 chaque biome possede ses propre espece a chasser qui offre different item pour la personalisation de son armée
 ( favorisera le commerce )
+
+
+
+------
+
+Infos generale du site 
+compteur de bebette tuées
+par 24h
+par semaine 
+ voir vus detaillée par espece ( dont pnj )
+
+ selon nombre de bebete tuée par joueur octroi des badge, possibilite d activé ou non certain titre contre une ressource speciale 
+----
+
+
+ajouter un systeme de guilde

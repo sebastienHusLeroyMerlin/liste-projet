@@ -4,6 +4,7 @@
 // controleur d insertion de joueur sur la carte
     require_once('../model/WorldMap.php');
     require_once('../model/constante.php');
+    require_once('../model/User.php');
     
     /* 
         A l'inscription du premier joueur au moment de l inserer sur la carte
@@ -35,7 +36,7 @@
     */
 
     //Etape 0 
-    $nbEmptyBox = rand(1,4);
+    //$nbEmptyBox = rand(1,4);deporter dans la fonction d insertion du joueur
 
     //Etape 1 
     $xLimitWorldMap = WorldMap::getInfoWorldMap(X_MAX_MAP);
@@ -47,48 +48,25 @@
     $idPlayer = 1;
 
     //Etape 2
-    if(isset($xLimitWorldMap) && ($xPosPlayer <= $xLimitWorldMap)){
-        $idBiome = WorldMap::defineBiomeForPlayer($idPlayer);
-        WorldMap::insertPlayerToWorldMap($idPlayer, $xPosPlayer, $yPosPlayer, $idBiome);
+    if(isset($xLimitWorldMap)/* && ($xPosPlayer <= $xLimitWorldMap*/){
+        WorldMap::insertPlayerToWorldMap($idPlayer);
     }
     elseif(!isset($xLimitWorldMap)){
-        /*
-            Pour créer la carte j'ai besoin:
-                - de definir :
-                        - xLimitWorldMap, yLimitWorldMap
-                        - xLastPlayer, yLastPlayer
-                        - xLastLimitWorldMap, yLastLimitWorldMap
-                - de créer chaque tuile de la carte
-        */
-        $xLimitWorldMap = X_BASE;
-        $yLimitWorldMap = Y_BASE;
-        $xLastLimitWorldMap = X_BASE;
-        $yLastLimitWorldMap = Y_BASE;
-
-        // creation des tuiles
-        for ($y=0; $y < $yLastLimitWorldMap; $y++) { 
-            for ($x=0; $x < $xLastLimitWorldMap; $x++) { 
-                
-                WorldMap::createTile($x, $y);
-
-            }
-        }
-
-        // ce dont on aura besoin pour update la tuile qui recevra le fichier
-                //$idPlayer, $xCoordinate, $yCoordinate
+var_dump("creation de carte");
+        /* --- Création de carte --- */
+        WorldMap::createWorldMap();
 
 
+        /* --- Debut  insertion joueur --- */
 
-        // A faire une fois le joueur inserer TODO a revoir
-        //$xLastPlayer = WorldMap::getInfoWorldMap(X_LAST_PLAYER);
-        $xLastPlayerControled = WorldMap::coordinateInit($xLastPlayer);
+        //$idPlayer = 1 ;//recuperé dans les variable de session TODO: à mettre a jour
+        WorldMap::insertPlayerToWorldMap($idPlayer);
 
-        //$yLastPlayer = WorldMap::getInfoWorldMap(Y_LAST_PLAYER);
-        $yLastPlayerControled = WorldMap::coordinateInit($yLastPlayer);
 
+        /* --- Fin insertion joueur --- */
     }
     elseif( $xPosPlayer  > $xLimitWorldMap){
-
+//TODO a revoir;
         $yLastPlyLastPlayerControled += 1;
         ///si yLastPlayerControled >$ylimit alors j agrandis la map
         //si xpos> xlimit et ypos == y limit
