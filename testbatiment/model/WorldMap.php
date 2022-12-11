@@ -21,10 +21,10 @@
             $yLimitWorldMap = Y_BASE - 1;
             self::updateWorldMapInfos($yLimitWorldMap, Y_MAX_MAP);
 
-            $xLastLimitWorldMap = $xLimitWorldMap;
+            $xLastLimitWorldMap = -1;
             self::updateWorldMapInfos($xLastLimitWorldMap, X_LAST_MAX_MAP);
 
-            $yLastLimitWorldMap = $yLimitWorldMap;
+            $yLastLimitWorldMap = -1;
             self::updateWorldMapInfos($yLastLimitWorldMap, Y_LAST_MAX_MAP);
 
             //Creation des tuiles
@@ -167,11 +167,11 @@
                 }
                 else{
                     //si je suis dans la limite en y de la map
-                    $xLastLimitWorldMap = self::getInfoWorldMap(X_LAST_MAX_MAP);
+                    
                     $yLastLimitWorldMap = self::getInfoWorldMap(Y_LAST_MAX_MAP);
 
                     if($yPos <= $yLastLimitWorldMap){
-
+                        $xLastLimitWorldMap = self::getInfoWorldMap(X_LAST_MAX_MAP);
                         $xPos = ($xLastLimitWorldMap -1 ) + $restNbEmptyBox ;
                         var_dump('il faut faire une action ici');
                     }

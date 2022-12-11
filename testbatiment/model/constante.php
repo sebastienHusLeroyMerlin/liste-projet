@@ -24,7 +24,7 @@
         Parametrage du nombre aleatoire de case vide 
         avant implantation d un nouveau joueur
     */
-    const RAND_MAX_EMPTY_BOX = 3;
+    const RAND_MAX_EMPTY_BOX = 4;
     const RAND_MIN_EMPTY_BOX = 1;
 
 
