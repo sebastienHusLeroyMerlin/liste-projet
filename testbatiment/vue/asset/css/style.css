@@ -474,3 +474,104 @@ h1,h2,h3
    align-items:center;
    justify-content:center;
  }
+
+ /* --- Tempo classe biome --- */ 
+.desert,
+.desert:after,
+.desert:before,
+.desert:hover,
+.desert:hover:after,
+.desert:hover:before --1
+{
+	background-color: red;
+ }
+
+.tundras,
+.tundras:after,
+.tundras:before,
+.tundras:hover,
+.tundras:hover:after,
+.tundras:hover:before --2
+{
+	background-color: blue;
+ }
+
+.wet_forest,
+.wet_forest:after,
+.wet_forest:before,
+.wet_forest:hover,
+.wet_forest:hover:after,
+.wet_forest:hover:before --3
+{
+	background-color: green;
+ }
+
+ .temperate_forest,
+ .temperate_forest:after,
+ .temperate_forest:before,
+ .temperate_forest:hover,
+ .temperate_forest:hover:after,
+ .temperate_forest:hover:before --4
+ {
+	background-color: rgb(106, 103, 64);
+ }
+
+ .dry_maquis,
+ .dry_maquis:after,
+ .dry_maquis:before,
+ .dry_maquis:hover,
+ .dry_maquis:hover:after,
+ .dry_maquis:hover:before --5
+ {
+	background-color: brown;
+ }
+
+ .steppe,
+ .steppe:after,
+ .steppe:before,
+ .steppe:hover,
+ .steppe:hover:after,
+ .steppe:hover:before --6
+ {
+	background-color: yellow;
+ }
+
+ .dry_forest,
+ .dry_forest:after,
+ .dry_forest:before,
+ .dry_forest:hover,
+ .dry_forest:hover:after,
+ .dry_forest:hover:before --7
+ {
+	background-color: pink;
+ }
+
+ .maquis,
+ .maquis:after,
+ .maquis:before,
+ .maquis:hover,
+ .maquis:hover:after,
+ .desmaquisert:hover:before --8
+ {
+	background-color: orange;
+ }
+
+ .tropical_forest,
+ .tropical_forest:after,
+ .tropical_forest:before,
+ .tropical_forest:hover,
+ .tropical_forest:hover:after,
+ .tropical_forest:hover:before --9
+ {
+	background-color: white;
+ }
+
+ .rainforest,
+ .rainforest:after,
+ .rainforest:before,
+ .rainforest:hover,
+ .rainforest:hover:after,
+ .rainforest:hover:before --10
+ {
+	background-color: rgb(32, 178, 168);
+ }

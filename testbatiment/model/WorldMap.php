@@ -446,6 +446,30 @@ var_dump($listParamsBiomeForPlayer);
             return ;
         }
 
+        public static function determineViewInterval($coordinateColo){
+
+            $xLimitWorldMap = self::getInfoWorldMap(X_MAX_MAP);
+            //je recupere les case en amont et en avale de mon joueur
+            $coordinateColoInterval = (X_VUE - 1) / 2;
+            $coordinateColoIntervalMin = $coordinateColo - $coordinateColoInterval;
+            $coordinateColoIntervalMax = $coordinateColo + $coordinateColoInterval;
+        
+            if($coordinateColoIntervalMax > $xLimitWorldMap){
+                $coordinateColoIntervalMax = $coordinateColo - $xLimitWorldMap + $coordinateColoIntervalMin - 1;
+                // donc afficher de xIntervalMin a x$limiteworldmap
+                // puis de 0 jusque xIntervalMax max
+            }
+            elseif($coordinateColoIntervalMin < 0){
+                $coordinateColoIntervalMin = ( $xLimitWorldMap + 1 ) + $coordinateColoIntervalMin;
+                // donc afficher de xIntervalMin a x$limiteworldmap
+                // puis de 0 jusque xInterval max
+            }
+        /*var_dump(array('intervalMin' => $coordinateColoIntervalMin,
+        'intervalMax' => $coordinateColoIntervalMax ));*/
+            return array('intervalMin' => $coordinateColoIntervalMin,
+            'intervalMax' => $coordinateColoIntervalMax );
+        }
+
         private static function defineBiome($codeBiome){
 
             var_dump($codeBiome);
@@ -520,14 +544,4 @@ var_dump($listParamsBiomeForPlayer);
             return $result;
 
         }
-
-        /*public static function coordinateInit($coordinateToInit){
-
-            if(!isset($coordinateToInit))
-                $result = 0 ; 
-            else
-                $result = $coordinateToInit;
-
-            return $result;
-        }*/
     }
