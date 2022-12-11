@@ -43,16 +43,24 @@
             $xLimitWorldMap = self::getInfoWorldMap(X_MAX_MAP);
             $yLimitWorldMap = self::getInfoWorldMap(Y_MAX_MAP);
 
+            //je mets a jour les last limite de la map avec le x et y max actuel ( avant qu ils ne soient changés)
+            $xLastLimitWorldMap = $xLimitWorldMap;
+            $yLastLimitWorldMap = $yLimitWorldMap;
+
                 var_dump($xLimitWorldMap . " ----- " . $yLimitWorldMap);
-    
+            // j'ajoute la valeur de base (..._Base) au limite actuel pour agrandir la carte
             $xLimitWorldMap += X_BASE;
             $yLimitWorldMap += Y_BASE;
 
             var_dump($xLimitWorldMap . " ----- " . $yLimitWorldMap);
     
-                //je mets à jour la bdd
+            //je mets à jour la bdd avec les nouvelles infos
             self::updateWorldMapInfos($xLimitWorldMap, X_MAX_MAP);
             self::updateWorldMapInfos($yLimitWorldMap, Y_MAX_MAP);
+
+            self::updateWorldMapInfos($xLastLimitWorldMap, X_LAST_MAX_MAP);
+            self::updateWorldMapInfos($yLastLimitWorldMap, Y_LAST_MAX_MAP);
+
 
             $yLastLimitWorldMap = self::getInfoWorldMap(X_LAST_MAX_MAP);
             $xLastLimitWorldMap = self::getInfoWorldMap(Y_LAST_MAX_MAP);
@@ -151,16 +159,27 @@
                     //declenche la enlarge fct
                     self::enlargeWorldMap();
 
-                    //je defini les nouvelles coordonnées du 
                     $xLastLimitWorldMap = self::getInfoWorldMap(X_LAST_MAX_MAP);
-
+                    $yPos = 0;
+                    //je defini les nouvelles coordonnées du joueur
                     $xPos = $xLastLimitWorldMap + $restNbEmptyBox ;
+                    $yPos = 0;
                 }
                 else{
                     //si je suis dans la limite en y de la map
-                    $x = -1 ;
-                    $xPos = $x + $restNbEmptyBox ;
-                    var_dump('il faut faire une action ici');
+                    $xLastLimitWorldMap = self::getInfoWorldMap(X_LAST_MAX_MAP);
+                    $yLastLimitWorldMap = self::getInfoWorldMap(Y_LAST_MAX_MAP);
+
+                    if($yPos <= $yLastLimitWorldMap){
+
+                        $xPos = ($xLastLimitWorldMap -1 ) + $restNbEmptyBox ;
+                        var_dump('il faut faire une action ici');
+                    }
+                    else{
+    
+                        $xPos = -1 + $restNbEmptyBox;
+                    }
+                   
                 }
                 
             }
@@ -206,7 +225,7 @@ var_dump($listParamsBiomeForPlayer);
             
             //je verifie qu'une tuile n'existe pas deja
             $tileExisting = self::isTileExisting($xPos, $yPos);
-            var_dump("---" . $tileExisting);
+            //var_dump("---" . $tileExisting);
             if(!isset($tileExisting)){
 
                 $listParamsBiomeForTile = self::generateBiomeWithListParams(true);
