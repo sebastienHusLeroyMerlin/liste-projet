@@ -5,9 +5,10 @@
 <div class="carre">
 			<div class="content">
 				<?php
+//TODO a exporter dans une fonction si possible 
 
-					$nbTilePerLigne =  X_BASE;
-					$nbLigne = Y_BASE;
+					$nbTilePerLigne =  X_VUE;
+					$nbLigne = X_VUE;
 
 					//Nombre de lignes
 					for ($i=0; $i < $nbLigne ; $i++) { 

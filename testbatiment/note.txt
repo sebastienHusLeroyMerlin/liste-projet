@@ -92,5 +92,6 @@ par semaine
  selon nombre de bebete tuée par joueur octroi des badge, possibilite d activé ou non certain titre contre une ressource speciale 
 ----
 
-
-ajouter un systeme de guilde
+TODO
+- ajouter un systeme de guilde
+- selon biome les batiment coutent plus ou moins cher dans la meme ressource par rapport a un autre 

@@ -15,14 +15,21 @@
                             - xLastLimitWorldMap, yLastLimitWorldMap TODO: a confirmer si confirmer a implementer ici
                     - de créer chaque tuile de la carte
             */
-            $xLimitWorldMap = X_BASE;
-            $yLimitWorldMap = Y_BASE;
-            $xLastLimitWorldMap = X_BASE;
-            $yLastLimitWorldMap = Y_BASE;
+            $xLimitWorldMap = X_BASE - 1;
+            self::updateWorldMapInfos($xLimitWorldMap, X_MAX_MAP);
+
+            $yLimitWorldMap = Y_BASE - 1;
+            self::updateWorldMapInfos($yLimitWorldMap, Y_MAX_MAP);
+
+            $xLastLimitWorldMap = $xLimitWorldMap;
+            self::updateWorldMapInfos($xLastLimitWorldMap, X_LAST_MAX_MAP);
+
+            $yLastLimitWorldMap = $yLimitWorldMap;
+            self::updateWorldMapInfos($yLastLimitWorldMap, Y_LAST_MAX_MAP);
 
             //Creation des tuiles
-            for ($y=0; $y < $yLimitWorldMap; $y++) { 
-                for ($x=0; $x < $xLimitWorldMap; $x++) { 
+            for ($y=0; $y < Y_BASE; $y++) { 
+                for ($x=0; $x < X_BASE; $x++) { 
                     
                     self::createTile($x, $y);
 
@@ -33,36 +40,32 @@
         private static function enlargeWorldMap(){
 //TODO A REVOIR
             //Je recupere les valeurs x_max et y_max
-            $xMax = self::getInfoWorldMap(X_MAX_MAP);
-            $yMax = self::getInfoWorldMap(Y_MAX_MAP);
+            $xLimitWorldMap = self::getInfoWorldMap(X_MAX_MAP);
+            $yLimitWorldMap = self::getInfoWorldMap(Y_MAX_MAP);
 
-            /*
-                si $xmax et $ ymax sont a null la carte n'est pas definie
-                    donc j'initialise les limites de la carte
-                
-                sinon la carte est definie
-                    donc je l'agrandis
-            */
-            if(!isset($xMax) && !isset($yMax)){
-                $xMax = X_BASE ;
-                $yMax = Y_BASE ;
-
-                //je mets à jour la bdd
-                self::updateWorldMapInfos($xMax, X_MAX_MAP);
-                self::updateWorldMapInfos($yMax, Y_MAX_MAP);
-
-                //j'instancie chaque tuile de la carte
-                self::createTile($xMax);
-            }
-            else {
-                var_dump($xMax . " ----- " . $yMax);
+                var_dump($xLimitWorldMap . " ----- " . $yLimitWorldMap);
     
-                $xMax += X_BASE ;
-                $yMax += Y_BASE ;
+            $xLimitWorldMap += X_BASE;
+            $yLimitWorldMap += Y_BASE;
+
+            var_dump($xLimitWorldMap . " ----- " . $yLimitWorldMap);
     
                 //je mets à jour la bdd
-                self::updateWorldMapInfos($xMax, X_MAX_MAP);
-                self::updateWorldMapInfos($yMax, Y_MAX_MAP);
+            self::updateWorldMapInfos($xLimitWorldMap, X_MAX_MAP);
+            self::updateWorldMapInfos($yLimitWorldMap, Y_MAX_MAP);
+
+            $yLastLimitWorldMap = self::getInfoWorldMap(X_LAST_MAX_MAP);
+            $xLastLimitWorldMap = self::getInfoWorldMap(Y_LAST_MAX_MAP);
+
+            var_dump($yLastLimitWorldMap . " ----- " . $xLastLimitWorldMap);
+           
+             //Creation des tuiles
+            for ($y=0; $y <= $yLimitWorldMap; $y++) { 
+                for ($x=0; $x <= $xLimitWorldMap; $x++) { 
+                    
+                    self::createTile($x, $y);
+
+                }
             }
 
         }
@@ -106,28 +109,66 @@
             // besoin de lid du joueur 
             // besoin de la race du joueur car determine biome de depart
             // besoin de la position en x et y = 0 du joueur
-            $nbEmptyBox = rand(1,4);
+            $nbEmptyBox = rand(RAND_MIN_EMPTY_BOX,RAND_MAX_EMPTY_BOX);
 
             //je recupere le x_limit_world_map
             $xLimitWorldMap = self::getInfoWorldMap(X_MAX_MAP);
+            $xLastPlayer = self::getInfoWorldMap(X_LAST_PLAYER);
 
-            //requete recup infos dujoueur grace a l 
+            if(!isset($xLastPlayer)){
+                $xLastPlayer = 0 ;
+            }
+
+            //requete recup infos dujoueur grace a l id
             $idRace = User::getIdPlayerRace($idPlayer);
             $listParamsBiomeForPlayer = self::defineParamsBiomeForPlayer($idRace);
             var_dump($listParamsBiomeForPlayer);
-            $y = 0 ;
-            $x = $nbEmptyBox + $xLimitWorldMap ;
+            
+            $ylastPlayer =  self::getInfoWorldMap(Y_LAST_PLAYER);
+            var_dump("y las player" . $ylastPlayer);
+            $yPos = $ylastPlayer ;
 
-            if($x > $xLimitWorldMap){
-                var_dump("je suis sup a x limit world map");
-                //declenche la enlarge fct
-                //self::enlargeWorldMap();
+            if(!isset($ylastPlayer)){
+                $yPos = 0 ;
+                var_dump("y last player n existe pas");
             }
+            
+            $xPos = $nbEmptyBox + $xLastPlayer ;
 
-            self::updateTileToIntegratePlayer($x, $y, $listParamsBiomeForPlayer, $idPlayer);
+            // si la position en x du nouveau joueur depasse la limite en x de la map
+            if($xPos > $xLimitWorldMap){
+                //je passe a la ligne superieur en y
+                $yPos++;
 
-            self::updateWorldMapInfos($x, X_LAST_PLAYER);
-            self::updateWorldMapInfos($y, Y_LAST_PLAYER);
+                // je determine combien de cases vide il reste avant implantation du joueur
+                $restNbEmptyBox = ($xLastPlayer - $xLimitWorldMap) + $nbEmptyBox ;
+
+                var_dump("je suis sup a x limit world map");
+                var_dump('x position : ' . $xPos . ' --- Yposition : ' . $yPos);
+                //Si ma nouvelle ligne en y se trouve hors de la limite en y de la map
+                if($yPos > $xLimitWorldMap){
+                    var_dump('j agrandis la map');
+                    //declenche la enlarge fct
+                    self::enlargeWorldMap();
+
+                    //je defini les nouvelles coordonnées du 
+                    $xLastLimitWorldMap = self::getInfoWorldMap(X_LAST_MAX_MAP);
+
+                    $xPos = $xLastLimitWorldMap + $restNbEmptyBox ;
+                }
+                else{
+                    //si je suis dans la limite en y de la map
+                    $x = -1 ;
+                    $xPos = $x + $restNbEmptyBox ;
+                    var_dump('il faut faire une action ici');
+                }
+                
+            }
+var_dump('x position : ' . $xPos . ' --- Yposition : ' . $yPos);
+            self::updateTileToIntegratePlayer($xPos, $yPos, $listParamsBiomeForPlayer, $idPlayer);
+
+            self::updateWorldMapInfos($xPos, X_LAST_PLAYER);
+            self::updateWorldMapInfos($yPos, Y_LAST_PLAYER);
 
         }
 
@@ -160,14 +201,19 @@ var_dump($listParamsBiomeForPlayer);
             $reqUpdateTile->closeCursor();
         }
 
-        private static function createTile($xCoordinate, $yCoordinate){
+        private static function createTile($xPos, $yPos){
             //$idBiome = rand(1,4); aquoi cela servira t ' il definir les especes qui vivent dessus 
             
-            $listParamsBiomeForTile = self::generateBiomeWithListParams(true);
+            //je verifie qu'une tuile n'existe pas deja
+            $tileExisting = self::isTileExisting($xPos, $yPos);
+            var_dump("---" . $tileExisting);
+            if(!isset($tileExisting)){
 
-            //J'enregistre la tuile en bdd
-            self::insertTile($listParamsBiomeForTile, $xCoordinate, $yCoordinate);
-            
+                $listParamsBiomeForTile = self::generateBiomeWithListParams(true);
+
+                //J'enregistre la tuile en bdd
+                self::insertTile($listParamsBiomeForTile, $xPos, $yPos);
+            }
         }
 
         private static function defineHumidity($idClimat, $idRelief){
@@ -220,7 +266,26 @@ var_dump($listParamsBiomeForPlayer);
             return $result;
         }
 
+        private static function isTileExisting($xPos, $yPos){
+            $bdd = Bdd::getBdd();
+            //todo revoir la requete + nom requete ect 
+            $reqGetTile = $bdd->prepare('SELECT id FROM  world_map  WHERE  ' . X_POS . ' = :xPos and ' . Y_POS . ' = :yPos');
+            $reqGetTile->execute(array(
+                'xPos' => $xPos,
+                'yPos' => $yPos   
+            ));
+
+            $result = $reqGetTile->fetch();
+
+            $reqGetTile->closeCursor();
+
+            if($result[0])
+                return $response = true;
+
+        }
+
         private static function insertTile($arrayParamsForCreateTile, $xPos, $yPos){
+
 
             $idBiome = $arrayParamsForCreateTile[ID_BIOME];
             $idHumidity = $arrayParamsForCreateTile[ID_HUM];
