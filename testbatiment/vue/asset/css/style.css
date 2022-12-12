@@ -524,7 +524,7 @@ h1,h2,h3
    height:246px;
  }
 
- .carre
+ .carretile
  {
    height:700px;
    display:flex;
@@ -533,6 +533,9 @@ h1,h2,h3
    width:100%;
    position:relative;
  }
+
+ #idTile
+ {}
 
  
 
@@ -566,7 +569,22 @@ h1,h2,h3
 	display: flex;
 	justify-content: center;
  }
+ /* --- Legende carte --- */
+ .conteneurLegende{
+	display: flex;
+	flex-direction: column;
 
+	width:165px;
+	height:140px;
+
+	border:solid black 3px;
+	border-radius: 10px;
+
+	position:absolute;
+	bottom:100px;
+	right: 180px;
+
+ }
  /* --- Tempo classe biome --- */ 
 .desert,
 .desert:after,

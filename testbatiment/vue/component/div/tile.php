@@ -1,1 +1,3 @@
-<a href=""><div class="hexagon <?= $classBiome ?>"></div></a>
+<a href="#idTuile"><div class="hexagon <?= $classBiome ?>"></div></a>
+
+

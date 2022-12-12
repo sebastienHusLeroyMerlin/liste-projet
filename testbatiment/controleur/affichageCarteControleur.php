@@ -1,14 +1,27 @@
+<?php
+	$xPosPlayer = 5 ;
+	$yPosPlayer = 9 ;
+?>
+
 <div class="carre">
 	<section class="conteneurFormPos">
-			<form id="formPos" action="" method="post">
-				<div>
-					<input type="text" name="xTarget" id="" placeholder ="X : ">
+		<form id="formPos" action="" method="post">
+			<div>
+				<input type="text" name="xTarget" id="" placeholder ="X : <?= $xPosPlayer ;?> ">
+				<input type="text" name="Ytarget" id="" placeholder = "Y : <?= $yPosPlayer ;?>">
+			</div>
+			<input type="submit" value="Go Go Go">
+		</form>
+	</section>
 
-					<input type="text" name="Ytarget" id="" placeholder = "Y : ">
-				</div>
-				<input type="submit" value="Go Go Go">
-			</form>
-		</section>
+	<section class="conteneurLegende">
+
+		<!-- affichera les infos recap si trop
+		d infos recap lien qui ouvre une boite dans l ecran
+		avec les precisions -->
+
+	</section>
+
 	<div class="conteneurCarte">
 		<!--<div id="contneurTriangleNav">-->
 		<a id="tr" href=""><div class="triangle" ></div></a>
@@ -82,6 +95,6 @@
 				<?php
 			}
 		?>
-
 	</div>
+	<div class="hexagon" id="idTuile"></div>
 </div>
