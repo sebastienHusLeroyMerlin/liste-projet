@@ -20,8 +20,8 @@ h1
 {
 	display: flex;
 	flex-direction: column;
-	width: 100%;
-	border:solid red;
+	width: 75%;
+	border:solid rgb(56, 142, 179);
 }
 
 .message
@@ -70,7 +70,9 @@ h1
 
 .conteneurNavigation
 {
-	
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	border:solid green 2px;  
 	text-align:center; 
 	width:24%; 
@@ -83,6 +85,7 @@ h1
 	text-align:center;
 	border-radius: 10px;
 	background-color:purple;
+	width:200px;
 }
 
 .navigation:hover
@@ -116,6 +119,7 @@ h1
 	justify-content:space-around;
 	align-items:center;
 }
+
 
 .conteneurMateriaux
 {
@@ -209,8 +213,9 @@ form
 	border:solid black 2px;
 	border-radius:10px;
 	box-sizing:border-box;
+
 	
-	flex-direction:column;
+	--flex-direction:column;
 }
 
 .formRessource
@@ -294,7 +299,7 @@ form
 
 .encadreGeneral
 {
-	text-align:center;
+	/*text-align:center;*/
      margin: 0 auto;
      width: 300px; 
 
@@ -401,6 +406,7 @@ h1,h2,h3
    justify-content:center;
    border-radius:5px;
    margin-left:-5px;
+   transition: transform 0.2s;
  }
  
  .hexagon:hover {
@@ -410,6 +416,7 @@ h1,h2,h3
 	transform:scale(1.3) translateX(-50px) translateY(-50px);
 	box-shadow: rgb(58, 58, 58) 10px 20px 10px;
 	background-color:cyan;
+	transition: transform 0.5s;
  }
  
  
@@ -455,10 +462,60 @@ h1,h2,h3
 
 
  
- .content{
-   transform:skew(-68deg, 40deg) rotate(-35deg) scale(0.18);
-   
+ .conteneurCarte{
+	position:relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center	;
+   	transform:skew(-68deg, 40deg) rotate(-35deg) scale(0.12);
  }
+
+ .triangle
+{
+  border-top:solid 150px transparent ;
+  border-right:solid blue 150px;
+  width:0px;
+}
+
+.triangle:hover
+{
+	transform: scale(1.2);
+}
+
+#tr,
+#tl,
+#tt,
+#tb
+{
+	position:absolute;
+}
+
+#tr
+{
+	right:-300px;
+	transform:rotate(-45deg);
+}
+
+#tl
+{
+	left:-300px;
+	transform:rotate(-225deg);
+}
+
+#tb
+{
+	bottom:-300px;
+	transform:rotate(45deg);
+}
+
+#tt
+{
+	top:-300px;
+	transform:rotate(-135deg);
+}
+
+
 
  .impair
  {
@@ -469,10 +526,45 @@ h1,h2,h3
 
  .carre
  {
-   height:500px;
+   height:700px;
    display:flex;
    align-items:center;
    justify-content:center;
+   width:100%;
+   position:relative;
+ }
+
+ 
+
+ /* --- form position --- */
+ .conteneurFormPos{
+	position: absolute;
+	bottom: 80px;;
+ }
+
+ #formPos
+{	
+	border:none;
+	padding: 5px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#formPos input[type="text"]{
+	width:50px;
+	height: 25px;
+ }
+
+ #formPos input[type="submit"]{
+	margin:5px;
+	width:105px;
+	height: 25px;
+	border-radius: 5px;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
  }
 
  /* --- Tempo classe biome --- */ 
@@ -551,7 +643,7 @@ h1,h2,h3
  .maquis:before,
  .maquis:hover,
  .maquis:hover:after,
- .desmaquisert:hover:before /*--8*/ 
+ .maquis:hover:before /*--8*/ 
  {
 	background-color: orange;
  }

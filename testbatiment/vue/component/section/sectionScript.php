@@ -1,20 +1,16 @@
-<section class="conteneurBatiment" >
+<section class="" >
 
 	<?php 
 		require_once('alerteMessage.php');
 	?>
-							
-	<div class="encadreGeneral">--><!-- Ne devra pas etre visible  -->
-							
-    	<h3>Test de script</h3>
-		<?php
-					//require_once('../model/traitementRemplissageCarte.php');
-					//require_once('../controleur/remplissageCarteControleur.php');
-					//require_once('../controleur/controleurTest.php');
-			require_once('carte.php');
 
-		?>
-       		
-	</div>
+	<?php
+		//require_once('../model/traitementRemplissageCarte.php');
+		//require_once('../controleur/remplissageCarteControleur.php');
+		//require_once('../controleur/controleurTest.php');
+		require_once('carte.php');
+	
+	?>
+
 					
 </section>

@@ -1,5 +1,23 @@
 <div class="carre">
-	<div class="content">
+	<section class="conteneurFormPos">
+			<form id="formPos" action="" method="post">
+				<div>
+					<input type="text" name="xTarget" id="" placeholder ="X : ">
+
+					<input type="text" name="Ytarget" id="" placeholder = "Y : ">
+				</div>
+				<input type="submit" value="Go Go Go">
+			</form>
+		</section>
+	<div class="conteneurCarte">
+		<!--<div id="contneurTriangleNav">-->
+		<a id="tr" href=""><div class="triangle" ></div></a>
+		<a id="tl" href=""><div class="triangle" ></div></a>
+		<a id="tt" href=""><div class="triangle" ></div></a>
+		<a id="tb" href=""><div class="triangle" ></div></a>
+
+		
+		<!--</div>-->
 		<?php
 			// id_colonie recuperer dans une variable de session
 			$xColo = 6;

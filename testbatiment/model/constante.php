@@ -1,12 +1,12 @@
 <?php
 
     //defini la taille de la carte affichée
-    const X_VUE = 7;
-    const Y_VUE = 7;
+    const X_VUE = 9;
+    const Y_VUE = 9;
 
     //Permet de definir de combien la map s'agrandit
-    const X_BASE = 7;
-    const Y_BASE = 7;
+    const X_BASE = 9;
+    const Y_BASE = 9;
 
     const X_MAX_MAP =  'x_limit_world_map';
     const Y_MAX_MAP =  'y_limit_world_map';
