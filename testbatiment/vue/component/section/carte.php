@@ -11,7 +11,7 @@
 				<?php
 //TODO a exporter dans une fonction si possible 
 // id_colonie recuperer dans une variable de session
-$xColo = 5;
+$xColo = 6;
 $yColo = 6;
 
 $xLimitWorldMap = WorldMap::getInfoWorldMap(X_MAX_MAP);
@@ -25,7 +25,7 @@ $yArrayIntervals = WorldMap::determineViewInterval($yColo);
 $yIntervalMin = $yArrayIntervals['intervalMin'];
 $yIntervalMax = $yArrayIntervals['intervalMax'];
 var_dump($yArrayIntervals);
-var_dump($xLimitWorldMap);
+var_dump($yLimitWorldMap);
 /*
 
 $yInterval = (Y_VUE - 1) / 2;
@@ -33,21 +33,30 @@ $yIntervalMin = $yColo - $yInterval;
 $yIntervalMax = $yColo + $yInterval;*/
 
 					$nbTilePerLigne =  X_VUE;
-					$nbLigne = X_VUE;
-
+					$nbLigne = Y_VUE;
+$yPos = $yIntervalMin-1;
 					//Nombre de lignes
 					for ($y=0; $y < $nbLigne ; $y++) { 
-						$yPos = null;
-						$yMin = $yIntervalMin;
-						if($yMin > $yIntervalMax ){
-							var_dump('if y 1');
-							if($yIntervalMin > $yLimitWorldMap){
+						
+						//var_dump($y);
+						//--$yMin = $yIntervalMin;
+						/*if($yIntervalMin < 0){
+							//var_dump('if y 1');*/
+							if($yPos == $yLimitWorldMap){
 								$yPos = 0;
-							}else {
-								$yPos = $yIntervalMin ;//+ $y;
-						}
-							$yIntervalMin++;
-						}
+							}
+							elseif($yPos < $yIntervalMax){
+								$yPos++;
+							}
+							else {
+								
+								$yPos = $yIntervalMin+$y;
+							}
+							
+						/*}
+						else{
+							$yPos = $yIntervalMin + $y;
+						}*/
 						
 
 						//;
@@ -62,23 +71,33 @@ $yIntervalMax = $yColo + $yInterval;*/
 								<div class="pair ligne">
 							<?php
 						}
-				
+				$xPos = $xIntervalMin-1;
 						// nombre de tuile par ligne
 						for ($x=0; $x < $nbTilePerLigne ; $x++) { 
-							$xPos = null;
-							$xMin = $xIntervalMin;
-							if($xIntervalMin > $xIntervalMax ){
-								if($xIntervalMin > $xLimitWorldMap){
+							
+							//$xMin = $xIntervalMin;
+							//if($xPos < 0){
+								
+								
+								if($xPos == $xLimitWorldMap){
 									$xPos = 0;
-								}else {
-								$xPos = $xIntervalMin;// + $x;
-							}
-								$xIntervalMin++;
-							}
+								}
+								elseif($xPos < $xIntervalMax){
+									$xPos++;
+								}
+								else {
+									//echo ' ---- inter val x min ' . $xIntervalMin;
+									$xPos = $xIntervalMin+$x;
+								}
+								//var_dump('if xPos : ' . $xPos . ' yPos : ' . $yPos);
+							/*}
+							else{
+								$xPos = $xIntervalMin + $x;
+							}*/
 							
 
 							//
-							var_dump('$xpos : ' . $xPos . ' ypos ' . $yPos);
+							//echo '$xpos : ' . $xPos . ' ypos ' . $yPos;
 //var_dump($xPos);
 							//requete pour recup le biome et l inserer en tan que classe
 							$bdd = Bdd::getBdd();
@@ -95,7 +114,7 @@ $yIntervalMax = $yColo + $yInterval;*/
 							$classBiome = $reqGetTile->fetch();
 
 							$reqGetTile->closeCursor();
-							var_dump('$biome : ' . $classBiome[0])
+							//var_dump('$biome : ' . $classBiome[0])
 							?>
 								<a href=""><div class="hexagon <?= $classBiome[0] ?>"></div></a>
 							<?php
