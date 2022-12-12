@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 08 déc. 2022 à 00:53
+-- Généré le :  lun. 12 déc. 2022 à 00:29
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.3.5
 
@@ -101,7 +101,23 @@ CREATE TABLE IF NOT EXISTS `biome` (
   `img_name` tinytext NOT NULL,
   `name` tinytext NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `biome`
+--
+
+INSERT INTO `biome` (`id`, `description`, `img_name`, `name`) VALUES
+(1, '', '', 'desert'),
+(2, '', '', 'tundras'),
+(3, '', '', 'wet_forest'),
+(4, '', '', 'temperate_forest'),
+(5, '', '', 'dry_maquis'),
+(6, '', '', 'steppe'),
+(7, '', '', 'dry_forest'),
+(8, '', '', 'maquis'),
+(9, '', '', 'tropical_forest'),
+(10, '', '', 'rainforest');
 
 -- --------------------------------------------------------
 
@@ -189,14 +205,14 @@ CREATE TABLE IF NOT EXISTS `infos_map` (
 --
 
 INSERT INTO `infos_map` (`id`, `nom_champ`, `description`, `valeur`) VALUES
-(3, 'y_limit_world_map', 'Détermine la taille de la carte sur l\'axe des y', NULL),
-(4, 'x_limit_world_map', 'Détermine la taille de la carte sur l\'axe des x', NULL),
-(5, 'x_last_player', 'Indique la position maximal en y ou l\'on trouve un joueur', NULL),
-(6, 'y_last_player', 'Indique la position maximal en y ou l\'on trouve un joueur', NULL),
+(3, 'y_limit_world_map', 'Détermine la taille de la carte sur l\'axe des y', '6'),
+(4, 'x_limit_world_map', 'Détermine la taille de la carte sur l\'axe des x', '6'),
+(5, 'x_last_player', 'Indique la position maximal en y ou l\'on trouve un joueur', '5'),
+(6, 'y_last_player', 'Indique la position maximal en y ou l\'on trouve un joueur', '6'),
 (7, 'x_start', 'Permet de savoir à partir de quelle origine implanter les nouveaux joueurs sur l axe des x', NULL),
 (8, 'y_start', 'Permet de savoir à partir de quelle origine implanter les nouveaux joueurs sur l axe des y', NULL),
-(9, 'x_last_start', '', NULL),
-(10, 'y_last_start', '', NULL);
+(9, 'x_last_limit', '', '-1'),
+(10, 'y_last_limit', '', '-1');
 
 -- --------------------------------------------------------
 
@@ -334,14 +350,74 @@ DROP TABLE IF EXISTS `world_map`;
 CREATE TABLE IF NOT EXISTS `world_map` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_player` int(11) DEFAULT NULL,
+  `id_colo` int(11) DEFAULT NULL,
   `x_pos` int(11) NOT NULL,
   `y_pos` int(11) NOT NULL,
-  `id_biome` int(11) NOT NULL,
-  `id_relief` int(11) NOT NULL,
   `id_interest_point` int(11) DEFAULT NULL,
   `id_check_point` int(11) DEFAULT NULL,
+  `id_climat` int(11) DEFAULT NULL,
+  `id_relief` int(11) NOT NULL,
+  `id_humidite` int(11) DEFAULT NULL,
+  `id_biome` int(11) NOT NULL,
+  PRIMARY KEY (`x_pos`,`y_pos`),
+  UNIQUE KEY `x_pos` (`x_pos`,`y_pos`),
   KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=197 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `world_map`
+--
+
+INSERT INTO `world_map` (`id`, `id_player`, `id_colo`, `x_pos`, `y_pos`, `id_interest_point`, `id_check_point`, `id_climat`, `id_relief`, `id_humidite`, `id_biome`) VALUES
+(1, NULL, NULL, 0, 0, NULL, NULL, 4, 3, 3, 4),
+(8, 1, NULL, 0, 1, NULL, NULL, 1, 2, 3, 4),
+(15, 1, NULL, 0, 2, NULL, NULL, 1, 2, 3, 4),
+(22, NULL, NULL, 0, 3, NULL, NULL, 2, 2, 3, 4),
+(29, NULL, NULL, 0, 4, NULL, NULL, 2, 2, 1, 10),
+(36, 1, NULL, 0, 5, NULL, NULL, 1, 2, 3, 4),
+(43, NULL, NULL, 0, 6, NULL, NULL, 1, 1, 1, 2),
+(2, NULL, NULL, 1, 0, NULL, NULL, 4, 3, 1, 9),
+(9, NULL, NULL, 1, 1, NULL, NULL, 2, 2, 4, 5),
+(16, 1, NULL, 1, 2, NULL, NULL, 1, 2, 3, 4),
+(23, 1, NULL, 1, 3, NULL, NULL, 1, 2, 3, 4),
+(30, 1, NULL, 1, 4, NULL, NULL, 1, 2, 3, 4),
+(37, NULL, NULL, 1, 5, NULL, NULL, 2, 2, 2, 3),
+(44, 1, NULL, 1, 6, NULL, NULL, 1, 2, 3, 4),
+(3, 1, NULL, 2, 0, NULL, NULL, 1, 2, 3, 4),
+(10, 1, NULL, 2, 1, NULL, NULL, 1, 2, 3, 4),
+(17, 1, NULL, 2, 2, NULL, NULL, 1, 2, 3, 4),
+(24, NULL, NULL, 2, 3, NULL, NULL, 2, 2, 3, 4),
+(31, 1, NULL, 2, 4, NULL, NULL, 1, 2, 3, 4),
+(38, 1, NULL, 2, 5, NULL, NULL, 1, 2, 3, 4),
+(45, NULL, NULL, 2, 6, NULL, NULL, 4, 3, 7, 1),
+(4, NULL, NULL, 3, 0, NULL, NULL, 1, 1, 1, 2),
+(11, 1, NULL, 3, 1, NULL, NULL, 1, 2, 3, 4),
+(18, NULL, NULL, 3, 2, NULL, NULL, 5, 3, 5, 7),
+(25, 1, NULL, 3, 3, NULL, NULL, 1, 2, 3, 4),
+(32, 1, NULL, 3, 4, NULL, NULL, 1, 2, 3, 4),
+(39, NULL, NULL, 3, 5, NULL, NULL, 2, 2, 2, 3),
+(46, NULL, NULL, 3, 6, NULL, NULL, 5, 3, 3, 4),
+(5, 1, NULL, 4, 0, NULL, NULL, 1, 2, 3, 4),
+(12, NULL, NULL, 4, 1, NULL, NULL, 5, 3, 8, 1),
+(19, 1, NULL, 4, 2, NULL, NULL, 1, 2, 3, 4),
+(26, 1, NULL, 4, 3, NULL, NULL, 1, 2, 3, 4),
+(33, NULL, NULL, 4, 4, NULL, NULL, 5, 3, 5, 7),
+(40, NULL, NULL, 4, 5, NULL, NULL, 1, 1, 3, 2),
+(47, NULL, NULL, 4, 6, NULL, NULL, 3, 2, 1, 10),
+(6, 1, NULL, 5, 0, NULL, NULL, 1, 2, 3, 4),
+(13, NULL, NULL, 5, 1, NULL, NULL, 4, 3, 4, 7),
+(20, 1, NULL, 5, 2, NULL, NULL, 1, 2, 3, 4),
+(27, NULL, NULL, 5, 3, NULL, NULL, 3, 2, 1, 10),
+(34, NULL, NULL, 5, 4, NULL, NULL, 2, 2, 3, 4),
+(41, 1, NULL, 5, 5, NULL, NULL, 1, 2, 3, 4),
+(48, 1, NULL, 5, 6, NULL, NULL, 1, 2, 3, 4),
+(7, NULL, NULL, 6, 0, NULL, NULL, 4, 3, 2, 3),
+(14, 1, NULL, 6, 1, NULL, NULL, 1, 2, 3, 4),
+(21, 1, NULL, 6, 2, NULL, NULL, 1, 2, 3, 4),
+(28, 1, NULL, 6, 3, NULL, NULL, 1, 2, 3, 4),
+(35, 1, NULL, 6, 4, NULL, NULL, 1, 2, 3, 4),
+(42, 1, NULL, 6, 5, NULL, NULL, 1, 2, 3, 4),
+(49, NULL, NULL, 6, 6, NULL, NULL, 4, 3, 3, 4);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
