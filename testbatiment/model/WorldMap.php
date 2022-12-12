@@ -446,7 +446,26 @@ var_dump($listParamsBiomeForPlayer);
             return ;
         }
 
-        public static function determineViewInterval($coordinateColo){
+        public static function initializeAxeIntervals($xColo, $yColo){
+
+            $xArrayIntervals = WorldMap::determineViewInterval($xColo);
+            $xIntervalMin = $xArrayIntervals['intervalMin'];
+            $xIntervalMax = $xArrayIntervals['intervalMax'];
+            
+            
+            $yArrayIntervals = WorldMap::determineViewInterval($yColo);
+            $yIntervalMin = $yArrayIntervals['intervalMin'];
+            $yIntervalMax = $yArrayIntervals['intervalMax'];
+
+            return array(
+                'xIntervalMin' => $xIntervalMin,
+                'xIntervalMax' => $xIntervalMax,
+                'yIntervalMin' => $yIntervalMin,
+                'yIntervalMax' => $yIntervalMax
+            );
+        }
+
+        private static function determineViewInterval($coordinateColo){
 
             $xLimitWorldMap = self::getInfoWorldMap(X_MAX_MAP);
             //je recupere les case en amont et en avale de mon joueur
@@ -456,18 +475,32 @@ var_dump($listParamsBiomeForPlayer);
         
             if($coordinateColoIntervalMax > $xLimitWorldMap){
                 $coordinateColoIntervalMax = $coordinateColo - $xLimitWorldMap + $coordinateColoIntervalMin - 1;
-                // donc afficher de xIntervalMin a x$limiteworldmap
-                // puis de 0 jusque xIntervalMax max
             }
             elseif($coordinateColoIntervalMin < 0){
                 $coordinateColoIntervalMin = ( $xLimitWorldMap + 1 ) + $coordinateColoIntervalMin;
-                // donc afficher de xIntervalMin a x$limiteworldmap
-                // puis de 0 jusque xInterval max
             }
-        /*var_dump(array('intervalMin' => $coordinateColoIntervalMin,
-        'intervalMax' => $coordinateColoIntervalMax ));*/
+
             return array('intervalMin' => $coordinateColoIntervalMin,
             'intervalMax' => $coordinateColoIntervalMax );
+        }
+
+        public static function getNameBiome($xPos, $yPos){
+            $bdd = Bdd::getBdd();
+
+							$reqGetTile = $bdd->prepare('SELECT b.name 
+															FROM  world_map w 
+															INNER JOIN biome b ON b.id = w.id_biome
+															WHERE  w.' . X_POS . ' = :xPos and w.' . Y_POS . ' = :yPos');
+							$reqGetTile->execute(array(
+								'xPos' => $xPos,
+								'yPos' => $yPos   
+							));
+
+							$classBiome = $reqGetTile->fetch();
+
+							$reqGetTile->closeCursor();
+
+                            return $classBiome[0];
         }
 
         private static function defineBiome($codeBiome){

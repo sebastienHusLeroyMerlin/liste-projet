@@ -1,0 +1,1 @@
+<a href=""><div class="hexagon <?= $classBiome ?>"></div></a>
