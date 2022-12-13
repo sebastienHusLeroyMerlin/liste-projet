@@ -1,5 +1,4 @@
-<a href="#idTuile"><div class="hexagon <?= $classBiome ?>"></div></a>
+<a href="#idTuile<?= $x . $y ?>"><div class="hexagon <?= $classBiome ?>"></div></a>
 
 
 
-<div id="idTuile" class="modalHexa"></div>
