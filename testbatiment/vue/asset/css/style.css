@@ -617,6 +617,9 @@ h1,h2,h3
  /* --- Modal --- */ 
  #idTuile{
 	visibility: hidden  ;
+	--transform:skew(-65deg, 35deg) rotate(-35deg) scale(0.4);
+	transform:skew(115deg, -35deg) rotate(35deg) scale(1);
+	left:-150px;
  }
 
  #idTuile:target
