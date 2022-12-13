@@ -21,6 +21,10 @@
 		avec les precisions -->
 
 	</section>
+	
+	<a href="#idTuile" >test</a>
+		<div id="idTuile"class="modalHexa"></div>
+
 
 	<div class="conteneurCarte">
 		<!--<div id="contneurTriangleNav">-->
@@ -92,9 +96,11 @@
 
 				?>
 					</div>
+					
 				<?php
 			}
 		?>
+		
 	</div>
-	<div class="hexagon" id="idTuile"></div>
+	
 </div>

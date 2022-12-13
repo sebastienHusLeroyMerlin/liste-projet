@@ -1,4 +1,4 @@
-<section class="" >
+<section class="corpPrincipal" >
 
 	<?php 
 		require_once('alerteMessage.php');
