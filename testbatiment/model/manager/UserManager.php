@@ -3,11 +3,11 @@
     require_once('BddManager.php');
 
     Class UserManager{
-        private $pseudo ;
-        private $mail ;
-        private $pass ;
-        private $access ;
-        private $race ;
+        protected $pseudo ;
+        protected $mail ;
+        protected $pass ;
+        protected $idAccess ;
+        protected $idRace ;
 
 
         /*je cré une colonie dans le constructeur 
@@ -26,8 +26,8 @@
             $this->pseudo =  $pseudo;
             $this->mail = $pseudo . '@gmail.com';//tempo
             $this->pass = 123456;
-            $this->access = 1; // equivalent de membre basique
-            $this->race = rand(1,4); 
+            $this->idAccess = 1; // equivalent de membre basique
+            $this->idRace = rand(1,4); 
         }
 
         public function __destruct()
@@ -46,35 +46,53 @@
             $this->pseudo = $pseudo;
         }
 
+        public function getMail(){
+            return $this->mail;
+        }
+
+        public function setMail($mail){
+            $this->mail = $mail;
+        }
+
+        public function getPass(){
+            return $this->pass;
+        }
+
         public function setPass($pass){
             $this->pass = $pass;
         }
 
-        public function setAccess($access){
-            $this->access = $access;
+        public function getIdAccess(){
+            return $this->idAccess;
+        }
+
+        public function setIdAccess($idAccess){
+            $this->access = $idAccess;
+        }
+
+        public function getIdRace(){
+            return $this->idRace;
         }
 
         //possible mais un compteur de temps se mettra en place avant le prochain changement chaque changement demandera de plus en plus de temps avant reinitialisation du compteur
-        public function setRace($race){
-            $this->race = $race;
+        public function setIdRace($idRace){
+            $this->idRace = $idRace;
         }
 
-		public static function insertPlayer(/*$firstName,  $userName, $mail,*/ $pseudo, $pass, $idRace){
-			$Bdd =  BddManager::getBdd();
+		public function insertPlayer(/*$firstName,  $userName, $mail,*/){
+
+            $Bdd =  BddManager::getBdd();
             
-            $req = $Bdd->prepare('INSERT INTO membre( /*first_name, user_name, favorite_series, num_tel, mail, */pseudo, pass, id_race)
-                                        VALUES (/*:firstName, :userName, :favorite_series, :num_tel, :mail,*/ :pseudo, :pass, :idRace)');
+            $req = $Bdd->prepare('INSERT INTO membre(pseudo,mail,pass,id_access,id_race)
+                                        VALUES (:pseudo,:mail,:pass,:idAccess,:idRace)');
             
             $req->execute(array(
-                
-                /*'firstName' => $firstName,
-                'userName' => $userName,
-                'favorite_series' => null,
-                'num_tel' => null,
-                'mail' => $mail,*/
-                'pseudo' => $pseudo,
-                'pass' => $pass,
-                'id_race' => $idRace
+ 
+                'pseudo' => $this->getPseudo(),
+                'mail' => $this->getMail(),
+                'idAccess' => $this->getIdAccess(),
+                'pass' => $this->getPass(),
+                'idRace' => $this->getIdRace() 
                 
             ));
             
@@ -159,7 +177,7 @@
 		/**
 		 * Get String player race
 		 */
-		public static function getPlayerRace($id){
+		public static function getRaceNameById($id){
 
 			$bdd = BddManager::getBdd();
 
@@ -178,7 +196,7 @@
 
 		}
 
-		public static function getIdPlayerRace($id){
+		public static function getIdRaceByIdPlayer($id){
 
 			$bdd = BddManager::getBdd();
 
@@ -262,12 +280,12 @@
             
         }
 
-		public static function getUserId($pseudo, $mail)
+		public function getUserId($pseudo=false, $mail=false)
         {
             
             $bdd =  BddManager::getBdd();
             
-            $req = $bdd->prepare('SELECT id FROM users WHERE pseudo = :pseudo or mail= :mail');
+            $req = $bdd->prepare('SELECT id FROM membre WHERE pseudo = :pseudo or mail= :mail');
             $req->execute(array(
                 
                 'pseudo' => $pseudo,
@@ -276,7 +294,7 @@
             ));
             
             $result = $req->fetch();
-            $userId = $result['id'];echo $userId;
+            $userId = $result['id'];
 
             $req->closeCursor();
             
