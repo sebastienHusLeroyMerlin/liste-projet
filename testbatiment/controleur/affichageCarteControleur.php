@@ -47,15 +47,15 @@
 			$xColo = 6;
 			$yColo = 6;
 
-			$listIntervals = WorldMap::initializeAxeIntervals($xColo, $yColo);
+			$listIntervals = WorldMapManager::initializeAxeIntervals($xColo, $yColo);
 			$xIntervalMin = $listIntervals['xIntervalMin'];
             $xIntervalMax = $listIntervals['xIntervalMax'];
 
 			$yIntervalMin = $listIntervals['yIntervalMin'];
             $yIntervalMax = $listIntervals['yIntervalMax'];
 
-			$yLimitWorldMap = WorldMap::getInfoWorldMap(Y_MAX_MAP);
-			$xLimitWorldMap = WorldMap::getInfoWorldMap(X_MAX_MAP);
+			$yLimitWorldMap = WorldMapManager::getInfoWorldMap(Y_MAX_MAP);
+			$xLimitWorldMap = WorldMapManager::getInfoWorldMap(X_MAX_MAP);
 
 			$yPos = $yIntervalMin-1;
 
@@ -97,7 +97,7 @@
 						$xPos = $xIntervalMin+$x;
 					}
 					
-					$classBiome = WorldMap::getNameBiome($xPos, $yPos);
+					$classBiome = WorldMapManager::getNameBiome($xPos, $yPos);
 					?><?php
 					require('../vue/component/div/tile.php');
 				}
@@ -145,7 +145,7 @@
 				}
 				$xTile = $x;
 				$yTile = $y;
-				$classBiome = WorldMap::getNameBiome($xPos, $yPos);
+				$classBiome = WorldMapManager::getNameBiome($xPos, $yPos);
 				?><div id="idTuile<?= $xTile . $yTile ?>" class="<?= $classBiome ?>"></div><?php
 
 			}

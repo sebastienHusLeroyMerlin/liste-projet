@@ -1,6 +1,6 @@
 <?php
-	require_once('Bdd.php');
-	require_once('Tools.php');
+	require_once('manager/BddManager.php');
+	require_once('manager/ToolsManager.php');
 	session_start();
 
 	if(isset($_SESSION['Auth']) AND $_SESSION['Auth'] == true)
@@ -9,7 +9,7 @@
 		if(isset($_POST['nomBatiment']) && !empty($_POST['nomBatiment']))
 		{
 				
-				$nomBatiment = Tools::validData($_POST['nomBatiment']);
+				$nomBatiment = ToolsManager::validData($_POST['nomBatiment']);
 				
 				$bois  = (int) $_SESSION['bois_total'] ;
 				$cire  = (int) $_SESSION['cire_total'] ;
@@ -22,7 +22,7 @@
 					{
 						//connexion a la bdd
 						
-						$bdd =  Bdd::getBdd();
+						$bdd =  BddManager::getBdd();
 						
 						//recuper le niveau actuel du batiment concerné
 						$req = $bdd->prepare('SELECT '.$nomBatiment.' FROM colonie WHERE id_joueur = :id_joueur');

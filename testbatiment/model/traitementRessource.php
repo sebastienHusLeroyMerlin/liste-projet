@@ -12,7 +12,7 @@
 			{
 				
 				//connexion a la bdd
-				$bdd =  BddManger::getBdd();
+				$bdd =  BddManager::getBdd();
 
 					/* ---------------------------------------------------------- */
 					/* --- REVOIR TOUT LES ECHAPEMENT DE POST !!! --- */

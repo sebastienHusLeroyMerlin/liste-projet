@@ -11,7 +11,7 @@
 		public static function Auth(){
 //TODO voir si amelioration pas possible
 			//connection a la bdd
-			$bdd = BddManger::getBdd();
+			$bdd = BddManager::getBdd();
 
 			$reqConnexion = $bdd->prepare('SELECT id FROM membre WHERE pass = :pass AND pseudo = :pseudo');
 			$reqConnexion->execute(array(

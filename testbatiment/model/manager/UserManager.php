@@ -1,7 +1,5 @@
 <?php
 
-    require_once('../model/entity/Bdd.php');
-
     Class UserManager{
 
 		public static function insertPlayer(){
@@ -11,7 +9,7 @@
 		public static function Auth(){
 
 			//connection a la bdd
-			$bdd = BddManger::getBdd();
+			$bdd = BddManager::getBdd();
 
 			$reqConnexion = $bdd->prepare('SELECT id FROM membre WHERE pass = :pass AND pseudo = :pseudo');
 			$reqConnexion->execute(array(
@@ -86,7 +84,7 @@
 		 */
 		public static function getPlayerRace($id){
 
-			$bdd = BddManger::getBdd();
+			$bdd = BddManager::getBdd();
 
             $reqGetPlayerRace = $bdd->prepare('SELECT r.race_name FROM race r 
 			INNER JOIN membre m ON m.id_race = r.id  
@@ -107,7 +105,7 @@
 
 		public static function getIdPlayerRace($id){
 
-			$bdd = BddManger::getBdd();
+			$bdd = BddManager::getBdd();
 
             $reqGetPlayerRace = $bdd->prepare('SELECT id_race FROM membre   
 			WHERE id = :idPlayer ');

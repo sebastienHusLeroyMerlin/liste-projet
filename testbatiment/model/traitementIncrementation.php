@@ -11,7 +11,7 @@
 				exit;*/
 				// connexion a la bdd
 				
-				$bdd =  BddManger::getBdd();
+				$bdd =  BddManager::getBdd();
 				
 				//voir si les ouvriere affecte aux terrain sont deja recuperer quelque part avant de poursuivre sinon les recupere par requete
 				

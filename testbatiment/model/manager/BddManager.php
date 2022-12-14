@@ -1,8 +1,8 @@
 <?php
 
-    require_once('../constante.php');
+    require_once('../model/constante.php');
 
-    class BddManger{
+    class BddManager{
 
         public static function getBdd(){
 

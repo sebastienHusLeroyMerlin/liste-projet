@@ -1,5 +1,6 @@
 <?php 
-	require_once('alerteMessage.php');					
+	require_once('alerteMessage.php');
+	require_once('../model/manager/ToolsManager.php');			
 ?>
 					
     <div class="terrain">
@@ -91,12 +92,12 @@
 	</div>
 						
 	<?php
-		
-		require_once('../model/Tools.php');
+		//TODO revoir pk la partie php est dans la partie vue ? 
+		require_once('../model/manager/ToolsManager.php');
 
 		if(isset($_SESSION['section']) )
 		{
-			$sectionTypeRessource = Tools::validData($_SESSION['section']);
+			$sectionTypeRessource = ToolsManager::validData($_SESSION['section']);
 			if($sectionTypeRessource == 'bois')
 			{
 				$ressource = 'du bois' ;
