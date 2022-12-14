@@ -1,5 +1,5 @@
 <?php
-	require_once('Bdd.php');
+	require_once('Manager.php');
 	session_start();
 
 	if(isset($_SESSION['Auth']) AND $_SESSION['Auth'] == true)
@@ -11,7 +11,7 @@
 				exit;*/
 				// connexion a la bdd
 				
-				$bdd =  Bdd::getBdd();
+				$bdd =  BddManger::getBdd();
 				
 				//voir si les ouvriere affecte aux terrain sont deja recuperer quelque part avant de poursuivre sinon les recupere par requete
 				

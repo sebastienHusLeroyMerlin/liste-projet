@@ -1,7 +1,7 @@
 <?php
 	
 	session_start();
-	require_once('Bdd.php');
+	require_once('manager/BddManager.php');
 	
 	if(isset($_SESSION['Auth']) AND $_SESSION['Auth'] == true)
 	{
@@ -12,7 +12,7 @@
 			{
 				
 				//connexion a la bdd
-				$bdd =  Bdd::getBdd();
+				$bdd =  BddManger::getBdd();
 
 					/* ---------------------------------------------------------- */
 					/* --- REVOIR TOUT LES ECHAPEMENT DE POST !!! --- */

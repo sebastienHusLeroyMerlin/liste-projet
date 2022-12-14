@@ -1,64 +1,8 @@
 <?php
 
-    require_once('Bdd.php');
+    require_once('../model/entity/Bdd.php');
 
-    Class User{
-
-		private $pseudo ;
-		private $mail ;
-		private $pass ;
-		private $access ;
-		private $race ;
-
-
-		/*je cré une colonie dans le constructeur 
-		j initialise les niveau de la colonie a 0
-		j insere la colonie dans la bdd colonie
-		j initialise la table ressource lié a la colonie 
-		pas d ouvri juste des ressource de base
-		je recup l id de la colo
-		j insere le joueur sur la carte avec l id de sa colonie
-
-		*/
-
-		/* --- Constructors --- */
-		public function __construct($pseudo)
-		{
-			$this->pseudo =  $pseudo;
-			$this->mail = $pseudo . '@gmail.com';
-			$this->pass = 123456;
-			$this->access = 1; // equivalent de membre basique
-			$this->race = rand(1,4); 
-		}
-
-		public function __destruct()
-		{
-			
-		}
-
-		/* --- Getter Setter --- */
-
-
-		public function getPseudo(){
-			return $this->pseudo;
-		}
-
-		public function setPseudo($pseudo){
-			$this->pseudo = $pseudo;
-		}
-
-		public function setPass($pass){
-			$this->pass = $pass;
-		}
-
-		public function setAccess($access){
-			$this->access = $access;
-		}
-
-		//possible mais un compteur de temps se mettra en place avant le prochain changement chaque changement demandera de plus en plus de temps avant reinitialisation du compteur
-		public function setRace($race){
-			$this->race = $race;
-		}
+    Class UserManager{
 
 		public static function insertPlayer(){
 			
@@ -67,7 +11,7 @@
 		public static function Auth(){
 
 			//connection a la bdd
-			$bdd = Bdd::getBdd();
+			$bdd = BddManger::getBdd();
 
 			$reqConnexion = $bdd->prepare('SELECT id FROM membre WHERE pass = :pass AND pseudo = :pseudo');
 			$reqConnexion->execute(array(
@@ -133,6 +77,8 @@
 			{
 				echo 'Erreur : 3 ';
             }
+
+			unset($bdd);
         }
 
 		/**
@@ -140,7 +86,7 @@
 		 */
 		public static function getPlayerRace($id){
 
-			$bdd = Bdd::getBdd();
+			$bdd = BddManger::getBdd();
 
             $reqGetPlayerRace = $bdd->prepare('SELECT r.race_name FROM race r 
 			INNER JOIN membre m ON m.id_race = r.id  
@@ -153,13 +99,15 @@
 
             $reqGetPlayerRace->closeCursor();
 
+			unset($bdd);
+
             return $resultReq[0];
 
 		}
 
 		public static function getIdPlayerRace($id){
 
-			$bdd = Bdd::getBdd();
+			$bdd = BddManger::getBdd();
 
             $reqGetPlayerRace = $bdd->prepare('SELECT id_race FROM membre   
 			WHERE id = :idPlayer ');
@@ -171,7 +119,35 @@
 
             $reqGetPlayerRace->closeCursor();
 
+			unset($bdd);
+
             return $resultReq[0];
 
 		}
+
+		public static function addNewUser($firstName,  $userName, $mail, $pseudo, $pass)
+        {
+            $bdd =  BddManager::getBdd();
+            
+            $req = $bdd->prepare('INSERT INTO users( first_name, user_name, favorite_series, num_tel, mail, pseudo, pass)
+                                        VALUES (:firstName, :userName, :favorite_series, :num_tel, :mail, :pseudo, :pass)');
+            
+            $req->execute(array(
+                
+                'firstName' => $firstName,
+                'userName' => $userName,
+                'favorite_series' => null,
+                'num_tel' => null,
+                'mail' => $mail,
+                'pseudo' => $pseudo,
+                'pass' => $pass
+                
+            ));
+            
+            $req->closeCursor();
+            
+            unset($bdd);
+            
+            return true;
+        }
 	}

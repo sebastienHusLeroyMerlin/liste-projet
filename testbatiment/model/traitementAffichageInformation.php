@@ -1,9 +1,9 @@
 <?php
 
-	require_once('Bdd.php');
+	require_once('Manager.php');
 
 	
-		$bdd = Bdd::getBdd();
+		$bdd = BddManger::getBdd();
 			
 			
 			//recuperation des information d'affichage

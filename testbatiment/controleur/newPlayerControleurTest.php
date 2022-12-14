@@ -6,3 +6,4 @@
 
     $newPlayer = new User("bob");
     var_dump($newPlayer);
+    $newPlayer->

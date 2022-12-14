@@ -38,3 +38,11 @@
     const ID_CLIM =  'id_climat';
     const ID_RELIEF =  'id_relief';
     const ID_BIOME =  'id_biome'; 
+
+
+    /* --- infos BDD --- */
+
+    const HOST = 'localhost';
+    const DB_NAME = 'batiment';
+    const LOGIN_BDD = 'root';
+    const PASS_BDD = '';

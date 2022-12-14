@@ -1,5 +1,5 @@
 <?php
 
-    require_once('../model/User.php');
+    require_once('../model/UserManager.php');
 
-    User::getPlayerRace(1);
+    UserManager::getPlayerRace(1);

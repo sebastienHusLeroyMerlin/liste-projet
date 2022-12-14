@@ -1,6 +1,6 @@
 <?php
 
-    class Tools{
+    class ToolsManager{
 
         public static function validData($data){
 

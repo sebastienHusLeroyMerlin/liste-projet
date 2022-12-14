@@ -1,11 +1,11 @@
 <?php
 
     session_start();
-    require_once('../model/Tools.php');
+    require_once('../model/ToolsManager.php');
 
     if(isset($_GET['section']))
     {
-        $section = Tools::validData($_GET['section']);
+        $section = ToolsManager::validData($_GET['section']);
 
         if($section == 'eau') {
             $section = "eau";

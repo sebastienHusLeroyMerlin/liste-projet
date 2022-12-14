@@ -1,8 +1,8 @@
 <?php
 
-    require_once('constante.php');
-    require_once('User.php');
-    require_once('Bdd.php');
+    require_once('../constante.php');
+    require_once('UserManager.php');
+    require_once('BddManager.php');
 
     class WorldMap{
 
@@ -80,7 +80,7 @@
 
         public static function updateWorldMapInfos($value, $fieldName){
 
-            $bdd = Bdd::getBdd();
+            $bdd = BddManger::getBdd();
 
             $reqUpdateInfosWorldMap = $bdd->prepare('UPDATE infos_map SET valeur = :valeur WHERE nom_champ = :nomChamp');
             $reqUpdateInfosWorldMap->execute(array(
@@ -94,7 +94,7 @@
 
         public static function getInfoWorldMap($fieldName){
 
-            $bdd = Bdd::getBdd();
+            $bdd = BddManger::getBdd();
 
             $reqGetInfoWorldMap = $bdd->prepare('SELECT valeur FROM infos_map WHERE nom_champ = :nom_champ ');
             $reqGetInfoWorldMap->execute(array(
@@ -128,7 +128,7 @@
             }
 
             //requete recup infos dujoueur grace a l id
-            $idRace = User::getIdPlayerRace($idPlayer);
+            $idRace = UserManager::getIdPlayerRace($idPlayer);
             $listParamsBiomeForPlayer = self::defineParamsBiomeForPlayer($idRace);
             var_dump($listParamsBiomeForPlayer);
             
@@ -198,7 +198,7 @@ var_dump('x position : ' . $xPos . ' --- Yposition : ' . $yPos);
             $idClimat = $listParamsBiomeForPlayer[ID_CLIM];
             $idRelief = $listParamsBiomeForPlayer[ID_RELIEF];
 var_dump($listParamsBiomeForPlayer);
-            $bdd = Bdd::getBdd();
+            $bdd = BddManger::getBdd();
 
             $reqUpdateTile = $bdd->prepare('UPDATE world_map  
                                             SET ' . ID_BIOME . ' = :idBiome, 
@@ -286,7 +286,7 @@ var_dump($listParamsBiomeForPlayer);
         }
 
         private static function isTileExisting($xPos, $yPos){
-            $bdd = Bdd::getBdd();
+            $bdd = BddManger::getBdd();
             //todo revoir la requete + nom requete ect 
             $reqGetTile = $bdd->prepare('SELECT id FROM  world_map  WHERE  ' . X_POS . ' = :xPos and ' . Y_POS . ' = :yPos');
             $reqGetTile->execute(array(
@@ -311,7 +311,7 @@ var_dump($listParamsBiomeForPlayer);
             $idClimat = $arrayParamsForCreateTile[ID_CLIM];
             $idRelief = $arrayParamsForCreateTile[ID_RELIEF];
             //var_dump("---" . $idClimat);
-            $bdd = Bdd::getBdd();
+            $bdd = BddManger::getBdd();
             //todo revoir la requete + nom requete ect 
             $reqInsertTileToWorldMap = $bdd->prepare('INSERT INTO world_map  (' . ID_BIOME . ',' . ID_HUM . ',' . ID_CLIM . ',' . ID_RELIEF . ',' . X_POS . ',' . Y_POS . ')
                                                         VALUES (:idBiome, :idHumidity, :idClimat, :idRelief, :xPos, :yPos)');
