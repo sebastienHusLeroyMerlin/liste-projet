@@ -1,9 +1,11 @@
 <?php
 
 
-    require('../model/User.php');
+    require('../model/manager/UserManager.php');
 
 
-    $newPlayer = new User("bob");
+    $newPlayer = new UserManager('Bob');
     var_dump($newPlayer);
-    $newPlayer->
+    echo $newPlayer->getPseudo();
+
+    $newPlayer->insertPlayer();
