@@ -7,7 +7,7 @@
 			
 			
 			//recuperation des information d'affichage
-			$reqInfoAffichage = $bdd->prepare('SELECT * FROM recap WHERE id_joueur = :id_joueur');
+			$reqInfoAffichage = $bdd->prepare('SELECT * FROM colonie WHERE id_joueur = :id_joueur');
 			$reqInfoAffichage->execute(array(
 			'id_joueur' => $_SESSION['id_joueur']
 			));

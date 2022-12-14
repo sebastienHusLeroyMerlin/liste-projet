@@ -4,6 +4,14 @@
 ?>
 
 <div class="carre">
+
+	<!-- interface de test -->
+	<div class="interfaceTest">
+		<a href="newPlayerControleurTest.php" >Creer un nouveau joueur</a>
+	</div>
+
+	<!-- --- -->
+
 	<section class="conteneurFormPos">
 		<form id="formPos" action="" method="post">
 			<div>
@@ -28,7 +36,7 @@
 
 	<div class="conteneurCarte">
 		<!--<div id="contneurTriangleNav">-->
-		<a id="tr" href=""><div class="triangle" ></div></a>
+		<a id="tr" href="positionCarteControleur.php"><div class="triangle" ></div></a>
 		<a id="tl" href=""><div class="triangle" ></div></a>
 		<a id="tt" href=""><div class="triangle" ></div></a>
 		<a id="tb" href=""><div class="triangle" ></div></a>

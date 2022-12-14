@@ -25,7 +25,7 @@
 						$bdd =  Bdd::getBdd();
 						
 						//recuper le niveau actuel du batiment concerné
-						$req = $bdd->prepare('SELECT '.$nomBatiment.' FROM recap WHERE id_joueur = :id_joueur');
+						$req = $bdd->prepare('SELECT '.$nomBatiment.' FROM colonie WHERE id_joueur = :id_joueur');
 						$req->execute(array(
 						'id_joueur' => $_SESSION['id_joueur']
 						));
@@ -36,7 +36,7 @@
 						
 						
 						//je met a jour le nouveau niveau du batiment
-						$reqMiseAJourNiveauBatiment = $bdd->prepare('UPDATE recap SET '.$nomBatiment.' = :nouveauNiveauBatiment WHERE id_joueur = :id_joueur ');
+						$reqMiseAJourNiveauBatiment = $bdd->prepare('UPDATE colonie SET '.$nomBatiment.' = :nouveauNiveauBatiment WHERE id_joueur = :id_joueur ');
 						$reqMiseAJourNiveauBatiment->execute(array(
 						'nouveauNiveauBatiment' => $resultat[$_POST['nomBatiment']]+1,
 						'id_joueur' => $_SESSION['id_joueur']
