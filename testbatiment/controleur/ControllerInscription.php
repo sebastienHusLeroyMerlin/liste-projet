@@ -2,19 +2,19 @@
 
 //todo faire en sorte que le login soit unique
 
-    require_once '../models/UserManager.php';
-    require_once '../models/SaltManager.php';
+    require_once ('../models/UserManager.php');
+    require_once ('../models/SaltManager.php');
     
-    // 1 - determination quel formulaire a été validé ?
+    // 1 - determination quel formulaire a ï¿½tï¿½ validï¿½ ?
     // 1a - formulaire Inscription
     if(isset($_POST['subIns']))
     {
         // grain de sel ajouter une colonne en bdd grain de sel en generer un aleatoirement pour chaque utilisateur
-        //et l associé au mdp lui meme crypter
+        //et l associï¿½ au mdp lui meme crypter
         
-        /*ajout d une session pour proteger les donnée qu on envoi au au control
-         ( pas de hack entre les deuxqui sera tué plus tard
-         voir les autres possibilité !!! systeme provisoire donc */
+        /*ajout d une session pour proteger les donnï¿½e qu on envoi au au control
+         ( pas de hack entre les deuxqui sera tuï¿½ plus tard
+         voir les autres possibilitï¿½ !!! systeme provisoire donc */
         
         
         
@@ -38,13 +38,13 @@
         {
             
             /*  3.1
-             verification validité mail
+             verification validitï¿½ mail
              verification mail est identique a confirMail
              verification mail pas deja present dans la bdd ( si present envoyer message )
              si tout ok insertion en bdd
              */
             
-            // attention vetifExisting mail se trouve dans les traitementVisiteurBdd car liée aune recher sur la bdd
+            // attention vetifExisting mail se trouve dans les traitementVisiteurBdd car liï¿½e aune recher sur la bdd
             if(UserManager::verifMail($mail, $confirmMail) && UserManager::verifNotExistingMail($mail)){
                 //encodage du mot de passe
                 $responseArray = SaltManager::encode($pass);
@@ -59,7 +59,7 @@
                 
                 
                 // 4 - requete insertion bdd
-                $etat = UserManager::addNewUser($firstName,  $userName, $mail, $pseudo, $pass);
+                $etat = UserManager::insertPlayer(/*$firstName,  $userName, $mail, */$pseudo, $pass, $idRace);
                 
                 // recuperation de l'id utilisateur
                 $idUser = UserManager::getUserId($pseudo, $mail);
@@ -69,11 +69,11 @@
                 
                 if($etat)
                 {
-                    $msg = 'Inscription réussite';
+                    $msg = 'Inscription rï¿½ussite';
                 }
                 else
                 {
-                    $msg = 'Inscription échoué ';
+                    $msg = 'Inscription ï¿½chouï¿½ ';
                 }
                 
                 $msgHeader = '&msgIns='.$msg;
@@ -84,9 +84,9 @@
                 $msgIns2 = $msgIns3 = '';
                 
                 if(!UserManager::verifMail($mail, $confirmMail))
-                    $msgIns2 = ' Les e@mail que vous avez renseigné ne sont pas identique !';
+                    $msgIns2 = ' Les e@mail que vous avez renseignï¿½ ne sont pas identique !';
                 if(!UserManager::verifNotExistingMail($mail))
-                    $msgIns3 = ' Cet e@mail est déjà referencé';
+                    $msgIns3 = ' Cet e@mail est dï¿½jï¿½ referencï¿½';
                         
                  $msgHeader = '&msgIns2='.$msgIns2.'&msgIns3='.$msgIns3;
             }

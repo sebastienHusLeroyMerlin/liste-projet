@@ -1,13 +1,37 @@
 <?php
 
+    require_once('BddManager.php');
+
     Class UserManager{
 
-		public static function insertPlayer(){
-			
+		public static function insertPlayer(/*$firstName,  $userName, $mail,*/ $pseudo, $pass, $idRace){
+			$Bdd =  BddManager::getBdd();
+            
+            $req = $Bdd->prepare('INSERT INTO membre( /*first_name, user_name, favorite_series, num_tel, mail, */pseudo, pass, id_race)
+                                        VALUES (/*:firstName, :userName, :favorite_series, :num_tel, :mail,*/ :pseudo, :pass, :idRace)');
+            
+            $req->execute(array(
+                
+                /*'firstName' => $firstName,
+                'userName' => $userName,
+                'favorite_series' => null,
+                'num_tel' => null,
+                'mail' => $mail,*/
+                'pseudo' => $pseudo,
+                'pass' => $pass,
+                'id_race' => $idRace
+                
+            ));
+            
+            $req->closeCursor();
+            
+            unset($Bdd);
+            
+            return true;
 		}
 
 		public static function Auth(){
-
+//TODO voir si amelioration pas possible
 			//connection a la bdd
 			$bdd = BddManager::getBdd();
 
@@ -75,8 +99,6 @@
 			{
 				echo 'Erreur : 3 ';
             }
-
-			unset($bdd);
         }
 
 		/**
@@ -96,9 +118,7 @@
             $resultReq = $reqGetPlayerRace->fetch();
 
             $reqGetPlayerRace->closeCursor();
-
 			unset($bdd);
-
             return $resultReq[0];
 
 		}
@@ -116,36 +136,97 @@
             $resultReq = $reqGetPlayerRace->fetch();
 
             $reqGetPlayerRace->closeCursor();
-
 			unset($bdd);
-
             return $resultReq[0];
 
 		}
 
-		public static function addNewUser($firstName,  $userName, $mail, $pseudo, $pass)
+		public static function verifMail($mail, $confirmMail){
+            
+            // test si $mail et confirmation du mail existent toujours et si toujour sup a 5 caractere
+            /* 1 - verification si $mail et confirmMail existe,
+             que $mail est superieur a 5 caractere
+             que confirmMail contient le meme nombre de caractere que mail
+             */
+            if( (isset($mail) && strlen($mail) > 5) &&
+                ((isset($confirmMail) && strlen($confirmMail) == strlen($mail)))){
+                    
+                    /* 2 - determine avec regex si mail correspond a ce que l on attend
+                     que $mail et $verifMail sont identique
+                     */
+                    if(preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $mail) &&
+                        $mail === $confirmMail){
+                            
+                            return true;
+                            
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                    
+                    
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
+
+		public static function verifNotExistingMail($mail)
         {
+            $bdd = BddManager::getBdd();
+            
+            $req = $bdd->prepare("SELECT id FROM users WHERE mail = :mail");
+            $req->execute(array(
+                'mail' => $mail
+            ));
+            
+            $result = $req->fetchAll();
+            $nbrResultat = count($result);
+            
+            if($nbrResultat != 0)
+            {
+                /* reqat trouvé donc doit retourner faux,
+                 pour empecher l insertion d un nouveau membre avec la meme adresse maill */
+                echo 'insertion non autorisée ! ';
+                
+                $resultBool = false;
+            }
+            else
+            {
+                echo 'insertion autorisée !';
+                
+                $resultBool =  true;
+            }
+            
+            $req->closeCursor();
+            unset($bdd);
+            return $resultBool ;
+            
+        }
+
+		public static function getUserId($pseudo, $mail)
+        {
+            
             $bdd =  BddManager::getBdd();
             
-            $req = $bdd->prepare('INSERT INTO users( first_name, user_name, favorite_series, num_tel, mail, pseudo, pass)
-                                        VALUES (:firstName, :userName, :favorite_series, :num_tel, :mail, :pseudo, :pass)');
-            
+            $req = $bdd->prepare('SELECT id FROM users WHERE pseudo = :pseudo or mail= :mail');
             $req->execute(array(
                 
-                'firstName' => $firstName,
-                'userName' => $userName,
-                'favorite_series' => null,
-                'num_tel' => null,
-                'mail' => $mail,
                 'pseudo' => $pseudo,
-                'pass' => $pass
+                'mail' => $mail
                 
             ));
             
+            $result = $req->fetch();
+            $userId = $result['id'];echo $userId;
+
             $req->closeCursor();
             
             unset($bdd);
             
-            return true;
+            return $userId;
         }
 	}

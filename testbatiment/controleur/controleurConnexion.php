@@ -1,7 +1,7 @@
 <?php
 
-	require_once('../model/UserManager.php');
-	require_once('../model/ToolsManager.php');
+	require_once('../model/manager/UserManager.php');
+	require_once('../model/manager/ToolsManager.php');
 	
 	if(isset($_POST['pseudo']) And isset($_POST['pass']))
 	{
