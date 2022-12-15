@@ -128,7 +128,7 @@
             }
 
             //requete recup infos dujoueur grace a l id
-            $idRace = UserManager::getIdPlayerRace($idPlayer);
+            $idRace = UserManager::getIdRaceByIdPlayer($idPlayer);
             $listParamsBiomeForPlayer = self::defineParamsBiomeForPlayer($idRace);
             var_dump($listParamsBiomeForPlayer);
             

@@ -2,9 +2,8 @@
 
 /********** Note classe sans doute tempo ses etape seront faite a l inscription du joueur  *******/
 // controleur d insertion de joueur sur la carte
-    require_once('../model/WorldMap.php');
+    require_once('../model/manager/WorldMapManager.php');
     require_once('../model/constante.php');
-    require_once('../model/User.php');
     
     /* 
         A l'inscription du premier joueur au moment de l inserer sur la carte
@@ -36,23 +35,23 @@
     */
 
     //Etape 1 
-    $xLimitWorldMap = WorldMap::getInfoWorldMap(X_MAX_MAP);
-    $yLimitWorldMap = WorldMap::getInfoWorldMap(Y_MAX_MAP);
+    $xLimitWorldMap = WorldMapManager::getInfoWorldMap(X_MAX_MAP);
+    $yLimitWorldMap = WorldMapManager::getInfoWorldMap(Y_MAX_MAP);
 
     //------ TODO voir comment on recup cette infos piste session
-    $idPlayer = 1;
+    $idPlayer = $_GET['idPlayer'];
 
     //Etape 2
     if(isset($xLimitWorldMap)){
-        WorldMap::insertPlayerToWorldMap($idPlayer);
+        WorldMapManager::insertPlayerToWorldMap($idPlayer);
     }
     elseif(!isset($xLimitWorldMap)){
 var_dump("creation de carte");
         /* --- Création de carte --- */
-        WorldMap::createWorldMap();
+        WorldMapManager::createWorldMap();
 
         /* --- Debut  insertion joueur --- */
-        WorldMap::insertPlayerToWorldMap($idPlayer);
+        WorldMapManager::insertPlayerToWorldMap($idPlayer);
 
     }
     elseif( $xPosPlayer  > $xLimitWorldMap){
@@ -62,3 +61,6 @@ var_dump("creation de carte");
         //a transformer en log
         echo 'Pb logique d\'implantation';
     }
+
+
+    header('Location:../controleur/routeur.php?destination=testScript');

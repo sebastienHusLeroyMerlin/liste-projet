@@ -14,9 +14,12 @@
 
     //j'initialise les batiments de la la nouvelle colonie à 0
     $newColonie = new ColonieManager();
-    $newColonie->setIdPlayer($newPlayer->getUserId($newPlayer->getMail()));
+    $idPlayer = $newPlayer->getUserId($newPlayer->getMail());
+    $newColonie->setIdPlayer($idPlayer);
 
 
     //j'inserre la colonie en bdd
     var_dump($newPlayer);
     $newColonie->attributeColonie($newPlayer);
+
+    header('Location:remplissageCarteControleur.php?idPlayer='.$idPlayer);
