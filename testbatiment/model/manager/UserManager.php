@@ -8,7 +8,6 @@
         protected $pass ;
         protected $idAccess ;
         protected $idRace ;
-        protected static $i = 1;
 
 
         /*je cré une colonie dans le constructeur 
@@ -25,7 +24,7 @@
         public function __construct($pseudo)
         {
             $this->pseudo =  $pseudo;
-            $this->mail = $pseudo . self::$i++ . '@gmail.com';//tempo
+            $this->mail = $pseudo . '@gmail.com';//tempo
             $this->pass = 123456;
             $this->idAccess = 1; // equivalent de membre basique
             $this->idRace = rand(1,4); 
@@ -281,21 +280,22 @@
             
         }
 
-		public function getUserId($pseudo='', $mail='')
+		public function getUserId($mail)
         {
             
             $bdd =  BddManager::getBdd();
             
-            $req = $bdd->prepare('SELECT id FROM membre WHERE pseudo = :pseudo or mail= :mail');
+            $req = $bdd->prepare('SELECT id FROM membre WHERE mail= :mail');
             $req->execute(array(
-                
-                'pseudo' => $pseudo,
+            
                 'mail' => $mail
                 
             ));
             
             $result = $req->fetch();
             $userId = $result['id'];
+            var_dump($userId);
+            //$userId = $result['id'];
 
             $req->closeCursor();
             

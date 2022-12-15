@@ -6,8 +6,30 @@
 <div class="carre">
 
 	<!-- interface de test -->
-	<div class="interfaceTest">
-		<a href="newPlayerControleurTest.php" >Creer un nouveau joueur</a>
+	<a class="interfaceTest" href="#modalNewPlayer">Creer un nouveau joueur</a>
+
+	<div id="modalNewPlayer">
+
+
+		<form method="post" action="newPlayerControleurTest.php">
+
+			<input type="text" name="name" id="" placeholder="Name new player">
+
+			<input type="submit" value="Créer un nouveau Joueur">
+
+			<!---    --->
+			<a href="#" id="close" title="fermer">
+  
+				<div class="supp">
+
+					<div class="verti"></div>
+					<div class="hori"></div>
+				
+				</div>
+				
+			</a>
+		</form>
+
 	</div>
 
 	<!-- --- -->
