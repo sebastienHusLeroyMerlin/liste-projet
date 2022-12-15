@@ -15,8 +15,11 @@ require_once('BddManager.php');
         }
 
         public function attributeColonie($objectPlayer){
-            $playerId = $objectPlayer->getUserId($objectPlayer->getMail());
-            
+            $playerMail = $objectPlayer->getMail();
+            $playerId = $objectPlayer->getUserId($playerMail);
+            var_dump($objectPlayer->getMail());
+            var_dump($objectPlayer->getUserId($playerMail));
+            var_dump($playerId);
             $Bdd =  BddManager::getBdd();
             
             $reqInsertColonie = $Bdd->prepare('INSERT INTO membre(couveuse,solarium,pass,id_joueur)

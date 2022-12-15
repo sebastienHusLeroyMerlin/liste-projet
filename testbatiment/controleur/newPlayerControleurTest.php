@@ -13,4 +13,5 @@
 
     //j'initialise sa colo
     $newColonie = new ColonieManager();
+    var_dump($newPlayer);
     $newColonie->attributeColonie($newPlayer);
