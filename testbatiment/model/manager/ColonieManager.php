@@ -26,15 +26,15 @@ class ColonieManager{
         var_dump($playerId);
         $Bdd =  BddManager::getBdd();
         
-        $reqInsertColonie = $Bdd->prepare('INSERT INTO colonie(couveuse,solarium,id_joueur,last_ativ_colo)
-                                    VALUES (:couveuse,:solarium,:id_joueur,:last_ativ_colo)');
+        $reqInsertColonie = $Bdd->prepare('INSERT INTO colonie(couveuse,solarium,id_joueur,last_activ_colo)
+                                    VALUES (:couveuse,:solarium,:id_joueur,:last_activ_colo)');
         
         $reqInsertColonie->execute(array(
 
             'couveuse' => $this->couveuse,
             'solarium' => $this->solarium,
             'id_joueur' => $playerId,
-            'last_ativ_colo' => 'true'
+            'last_activ_colo' => 'true'
             
         ));
         
@@ -43,6 +43,44 @@ class ColonieManager{
         unset($Bdd);
         
         return true;
+    }
+
+    public static function getInfosLastActivColoByIdPlayer($idPlayer){
+        $Bdd =  BddManager::getBdd();
+        
+        $reqGetInfoLastActivColo = $Bdd->prepare('SELECT * FROM colonie WHERE id_joueur = :idPlayer and last_activ_colo = true');
+        $reqGetInfoLastActivColo->execute(array(
+
+            'idPlayer' => $idPlayer
+            
+        ));
+
+        $infosLastActivColo = $reqGetInfoLastActivColo->fetch();
+        
+        $reqGetInfoLastActivColo->closeCursor();
+        
+        unset($Bdd);
+        
+        return $infosLastActivColo;
+    }
+
+    public static function getIdColoByIdPlayer($idPlayer){
+        $Bdd =  BddManager::getBdd();
+        
+        $reqGetInfoLastActivColo = $Bdd->prepare('SELECT id FROM colonie WHERE id_joueur = :idPlayer and last_activ_colo = true');
+        $reqGetInfoLastActivColo->execute(array(
+
+            'idPlayer' => $idPlayer
+            
+        ));
+
+        $infosLastActivColo = $reqGetInfoLastActivColo->fetch();
+        
+        $reqGetInfoLastActivColo->closeCursor();
+        
+        unset($Bdd);
+        
+        return $infosLastActivColo[0];
     }
 
 }

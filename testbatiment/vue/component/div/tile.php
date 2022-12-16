@@ -1,4 +1,4 @@
-<a href="#idTuile<?= $x . $y ?>"><div class="hexagon <?= $classBiome ?>"></div></a>
+<a href="#idTuile<?= $x . $y ?>"><div class="hexagon <?= $classBiome ?>"><?= 'X: ' . $xPos . ' Y: ' .  $yPos;?></div></a>
 
 
 

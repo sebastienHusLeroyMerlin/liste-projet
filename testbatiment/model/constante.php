@@ -38,6 +38,7 @@
     const ID_CLIM =  'id_climat';
     const ID_RELIEF =  'id_relief';
     const ID_BIOME =  'id_biome'; 
+    const ID_COLO = 'id_colo';
 
 
     /* --- infos BDD --- */

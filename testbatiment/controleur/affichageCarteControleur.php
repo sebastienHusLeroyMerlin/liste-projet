@@ -1,9 +1,10 @@
 <?php
-
+	require_once('../model/manager/WorldMapManager.php');
 	//requette pour recup l id du joueur tempo plutot passer sur une variable de session
-	WorldMapManager::get
-	$xPosPlayer = 5 ;
-	$yPosPlayer = 9 ;
+	$coordinate = WorldMapManager::getCoordinatesByIdColo($_SESSION['id_activ_colo']);
+//var_dump($coordinate);
+	$xPosPlayer = $coordinate[0]['x_pos'];
+	$yPosPlayer = $coordinate[0]['y_pos'];
 ?>
 
 <div class="carre">
@@ -68,11 +69,8 @@
 		
 		<!--</div>-->
 		<?php
-			// id_colonie recuperer dans une variable de session
-			$xColo = 6;
-			$yColo = 6;
 
-			$listIntervals = WorldMapManager::initializeAxeIntervals($xColo, $yColo);
+			$listIntervals = WorldMapManager::initializeAxeIntervals($xPosPlayer, $yPosPlayer);
 			$xIntervalMin = $listIntervals['xIntervalMin'];
             $xIntervalMax = $listIntervals['xIntervalMax'];
 
@@ -123,7 +121,7 @@
 					}
 					
 					$classBiome = WorldMapManager::getNameBiome($xPos, $yPos);
-					?><?php
+					//var_dump($xPos . ' --- ' .  $yPos);
 					require('../vue/component/div/tile.php');
 				}
 
@@ -171,7 +169,8 @@
 				$xTile = $x;
 				$yTile = $y;
 				$classBiome = WorldMapManager::getNameBiome($xPos, $yPos);
-				?><div id="idTuile<?= $xTile . $yTile ?>" class="<?= $classBiome ?>"></div><?php
+				//var_dump('X: ' . $xPos . ' Y: ' .  $yPos);
+				?><div id="idTuile<?= $xTile . $yTile ?>" class="<?= $classBiome ?>">rcjxrtgf<?= 'X: ' . $xPos . ' Y: ' .  $yPos;?></div><?php
 
 			}
 

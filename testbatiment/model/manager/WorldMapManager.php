@@ -3,6 +3,7 @@
     require_once('../model/constante.php');
     require_once('UserManager.php');
     require_once('BddManager.php');
+    require_once('ColonieManager.php');
 
     class WorldMapManager{
 
@@ -127,10 +128,12 @@
                 $xLastPlayer = 0 ;
             }
 
-            //requete recup infos dujoueur grace a l id
+            //requete recup infos du joueur grace a l id
             $idRace = UserManager::getIdRaceByIdPlayer($idPlayer);
             $listParamsBiomeForPlayer = self::defineParamsBiomeForPlayer($idRace);
             var_dump($listParamsBiomeForPlayer);
+
+            $idColo = ColonieManager::getIdColoByIdPlayer($idPlayer);
             
             $ylastPlayer =  self::getInfoWorldMap(Y_LAST_PLAYER);
             var_dump("y las player" . $ylastPlayer);
@@ -183,15 +186,15 @@
                 }
                 
             }
-var_dump('x position : ' . $xPos . ' --- Yposition : ' . $yPos);
-            self::updateTileToIntegratePlayer($xPos, $yPos, $listParamsBiomeForPlayer, $idPlayer);
+var_dump( $idColo);
+            self::updateTileToIntegratePlayer($xPos, $yPos, $listParamsBiomeForPlayer, $idPlayer, $idColo);
 
             self::updateWorldMapInfos($xPos, X_LAST_PLAYER);
             self::updateWorldMapInfos($yPos, Y_LAST_PLAYER);
 
         }
 
-        private static function updateTileToIntegratePlayer($xPos, $yPos, $listParamsBiomeForPlayer, $idPlayer){
+        private static function updateTileToIntegratePlayer($xPos, $yPos, $listParamsBiomeForPlayer, $idPlayer, $idColo){
 
             $idBiome = $listParamsBiomeForPlayer[ID_BIOME];
             $idHumidity = $listParamsBiomeForPlayer[ID_HUM];
@@ -205,7 +208,8 @@ var_dump($listParamsBiomeForPlayer);
                                             ' . ID_HUM . ' = :idHumidity, 
                                             ' . ID_CLIM . ' = :idClimat, 
                                             ' . ID_RELIEF . ' = :idRelief, 
-                                            ' . ID_PLAYER . ' = :idPlayer
+                                            ' . ID_PLAYER . ' = :idPlayer,
+                                            ' . ID_COLO . ' = :idColo
                                              WHERE ' . Y_POS . ' = :yPos and ' . X_POS . ' = :xPos');
             $reqUpdateTile->execute(array(
                 'idBiome'=> $idBiome,
@@ -214,7 +218,8 @@ var_dump($listParamsBiomeForPlayer);
                 'idRelief' => $idRelief, 
                 'xPos'=> $xPos,
                 'yPos'=> $yPos,
-                'idPlayer' => $idPlayer
+                'idPlayer' => $idPlayer,
+                'idColo' => $idColo
             ));
 
             $reqUpdateTile->closeCursor();
@@ -576,5 +581,24 @@ var_dump($listParamsBiomeForPlayer);
 
             return $result;
 
+        }
+
+        public static function getCoordinatesByIdColo($idColo){
+            $Bdd =  BddManager::getBdd();
+        
+            $reqGetCoordinatesByIdColo = $Bdd->prepare('SELECT x_pos, y_pos FROM world_map WHERE id_colo = :idColo');
+            $reqGetCoordinatesByIdColo->execute(array(
+    
+                'idColo' => $idColo
+                
+            ));
+    
+            $coordinate = $reqGetCoordinatesByIdColo->fetchAll();
+            
+            $reqGetCoordinatesByIdColo->closeCursor();
+            
+            unset($Bdd);
+
+            return $coordinate;
         }
     }

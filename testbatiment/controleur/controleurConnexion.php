@@ -3,6 +3,7 @@
 	require_once('../model/manager/UserManager.php');
 	require_once('../model/manager/ToolsManager.php');
 	require_once('../model/manager/ConnectionManager.php');
+	require_once('../model/manager/ColonieManager.php');
 
 	$pseudo = ToolsManager::validData($_POST['pseudo']);
 	$pass = ToolsManager::validData($_POST['pass']);
@@ -18,13 +19,18 @@
                             
 				$variableDeSession = UserManager::getAllUserInfosByIdPlayer($resultatConnexion['id']);
                 
+
                 $_SESSION['Auth'] = true;
                 $_SESSION['pseudo'] = $variableDeSession['pseudo'] ;
                 $_SESSION['pass'] = $variableDeSession['pass'] ;
                 $_SESSION['mail'] = $variableDeSession['mail'] ;
                 $_SESSION['id_access'] = $variableDeSession['id_access'] ;
                 $_SESSION['id_joueur'] = $resultatConnexion['id'] ;
-                
+				
+				
+				$infosColo = ColonieManager::getInfosLastActivColoByIdPlayer($resultatConnexion['id'] ) ;
+				$_SESSION['id_activ_colo'] = $infosColo['id'];
+
                 $_SESSION['destination'] = 'accueil';
                 header('Location:../controleur/routeur.php');
             }

@@ -749,6 +749,8 @@ h1,h2,h3
    --transform:skew(30deg, 0deg) rotate(0deg) scale(0.8);
  z-index: 2;
    display: none;
+
+   color: white 2px;
 }
 
 #idTuile00:target,
