@@ -11,6 +11,7 @@
 			<h2><?= ucfirst($destination); ?></h2>
 
 			<?php
+				var_dump($_SESSION);
 				require_once('../vue/component/section/'. $section .'.php');
 			?>
 

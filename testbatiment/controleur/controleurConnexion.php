@@ -2,32 +2,62 @@
 
 	require_once('../model/manager/UserManager.php');
 	require_once('../model/manager/ToolsManager.php');
+	require_once('../model/manager/ConnectionManager.php');
+
+	$pseudo = ToolsManager::validData($_POST['pseudo']);
+	$pass = ToolsManager::validData($_POST['pass']);
 	
-	if(isset($_POST['pseudo']) And isset($_POST['pass']))
+	if(isset($pseudo) And isset($pass))
 	{
-		if(!empty($_POST['pseudo']) And !empty($_POST['pass']))
+		if(!empty($pseudo) And !empty($pass))
 		{
-			$_POST['pseudo'] = ToolsManager::validData($_POST['pseudo']);
-			$_POST['pass'] = ToolsManager::validData($_POST['pass']);
 			
-			
-			$auth = UserManager::Auth();
-			if($auth == true)
-				header('Location:../controleur/routeur.php');
+			$resultatConnexion = ConnectionManager::Auth();
+
+			if(isset($resultatConnexion)){
+                            
+				$variableDeSession = UserManager::getAllUserInfosByIdPlayer($resultatConnexion['id']);
+                
+                $_SESSION['Auth'] = true;
+                $_SESSION['pseudo'] = $variableDeSession['pseudo'] ;
+                $_SESSION['pass'] = $variableDeSession['pass'] ;
+                $_SESSION['mail'] = $variableDeSession['mail'] ;
+                $_SESSION['id_access'] = $variableDeSession['id_access'] ;
+                $_SESSION['id_joueur'] = $resultatConnexion['id'] ;
+                
+                $_SESSION['destination'] = 'accueil';
+                header('Location:../controleur/routeur.php');
+            }
+            else
+            {
+				$resultatRecherchePseudo = UserManager::getAllUserInfosByPseudo($pseudo);
+                
+                if(!isset($resultatRecherchePseudo))
+                {
+                    echo 'Votre pseudo est Inconnu !!' ;
+                }
+                else
+                {
+                    echo 'Votre mot de passe est invalide !!' ;
+                }
+                $_SESSION['Auth'] = false;
+            }
+
+				
 			
 		}
-		elseif(empty($_POST['pseudo']) OR empty($_POST['pass']))
+		elseif(empty($pseudo) OR empty($pass))
 		{
-			if(!empty($_POST['pseudo']) AND empty($_POST['pass']))
+			if(!empty($pseudo) AND empty($pass))
 			{
 				echo 'Vous n\'avez pas renseigné votre motde de passe ! ';
 				
 			}
-			elseif(empty($_POST['pseudo']) AND !empty($_POST['pass']))
+			elseif(empty($pseudo) AND !empty($pass))
 			{
 				echo 'Vous n\'avez pas renseigné votre pseudo ! ';
 			}
-			elseif(empty($_POST['pseudo']) AND empty($_POST['pass']))
+			elseif(empty($pseudo) AND empty($pass))
 			{
 				echo 'Vous n\'avez renseigné ni votre motde de passe, ni votre pseudo ! ';
 			}
@@ -41,10 +71,10 @@
 			echo 'Erreur : 2 ' ;
 		}
 	}
-	elseif(!isset($_POST['pseudo']) OR !isset($_POST['pass']))
+	elseif(!isset($pseudo) OR !isset($pass))
 	{
-		$_POST['pseudo'] = null ;
-		$_POST['pass'] = null ;
+		$pseudo = null ;
+		$pass = null ;
 	}
 	else
 	{

@@ -1,4 +1,7 @@
 <?php
+
+	//requette pour recup l id du joueur tempo plutot passer sur une variable de session
+	WorldMapManager::get
 	$xPosPlayer = 5 ;
 	$yPosPlayer = 9 ;
 ?>

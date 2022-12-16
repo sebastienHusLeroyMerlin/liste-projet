@@ -103,77 +103,6 @@
             return true;
 		}
 
-		public static function Auth(){
-//TODO voir si amelioration pas possible
-			//connection a la bdd
-			$bdd = BddManager::getBdd();
-
-			$reqConnexion = $bdd->prepare('SELECT id FROM membre WHERE pass = :pass AND pseudo = :pseudo');
-			$reqConnexion->execute(array(
-			'pseudo' => $_POST['pseudo'],
-			'pass' => $_POST['pass'] 
-			));
-			
-			$resultatConnexion = $reqConnexion->fetch();
-									
-            $reqConnexion->closeCursor();
-            
-            session_start();
-            $_SESSION['Auth'] = false;
-
-			if(isset($resultatConnexion))
-			{
-				
-				
-				$req= $bdd->prepare('SELECT * FROM membre WHERE id = :id');
-				$req->execute(array(
-				'id' => $resultatConnexion['id']
-				));
-				
-				$variableDeSession = $req->fetch();
-				
-				
-				
-				$req->closeCursor();
-                
-                $_SESSION['Auth'] = true;
-				$_SESSION['pseudo'] = $variableDeSession['pseudo'] ;
-				$_SESSION['pass'] = $variableDeSession['pass'] ;
-				$_SESSION['mail'] = $variableDeSession['mail'] ;
-				$_SESSION['droit'] = $variableDeSession['droit'] ;
-				$_SESSION['id_joueur'] = $resultatConnexion['id'] ;
-				
-				$_SESSION['destination'] = 'accueil';
-				return $auth = true;
-			}
-			elseif(!isset($resultat))
-			{
-				// es ce le pseudo qui est mauvais ?
-				$reqRecherchePseudo = $bdd->prepare('SELECT pseudo FROM membre WHERE  pseudo = :pseudo');
-				$reqRecherchePseudo->execute(array(
-				'pseudo' => $_POST['pseudo']				 
-				));
-				
-				$resultatRecherchePseudo = $reqRecherchePseudo->fetch();
-				
-				$reqRecherchePseudo->closeCursor();
-				
-				if(!isset($resultatRecherchePseudo))
-				{
-					echo 'Votre pseudo est Inconnu !!' ;
-				}
-				else
-				{
-					echo 'Votre mot de passe est invalide !!' ;
-				}
-				
-			}
-			else
-			{
-				echo 'Erreur : 3 ';
-            }
-        }
-
 		/**
 		 * Get String player race
 		 */
@@ -280,7 +209,7 @@
             
         }
 
-		public function getUserId($mail)
+		public static function getUserId($mail)
         {
             
             $bdd =  BddManager::getBdd();
@@ -302,5 +231,38 @@
             unset($bdd);
             
             return $userId;
+        }
+
+        public static function getAllUserInfosByIdPlayer($idUser){
+            $bdd = BddManager::getBdd();
+				
+            $req= $bdd->prepare('SELECT * FROM membre WHERE id = :id');
+            $req->execute(array(
+            'id' => $idUser
+            ));
+            
+            $informationsUser = $req->fetch();
+            
+            $req->closeCursor();
+            unset($req);
+
+            return $informationsUser;
+        }
+
+        public static function getAllUserInfosByPseudo($pseudo){
+            $bdd = BddManager::getBdd();
+            // es ce le pseudo qui est mauvais ?
+            $reqAllUserInfosByPseudo = $bdd->prepare('SELECT * FROM membre WHERE  pseudo = :pseudo');
+            $reqAllUserInfosByPseudo->execute(array(
+            'pseudo' => $pseudo				 
+            ));
+            
+            $result = $reqAllUserInfosByPseudo->fetch();
+            
+            $reqAllUserInfosByPseudo->closeCursor();
+
+            unset($req);
+
+            return $result;
         }
 	}

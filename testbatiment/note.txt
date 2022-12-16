@@ -92,6 +92,11 @@ par semaine
  selon nombre de bebete tuée par joueur octroi des badge, possibilite d activé ou non certain titre contre une ressource speciale 
 ----
 
-TODO
-- ajouter un systeme de guilde
-- selon biome les batiment coutent plus ou moins cher dans la meme ressource par rapport a un autre 
+
+Option pour joueur payant peut : 
+
+    - définir une vision de carte plus grande 
+    7*7 9*9  defaut 5*5 ( piste pour se faire sans avoir de trop grosse deformation creer des classe dynamique
+    chaque classe correspond a du css il sera juste activer o non)
+
+Achat de skin personalisés

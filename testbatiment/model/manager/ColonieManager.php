@@ -19,20 +19,22 @@ class ColonieManager{
 
     public function attributeColonie($objectPlayer){
         $playerMail = $objectPlayer->getMail();
-        $playerId = $objectPlayer->getUserId($playerMail);
+        $playerId = UserManager::getUserId($playerMail);
+
         var_dump($objectPlayer->getMail());
         var_dump($objectPlayer->getUserId($playerMail));
         var_dump($playerId);
         $Bdd =  BddManager::getBdd();
         
-        $reqInsertColonie = $Bdd->prepare('INSERT INTO colonie(couveuse,solarium,id_joueur)
-                                    VALUES (:couveuse,:solarium,:id_joueur)');
+        $reqInsertColonie = $Bdd->prepare('INSERT INTO colonie(couveuse,solarium,id_joueur,last_ativ_colo)
+                                    VALUES (:couveuse,:solarium,:id_joueur,:last_ativ_colo)');
         
         $reqInsertColonie->execute(array(
 
             'couveuse' => $this->couveuse,
             'solarium' => $this->solarium,
-            'id_joueur' => $playerId
+            'id_joueur' => $playerId,
+            'last_ativ_colo' => 'true'
             
         ));
         
