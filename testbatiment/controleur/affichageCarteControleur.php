@@ -1,10 +1,20 @@
 <?php
 	require_once('../model/manager/WorldMapManager.php');
-	//requette pour recup l id du joueur tempo plutot passer sur une variable de session
-	$coordinate = WorldMapManager::getCoordinatesByIdColo($_SESSION['id_activ_colo']);
-//var_dump($coordinate);
-	$xPosPlayer = $coordinate[0]['x_pos'];
-	$yPosPlayer = $coordinate[0]['y_pos'];
+	
+	//hypo a mettre sous forme de session sinon pb d affichage
+
+	if(isset($_SESSION['arrayCoordinate'] ) ){
+		
+		$xPosPlayer = $_SESSION['arrayCoordinate']['xPos'];
+		$yPosPlayer = $_SESSION['arrayCoordinate']['yPos'];
+		unset($_SESSION['arrayCoordinate']);
+	}else{
+		//requette pour recup l id du joueur tempo plutot passer sur une variable de session
+		$coordinate = WorldMapManager::getCoordinatesByIdColo($_SESSION['id_activ_colo']);
+		//var_dump($coordinate);
+		$xPosPlayer = $coordinate[0]['x_pos'];
+		$yPosPlayer = $coordinate[0]['y_pos'];
+	}
 ?>
 
 <div class="carre">
@@ -39,10 +49,10 @@
 	<!-- --- -->
 
 	<section class="conteneurFormPos">
-		<form id="formPos" action="" method="post">
+		<form id="formPos" action="positionCarteControleur.php" method="post">
 			<div>
 				<input type="text" name="xTarget" id="" placeholder ="X : <?= $xPosPlayer ;?> ">
-				<input type="text" name="Ytarget" id="" placeholder = "Y : <?= $yPosPlayer ;?>">
+				<input type="text" name="yTarget" id="" placeholder = "Y : <?= $yPosPlayer ;?>">
 			</div>
 			<input type="submit" value="Go Go Go">
 		</form>
@@ -62,7 +72,7 @@
 
 	<div class="conteneurCarte">
 		<!--<div id="contneurTriangleNav">-->
-		<a id="tr" href="positionCarteControleur.php"><div class="triangle" ></div></a>
+		<a id="tr" href="positionCarteControleur.php?x=<?= $xPosPlayer . '&y=' . $yPosPlayer ;?>&dir=r"><div class="triangle" ></div></a>
 		<a id="tl" href=""><div class="triangle" ></div></a>
 		<a id="tt" href=""><div class="triangle" ></div></a>
 		<a id="tb" href=""><div class="triangle" ></div></a>

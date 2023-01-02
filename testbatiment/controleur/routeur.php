@@ -2,7 +2,7 @@
 	
 	if(!isset($_SESSION))
 		session_start();
-	
+	var_dump($_SESSION);
 	if(isset($_SESSION['Auth']) AND $_SESSION['Auth'] == true /*isset($_SESSION['mail']) AND isset($_SESSION['droit']) AND isset($_SESSION['pass'])*/)
 	{
 		if(!empty($_SESSION['destination']))

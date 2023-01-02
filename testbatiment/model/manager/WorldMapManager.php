@@ -457,7 +457,7 @@ var_dump($listParamsBiomeForPlayer);
             $xIntervalMin = $xArrayIntervals['intervalMin'];
             $xIntervalMax = $xArrayIntervals['intervalMax'];
             
-            
+            echo ' <---                ---><br>';
             $yArrayIntervals = WorldMapManager::determineViewInterval($yColo);
             $yIntervalMin = $yArrayIntervals['intervalMin'];
             $yIntervalMax = $yArrayIntervals['intervalMax'];
@@ -475,14 +475,16 @@ var_dump($listParamsBiomeForPlayer);
             $xLimitWorldMap = self::getInfoWorldMap(X_MAX_MAP);
             //je recupere les case en amont et en avale de mon joueur
             $coordinateColoInterval = (X_VUE - 1) / 2;
-            $coordinateColoIntervalMin = $coordinateColo - $coordinateColoInterval;
-            $coordinateColoIntervalMax = $coordinateColo + $coordinateColoInterval;
+            $coordinateColoIntervalMin = (int)$coordinateColo - $coordinateColoInterval;
+            $coordinateColoIntervalMax = (int)$coordinateColo + $coordinateColoInterval;
         
             if($coordinateColoIntervalMax > $xLimitWorldMap){
                 $coordinateColoIntervalMax = $coordinateColo - $xLimitWorldMap + $coordinateColoIntervalMin - 1;
+            var_dump($coordinateColoIntervalMax . ' = ' . $coordinateColo . ' - ' . $xLimitWorldMap . ' + '  . $coordinateColoIntervalMin . ' - 1' ); 
             }
             elseif($coordinateColoIntervalMin < 0){
                 $coordinateColoIntervalMin = ( $xLimitWorldMap + 1 ) + $coordinateColoIntervalMin;
+                var_dump($coordinateColoIntervalMin);
             }
 
             return array('intervalMin' => $coordinateColoIntervalMin,
