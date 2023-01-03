@@ -67,7 +67,7 @@
         }
 
         public function setIdAccess($idAccess){
-            $this->access = $idAccess;
+            $this->idAccess = $idAccess;
         }
 
         public function getIdRace(){
