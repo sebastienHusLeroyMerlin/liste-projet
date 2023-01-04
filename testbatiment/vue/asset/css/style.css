@@ -561,6 +561,12 @@ h1,h2,h3
 	position: absolute;
  }
 
+ .spanTile{
+	border:solid red 2px;
+	position: absolute;
+	z-index: 2;
+ }
+
  
 
  /* --- form position --- */
@@ -835,7 +841,8 @@ h1,h2,h3
 #idTuile78:target,
 #idTuile88:target
  {
-	display: block;
+	display: flex;
+	justify-content: center;
  }
 
  #idTuile00:before,

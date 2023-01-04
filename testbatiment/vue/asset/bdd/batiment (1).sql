@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 02 jan. 2023 à 22:43
--- Version du serveur :  5.7.26
--- Version de PHP :  7.3.5
+-- Généré le : mer. 04 jan. 2023 à 14:47
+-- Version du serveur : 8.0.27
+-- Version de PHP : 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,8 +18,29 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `batiment`
+-- Base de données : `batiment`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `access`
+--
+
+DROP TABLE IF EXISTS `access`;
+CREATE TABLE IF NOT EXISTS `access` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `description` tinytext NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+
+--
+-- Déchargement des données de la table `access`
+--
+
+INSERT INTO `access` (`id`, `description`) VALUES
+(1, 'Membre basique'),
+(2, 'Membre abo');
 
 -- --------------------------------------------------------
 
@@ -30,12 +50,12 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `batiment`;
 CREATE TABLE IF NOT EXISTS `batiment` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `nomBatiment` varchar(255) NOT NULL,
-  `bois` int(11) NOT NULL,
-  `cire` int(11) NOT NULL,
-  `eau` int(11) NOT NULL,
-  `duree_construction` int(11) NOT NULL,
+  `bois` int NOT NULL,
+  `cire` int NOT NULL,
+  `eau` int NOT NULL,
+  `duree_construction` int NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
@@ -56,7 +76,7 @@ INSERT INTO `batiment` (`id`, `nomBatiment`, `bois`, `cire`, `eau`, `duree_const
 
 DROP TABLE IF EXISTS `billet`;
 CREATE TABLE IF NOT EXISTS `billet` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `auteur` varchar(255) NOT NULL,
   `titre` varchar(255) NOT NULL,
   `message` text NOT NULL,
@@ -96,7 +116,7 @@ INSERT INTO `billet` (`id`, `auteur`, `titre`, `message`, `dateMessage`) VALUES
 
 DROP TABLE IF EXISTS `biome`;
 CREATE TABLE IF NOT EXISTS `biome` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `description` text NOT NULL,
   `img_name` tinytext NOT NULL,
   `name` tinytext NOT NULL,
@@ -127,10 +147,10 @@ INSERT INTO `biome` (`id`, `description`, `img_name`, `name`) VALUES
 
 DROP TABLE IF EXISTS `colonie`;
 CREATE TABLE IF NOT EXISTS `colonie` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `couveuse` int(11) NOT NULL,
-  `solarium` int(11) NOT NULL,
-  `id_joueur` int(11) NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `couveuse` int NOT NULL,
+  `solarium` int NOT NULL,
+  `id_joueur` int NOT NULL,
   `last_activ_colo` enum('true','false') NOT NULL DEFAULT 'false',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
@@ -141,19 +161,6 @@ CREATE TABLE IF NOT EXISTS `colonie` (
 
 INSERT INTO `colonie` (`id`, `couveuse`, `solarium`, `id_joueur`, `last_activ_colo`) VALUES
 (2, 13, 1, 1, 'true'),
-(3, 0, 0, 14, 'true'),
-(4, 0, 0, 14, 'false'),
-(5, 0, 0, 16, 'true'),
-(6, 0, 0, 17, 'true'),
-(7, 0, 0, 19, 'true'),
-(8, 0, 0, 20, 'true'),
-(9, 0, 0, 21, 'true'),
-(10, 0, 0, 21, 'true'),
-(11, 0, 0, 23, 'true'),
-(12, 0, 0, 24, 'true'),
-(13, 0, 0, 25, 'true'),
-(14, 0, 0, 26, 'true'),
-(15, 0, 0, 27, 'true'),
 (16, 0, 0, 28, 'true'),
 (17, 0, 0, 29, 'true');
 
@@ -165,11 +172,11 @@ INSERT INTO `colonie` (`id`, `couveuse`, `solarium`, `id_joueur`, `last_activ_co
 
 DROP TABLE IF EXISTS `commentaire`;
 CREATE TABLE IF NOT EXISTS `commentaire` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `auteur` varchar(255) NOT NULL,
   `commentaire` text NOT NULL,
   `dateCommentaire` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `idBillet` int(11) NOT NULL,
+  `idBillet` int NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=71 DEFAULT CHARSET=latin1;
 
@@ -231,12 +238,12 @@ INSERT INTO `commentaire` (`id`, `auteur`, `commentaire`, `dateCommentaire`, `id
 
 DROP TABLE IF EXISTS `infos_map`;
 CREATE TABLE IF NOT EXISTS `infos_map` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `nom_champ` tinytext NOT NULL,
   `description` text NOT NULL,
   `valeur` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `infos_map`
@@ -258,12 +265,12 @@ INSERT INTO `infos_map` (`id`, `nom_champ`, `description`, `valeur`) VALUES
 
 DROP TABLE IF EXISTS `membre`;
 CREATE TABLE IF NOT EXISTS `membre` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `pseudo` varchar(255) NOT NULL,
   `mail` varchar(255) NOT NULL,
   `pass` text NOT NULL,
   `id_access` varchar(255) NOT NULL,
-  `id_race` int(11) NOT NULL,
+  `id_race` int NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 
@@ -273,18 +280,6 @@ CREATE TABLE IF NOT EXISTS `membre` (
 
 INSERT INTO `membre` (`id`, `pseudo`, `mail`, `pass`, `id_access`, `id_race`) VALUES
 (1, 'seb', 'bastoun3@free.fr', '123', '1', 2),
-(2, 'roberto', 'roberto@gmail.com', '456', '1', 3),
-(16, '', '@gmail.com', '123456', '1', 4),
-(17, 'joueur1', 'joueur1@gmail.com', '123456', '1', 1),
-(19, 'joueur2', 'joueur2@gmail.com', '123456', '1', 4),
-(20, 'joueur4', 'joueur4@gmail.com', '123456', '1', 1),
-(21, 'boblebricolo', 'boblebricolo@gmail.com', '123456', '1', 2),
-(22, 'boblebricolo', 'boblebricolo@gmail.com', '123456', '1', 3),
-(23, 'ertfhjklm', 'ertfhjklm@gmail.com', '123456', '1', 1),
-(24, 'alphonse', 'alphonse@gmail.com', '123456', '1', 1),
-(25, 'alphonse44', 'alphonse44@gmail.com', '123456', '1', 3),
-(26, 'alphonse4488', 'alphonse4488@gmail.com', '123456', '1', 4),
-(27, 'jean', 'jean@gmail.com', '123456', '1', 4),
 (28, 'jean58', 'jean58@gmail.com', '123456', '1', 1),
 (29, 'bernard', 'bernard@gmail.com', '123456', '1', 2);
 
@@ -296,7 +291,7 @@ INSERT INTO `membre` (`id`, `pseudo`, `mail`, `pass`, `id_access`, `id_race`) VA
 
 DROP TABLE IF EXISTS `race`;
 CREATE TABLE IF NOT EXISTS `race` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `race_name` tinytext NOT NULL,
   `description` text NOT NULL,
   PRIMARY KEY (`id`)
@@ -321,30 +316,30 @@ INSERT INTO `race` (`id`, `race_name`, `description`) VALUES
 
 DROP TABLE IF EXISTS `ressource`;
 CREATE TABLE IF NOT EXISTS `ressource` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_colonie` int(11) NOT NULL,
-  `id_joueur` int(11) NOT NULL,
-  `bois_total` int(11) NOT NULL,
-  `cire_total` int(11) NOT NULL,
-  `eau_total` int(11) NOT NULL,
-  `argile_total` int(11) NOT NULL,
-  `nourriture_total` int(11) NOT NULL,
-  `ouvriere_bois_plaine` int(11) NOT NULL,
-  `ouvriere_bois_marecage` int(11) NOT NULL,
-  `ouvriere_bois_foret` int(11) NOT NULL,
-  `ouvriere_cire` int(11) NOT NULL,
-  `ouvriere_argile` int(11) NOT NULL,
-  `ouvriere_argile_plaine` int(11) NOT NULL,
-  `ouvriere_argile_foret` int(11) NOT NULL,
-  `ouvriere_argile_marecage` int(11) NOT NULL,
-  `ouvriere_eau` int(11) NOT NULL,
-  `ouvriere_eau_plaine` int(11) NOT NULL,
-  `ouvriere_eau_foret` int(11) NOT NULL,
-  `ouvriere_eau_marecage` int(11) NOT NULL,
-  `ouvriere_nourriture_plaine` int(11) NOT NULL,
-  `ouvriere_nourriture_foret` int(11) NOT NULL,
-  `ouvriere_nourriture_marecage` int(11) NOT NULL,
-  `ouvriere_total` int(11) NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `id_colonie` int NOT NULL,
+  `id_joueur` int NOT NULL,
+  `bois_total` int NOT NULL,
+  `cire_total` int NOT NULL,
+  `eau_total` int NOT NULL,
+  `argile_total` int NOT NULL,
+  `nourriture_total` int NOT NULL,
+  `ouvriere_bois_plaine` int NOT NULL,
+  `ouvriere_bois_marecage` int NOT NULL,
+  `ouvriere_bois_foret` int NOT NULL,
+  `ouvriere_cire` int NOT NULL,
+  `ouvriere_argile` int NOT NULL,
+  `ouvriere_argile_plaine` int NOT NULL,
+  `ouvriere_argile_foret` int NOT NULL,
+  `ouvriere_argile_marecage` int NOT NULL,
+  `ouvriere_eau` int NOT NULL,
+  `ouvriere_eau_plaine` int NOT NULL,
+  `ouvriere_eau_foret` int NOT NULL,
+  `ouvriere_eau_marecage` int NOT NULL,
+  `ouvriere_nourriture_plaine` int NOT NULL,
+  `ouvriere_nourriture_foret` int NOT NULL,
+  `ouvriere_nourriture_marecage` int NOT NULL,
+  `ouvriere_total` int NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
@@ -363,7 +358,7 @@ INSERT INTO `ressource` (`id`, `id_colonie`, `id_joueur`, `bois_total`, `cire_to
 
 DROP TABLE IF EXISTS `section`;
 CREATE TABLE IF NOT EXISTS `section` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `sectionBlog` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -376,17 +371,17 @@ CREATE TABLE IF NOT EXISTS `section` (
 
 DROP TABLE IF EXISTS `world_map`;
 CREATE TABLE IF NOT EXISTS `world_map` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_player` int(11) DEFAULT NULL,
-  `id_colo` int(11) DEFAULT NULL,
-  `x_pos` int(11) NOT NULL,
-  `y_pos` int(11) NOT NULL,
-  `id_interest_point` int(11) DEFAULT NULL,
-  `id_check_point` int(11) DEFAULT NULL,
-  `id_climat` int(11) DEFAULT NULL,
-  `id_relief` int(11) NOT NULL,
-  `id_humidite` int(11) DEFAULT NULL,
-  `id_biome` int(11) NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `id_player` int DEFAULT NULL,
+  `id_colo` int DEFAULT NULL,
+  `x_pos` int NOT NULL,
+  `y_pos` int NOT NULL,
+  `id_interest_point` int DEFAULT NULL,
+  `id_check_point` int DEFAULT NULL,
+  `id_climat` int DEFAULT NULL,
+  `id_relief` int NOT NULL,
+  `id_humidite` int DEFAULT NULL,
+  `id_biome` int NOT NULL,
   PRIMARY KEY (`x_pos`,`y_pos`),
   UNIQUE KEY `x_pos` (`x_pos`,`y_pos`),
   UNIQUE KEY `id_colo` (`id_colo`),
@@ -407,8 +402,8 @@ INSERT INTO `world_map` (`id`, `id_player`, `id_colo`, `x_pos`, `y_pos`, `id_int
 (55, NULL, NULL, 0, 6, NULL, NULL, 5, 3, 3, 4),
 (64, NULL, NULL, 0, 7, NULL, NULL, 1, 1, 3, 2),
 (73, NULL, NULL, 0, 8, NULL, NULL, 2, 2, 3, 4),
-(2, 17, NULL, 1, 0, NULL, NULL, 1, 2, 2, 3),
-(11, 1, NULL, 1, 1, NULL, NULL, 1, 2, 3, 4),
+(2, NULL, NULL, 1, 0, NULL, NULL, 1, 2, 2, 3),
+(11, 1, 2, 1, 1, NULL, NULL, 1, 2, 3, 4),
 (20, NULL, NULL, 1, 2, NULL, NULL, 4, 3, 4, 7),
 (29, NULL, NULL, 1, 3, NULL, NULL, 1, 1, 3, 2),
 (38, NULL, NULL, 1, 4, NULL, NULL, 2, 2, 4, 5),
@@ -435,7 +430,7 @@ INSERT INTO `world_map` (`id`, `id_player`, `id_colo`, `x_pos`, `y_pos`, `id_int
 (67, NULL, NULL, 3, 7, NULL, NULL, 3, 2, 1, 10),
 (76, NULL, NULL, 3, 8, NULL, NULL, 5, 3, 2, 3),
 (5, NULL, NULL, 4, 0, NULL, NULL, 5, 3, 3, 4),
-(14, 21, NULL, 4, 1, NULL, NULL, 1, 2, 3, 4),
+(14, NULL, NULL, 4, 1, NULL, NULL, 1, 2, 3, 4),
 (23, NULL, NULL, 4, 2, NULL, NULL, 4, 3, 2, 3),
 (32, NULL, NULL, 4, 3, NULL, NULL, 2, 2, 1, 10),
 (41, NULL, NULL, 4, 4, NULL, NULL, 1, 1, 3, 2),
@@ -443,7 +438,7 @@ INSERT INTO `world_map` (`id`, `id_player`, `id_colo`, `x_pos`, `y_pos`, `id_int
 (59, NULL, NULL, 4, 6, NULL, NULL, 2, 2, 4, 5),
 (68, NULL, NULL, 4, 7, NULL, NULL, 4, 3, 6, 5),
 (77, NULL, NULL, 4, 8, NULL, NULL, 1, 1, 4, 2),
-(6, 19, NULL, 5, 0, NULL, NULL, 4, 3, 1, 9),
+(6, NULL, NULL, 5, 0, NULL, NULL, 4, 3, 1, 9),
 (15, NULL, NULL, 5, 1, NULL, NULL, 3, 2, 6, 1),
 (24, 29, 17, 5, 2, NULL, NULL, 1, 2, 3, 4),
 (33, NULL, NULL, 5, 3, NULL, NULL, 1, 1, 3, 2),
@@ -452,7 +447,7 @@ INSERT INTO `world_map` (`id`, `id_player`, `id_colo`, `x_pos`, `y_pos`, `id_int
 (60, NULL, NULL, 5, 6, NULL, NULL, 1, 1, 3, 2),
 (69, NULL, NULL, 5, 7, NULL, NULL, 1, 1, 1, 2),
 (78, NULL, NULL, 5, 8, NULL, NULL, 2, 2, 5, 1),
-(7, 20, NULL, 6, 0, NULL, NULL, 1, 2, 2, 3),
+(7, NULL, NULL, 6, 0, NULL, NULL, 1, 2, 2, 3),
 (16, NULL, NULL, 6, 1, NULL, NULL, 2, 2, 4, 5),
 (25, NULL, NULL, 6, 2, NULL, NULL, 2, 2, 2, 3),
 (34, NULL, NULL, 6, 3, NULL, NULL, 1, 1, 3, 2),
@@ -471,7 +466,7 @@ INSERT INTO `world_map` (`id`, `id_player`, `id_colo`, `x_pos`, `y_pos`, `id_int
 (71, NULL, NULL, 7, 7, NULL, NULL, 1, 1, 3, 2),
 (80, NULL, NULL, 7, 8, NULL, NULL, 3, 2, 3, 4),
 (9, NULL, NULL, 8, 0, NULL, NULL, 1, 1, 2, 2),
-(18, 23, NULL, 8, 1, NULL, NULL, 1, 2, 2, 3),
+(18, NULL, NULL, 8, 1, NULL, NULL, 1, 2, 2, 3),
 (27, NULL, NULL, 8, 2, NULL, NULL, 3, 2, 5, 5),
 (36, NULL, NULL, 8, 3, NULL, NULL, 2, 2, 2, 3),
 (45, NULL, NULL, 8, 4, NULL, NULL, 4, 3, 4, 7),

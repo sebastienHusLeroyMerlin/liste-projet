@@ -180,7 +180,7 @@
 				$yTile = $y;
 				$classBiome = WorldMapManager::getNameBiome($xPos, $yPos);
 				//var_dump('X: ' . $xPos . ' Y: ' .  $yPos);
-				?><div id="idTuile<?= $xTile . $yTile ?>" class="<?= $classBiome ?>">rcjxrtgf<?= 'X: ' . $xPos . ' Y: ' .  $yPos;?></div><?php
+				?><div id="idTuile<?= $xTile . $yTile ?>" class="<?= $classBiome ?>"><span class="spanTile"><?= 'X: ' . $xPos . ' Y: ' .  $yPos;?></span></div><?php
 
 			}
 
