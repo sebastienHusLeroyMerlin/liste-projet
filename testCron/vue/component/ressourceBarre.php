@@ -34,8 +34,8 @@
 	
 	
 	
-	<!--<form action="../model/traitementIncrementation.php" method="post" >-->
-	<form action="../model/cron/cronRessource.php" method="post" >
+	<form action="../model/traitementIncrementation.php" method="post" >
+	<!--<form action="../model/cron/cronRessource.php" method="post" >-->
 	
 		<input type="hidden" name="incremente" id="incremente" value="incremente"/>
 		<input type="hidden" name="localisation" id="localisation" value="<?php echo $localisation ; ?>"/>

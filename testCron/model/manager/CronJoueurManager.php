@@ -36,26 +36,41 @@ final class CronJoueur
 
         public function __construct($objetJoueur)
         {
-                $this->technoRecolteBois = $objetJoueur['tech_recolte_bois'];
-                $this->technoRecolteArgile = $objetJoueur['tech_recolte_argile'];
-                $this->technoRecolteEau = $objetJoueur['tech_recolte_eau'];
-                $this->technoRecolteNourriture= $objetJoueur['tech_recolte_nourriture'];
-                $this->technoRecolteCire = $objetJoueur['tech_recolte_cire'];
-                $this->ouvriereBoisPlaine = $objetJoueur['ouvriere_bois_plaine'];
-                $this->ouvriereBoisMarecage = $objetJoueur['ouvriere_bois_marecage'];
-                $this->ouvriereBoisForet = $objetJoueur['ouvriere_bois_foret'];
-                $this->ouvriereCire = $objetJoueur['ouvriere_cire'];
-                $this->ouvriereArgilePlaine = $objetJoueur['ouvriere_argile_plaine'];
-                $this->ouvriereArgileForet = $objetJoueur['ouvriere_argile_foret'];
-                $this->ouvriereArgileMarecage = $objetJoueur['ouvriere_argile_marecage'];
-                $this->ouvriereEauPlaine = $objetJoueur['ouvriere_eau_plaine'];
-                $this->ouvriereEauForet = $objetJoueur['ouvriere_eau_foret'];
-                $this->ouvriereEauMarecage = $objetJoueur['ouvriere_eau_marecage'];
-                $this->ouvriereNourriturePlaine = $objetJoueur['ouvriere_nourriture_plaine'];
-                $this->ouvriereNourritureForet = $objetJoueur['ouvriere_nourriture_foret'];
-                $this->ouvriereNourritureMarecage = $objetJoueur['ouvriere_nourriture_marecage'];
-                $this->boisTotal = $objetJoueur['bois_total'];
-                $this->idJoueur = $objetJoueur['id_joueur'];
+                $this->technoRecolteBois = $this->initDataJoueur($objetJoueur['tech_recolte_bois']);
+                $this->technoRecolteArgile = $this->initDataJoueur($objetJoueur['tech_recolte_argile']);
+                $this->technoRecolteEau = $this->initDataJoueur($objetJoueur['tech_recolte_eau']);
+                $this->technoRecolteNourriture= $this->initDataJoueur($objetJoueur['tech_recolte_nourriture']);
+                $this->technoRecolteCire = $this->initDataJoueur($objetJoueur['tech_recolte_cire']);
+                $this->ouvriereBoisPlaine = $this->initDataJoueur($objetJoueur['ouvriere_bois_plaine']);
+                $this->ouvriereBoisMarecage = $this->initDataJoueur($objetJoueur['ouvriere_bois_marecage']);
+                $this->ouvriereBoisForet = $this->initDataJoueur($objetJoueur['ouvriere_bois_foret']);
+                $this->ouvriereCire = $this->initDataJoueur($objetJoueur['ouvriere_cire']);
+                $this->ouvriereArgilePlaine = $this->initDataJoueur($objetJoueur['ouvriere_argile_plaine']);
+                $this->ouvriereArgileForet = $this->initDataJoueur($objetJoueur['ouvriere_argile_foret']);
+                $this->ouvriereArgileMarecage = $this->initDataJoueur($objetJoueur['ouvriere_argile_marecage']);
+                $this->ouvriereEauPlaine = $this->initDataJoueur($objetJoueur['ouvriere_eau_plaine']);
+                $this->ouvriereEauForet = $this->initDataJoueur($objetJoueur['ouvriere_eau_foret']);
+                $this->ouvriereEauMarecage = $this->initDataJoueur($objetJoueur['ouvriere_eau_marecage']);
+                $this->ouvriereNourriturePlaine = $this->initDataJoueur($objetJoueur['ouvriere_nourriture_plaine']);
+                $this->ouvriereNourritureForet = $this->initDataJoueur($objetJoueur['ouvriere_nourriture_foret']);
+                $this->ouvriereNourritureMarecage = $this->initDataJoueur($objetJoueur['ouvriere_nourriture_marecage']);
+                $this->boisTotal = $this->initDataJoueur($objetJoueur['bois_total']);
+                $this->argileTotal = $this->initDataJoueur($objetJoueur['argile_total']);
+                $this->eauTotal = $this->initDataJoueur($objetJoueur['eau_total']);
+                $this->nourritureTotal = $this->initDataJoueur($objetJoueur['nourriture_total']);
+                $this->cireTotal = $this->initDataJoueur($objetJoueur['cire_total']);
+                $this->idJoueur = $this->initDataJoueur($objetJoueur['id_joueur']);
+        }
+
+        private function initDataJoueur(int $data){
+                if($data >= 0 ){
+                        $dataValid = $data;
+                }
+                else{
+                       $dataValid = 0; 
+                }
+
+                return $dataValid;
         }
 
 
@@ -63,34 +78,35 @@ final class CronJoueur
         public function incrementeRessource(){
 
                 $prodCire = ((1 + ($this->technoRecolteCire/100)) * RESSOURCE_CIRE_BASE ) * $this->ouvriereCire ;
-                $this->cireTotal = $prodCire + $this->cireTotal;
+                $this->cireTotal = ceil($prodCire + $this->cireTotal);
+
 		
                 $prodBoisPlaine =  ((1 + ($this->technoRecolteBois/100)) * RESSOURCE_BOIS_BASE) * COEF_BOIS_PLAINE * $this->ouvriereBoisPlaine;
 		$prodBoisForet =  ((1 + ($this->technoRecolteBois/100)) * RESSOURCE_BOIS_BASE) * COEF_BOIS_FORET * $this->ouvriereBoisMarecage;
 		$prodBoisMarecage =  ((1 + ($this->technoRecolteBois/100)) * RESSOURCE_BOIS_BASE) * COEF_BOIS_MARECAGE * $this->ouvriereBoisForet;
 				
-                $this->boisTotal = $prodBoisPlaine + $prodBoisForet + $prodBoisMarecage + $this->boisTotal;
+                $this->boisTotal = ceil($prodBoisPlaine + $prodBoisForet + $prodBoisMarecage + $this->boisTotal);
 
 
 		$prodArgilePlaine =  ((1 + ($this->technoRecolteArgile/100)) * RESSOURCE_ARGILE_BASE) * COEF_ARGILE_PLAINE * $this->ouvriereArgilePlaine;
 		$prodArgileForet =  ((1 + ($this->technoRecolteArgile/100)) * RESSOURCE_ARGILE_BASE) * COEF_ARGILE_FORET * $this->ouvriereArgileForet;
 		$prodArgileMarecage =  ((1 + ($this->technoRecolteArgile/100)) * RESSOURCE_ARGILE_BASE) * COEF_ARGILE_MARECAGE * $this->ouvriereArgileMarecage;
 			
-                $this->argileTotal = $prodArgilePlaine + $prodArgileForet + $prodArgileMarecage + $this->argileTotal;
+                $this->argileTotal = ceil($prodArgilePlaine + $prodArgileForet + $prodArgileMarecage + $this->argileTotal);
 
 
 		$prodEauPlaine =  ((1 + ($this->technoRecolteEau/100)) * RESSOURCE_EAU_BASE) * COEF_EAU_PLAINE * $this->ouvriereEauPlaine;
 		$prodEauForet =  ((1 + ($this->technoRecolteEau/100)) * RESSOURCE_EAU_BASE) * COEF_EAU_FORET * $this->ouvriereEauForet;
 		$prodEauMarecage=  ((1 + ($this->technoRecolteEau/100)) * RESSOURCE_EAU_BASE) * COEF_EAU_MARECAGE * $this->ouvriereEauMarecage;
 			
-                $this->eauTotal =  $prodEauPlaine + $prodEauForet + $prodEauMarecage + $this->eauTotal;
+                $this->eauTotal =  ceil($prodEauPlaine + $prodEauForet + $prodEauMarecage + $this->eauTotal);
 
 
 		$prodNourriturePlaine =  ((1 + ($this->technoRecolteNourriture/100)) * RESSOURCE_NOURRITURE_BASE) * COEF_NOURRITURE_PLAINE * $this->ouvriereNourriturePlaine;
 		$prodNourritureForet =  ((1 + ($this->technoRecolteNourriture/100)) * RESSOURCE_NOURRITURE_BASE) * COEF_NOURRITURE_FORET * $this->ouvriereNourritureForet;
 		$prodNourritureMarecage =  ((1 + ($this->technoRecolteNourriture/100)) * RESSOURCE_NOURRITURE_BASE) * COEF_NOURRITURE_MARECAGE * $this->ouvriereNourritureMarecage;
 
-                $this->nourritureTotal = $prodNourriturePlaine + $prodNourritureForet + $prodNourritureMarecage + $this->nourritureTotal;
+                $this->nourritureTotal = ceil($prodNourriturePlaine + $prodNourritureForet + $prodNourritureMarecage + $this->nourritureTotal);
 
                 $bdd =  BddManager::getBdd();
 

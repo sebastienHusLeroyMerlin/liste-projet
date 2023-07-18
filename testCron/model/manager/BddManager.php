@@ -1,6 +1,6 @@
 <?php
 
-    require_once('C:\wamp64\www\PHP\liste-projet\testCron\model\constante.php');
+    require_once('D:\wamp64\www\Worspace_Generale\Workspace_PHP\tempo\liste-projet\testCron\model\constante.php');
 
     class BddManager{
 

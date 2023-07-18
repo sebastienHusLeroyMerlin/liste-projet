@@ -7,17 +7,23 @@
 
     // je recupere toute les infos des joueurs
 
-    $reqRecupListDataJoueur = $bdd->exec('SELECT * FROM technologie_joueur as tj
-                                          INNER JOIN membre as m on tj.id_joueur = m.id ');
+    $reqRecupListDataJoueur = $bdd->query('SELECT * FROM membre as  m
+                                          INNER JOIN technologie_joueur as tj on tj.id_joueur = m.id 
+                                          INNER JOIN ressource as r on r.id_joueur = m.id');
 
-    var_dump($reqRecupListDataJoueur);
-    
-    while($joueur = $reqRecupListDataJoueur)
+    $listDataJoueur = $reqRecupListDataJoueur->fetchAll();
+    $reqRecupListDataJoueur->closeCursor();
+    //var_dump($listDataJoueur);
+
+    foreach($listDataJoueur as $joueur)
 	{
-		
+        //var_dump($joueur);
+
         $objetJoueur = New CronJoueur($joueur);
+        var_dump($objetJoueur);
+
+        $objetJoueur->incrementeRessource();
+
 	}
 
-    $reqRecupListDataJoueur->closeCursor();
-
-
+    

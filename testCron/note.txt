@@ -119,4 +119,11 @@ prod ressource stoppé
 prod armée stoppé
 mode vacance pour minimum 1 semaine pas possible d annuler mode vacance avant max deux mois 
 techno stoppé la ou elle en est 
+
+
+--------------
+
+
+ressource :
+on incremente toujours a l arrondis superieur
  
