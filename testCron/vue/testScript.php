@@ -2,8 +2,8 @@
 
 		$localisation = 'testScript' ;
 		
-		include('../model/traitementAffichageInformation.php');
-		include('../model/fonction.php');
+		include('../modele/traitementAffichageInformation.php');
+		include('../modele/fonction.php');
 
 		$section = 'sectionScript';
 		require_once('template/skeleton.php');

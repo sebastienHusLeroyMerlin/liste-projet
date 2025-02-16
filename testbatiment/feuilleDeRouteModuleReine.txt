@@ -1,0 +1,7 @@
+pour le systeme de qualite de nourriture 
+besoin de plusieurs type de bouff
+    interface graph ne doit montrer que celle que nous avons 
+    interface graph reine ne doit proposer que celle que nous avons
+
+besoin de modifier la bdd pour prendre en compte les different type de bouff 
+profiter pour les different type de ressource specifique 

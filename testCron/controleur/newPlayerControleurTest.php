@@ -1,9 +1,9 @@
 <?php
 
 
-    require_once('../model/manager/UserManager.php');
-    require_once('../model/manager/ColonieManager.php');
-    require_once('../model/manager/ToolsManager.php');
+    require_once('../modele/manager/UserManager.php');
+    require_once('../modele/manager/ColonieManager.php');
+    require_once('../modele/manager/ToolsManager.php');
 
     $playerName = ToolsManager::validData($_POST['name']);
     $newPlayer = new UserManager($playerName);

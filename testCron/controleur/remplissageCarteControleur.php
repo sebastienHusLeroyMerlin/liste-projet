@@ -2,8 +2,8 @@
 
 /********** Note classe sans doute tempo ses etape seront faite a l inscription du joueur  *******/
 // controleur d insertion de joueur sur la carte
-    require_once('../model/manager/WorldMapManager.php');
-    require_once('../model/constante.php');
+    require_once('../modele/manager/WorldMapManager.php');
+    require_once('../modele/constante.php');
     
     /* 
         A l'inscription du premier joueur au moment de l inserer sur la carte

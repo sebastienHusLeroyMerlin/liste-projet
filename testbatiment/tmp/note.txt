@@ -1,0 +1,129 @@
+regle de jeux 
+
+1 journée = 1 h 
+1 tour = 15 min = 1 journée dans le jeu 
+une saison = 1 semaine dans le jeu  saison = hiver, printemps, ete , automne
+
+loge royale:
+un level de batiment de logge royal permet d augmenter le nombre d oeuf produit de base , 
+la techno soin permet de diminuer le temps de prod, le niveau de la couveuse permet de debloquer plus de place de formation simultanée  
+
+Marché: 
+plus le marché est eleve plus on peut y mettre douvriere 
+la technologie permet de transporter plus de ressource par ouvri 
+vitesse de deplacement influ sur toute les unité 
+role  specifique commercante ect ...
+
+chambre sexué pour faire des unité qui essaimeron et avoir d autre colonie ...
+
+
+regle general 
+un batiment dbloque des place ( pour y mettre des fourmis )
+le niveau d expertise de la fourmis permet de prendre en charge plus d element de base ) 
+la technologie debloque le niveau d expertise possible de la fourmis 
+la technologie permet les stat de base d un batiment
+
+
+inserer une durée de vie pour les fourmis et autre 
+ouvri 1 ans
+chaque ouvri specialise voit sa vie augmenté selon son grade de 10% 
+
+
+
+si plus asser de nourriture:
+- ponte de la reine stopée
+- a chaque nouveau tour perte d'une partie et des ouvriere ete entre 5 et 10% automne 10 -20 hivert 20 - 40 printemps 15 - 30
+( la technologie cannibalisme permet de reduire la probabilité de declencher un evenement cannibal en cas de manque de nourriture)
+
+possibilité de mettre des priorité pour les ouvriere et armée
+en cas de manque de nourriture les secteur a la priorité la plus basse meurent en premiere
+
+
+chaque unité a sa propre consommation de nourriture par tour 
+
+nourriture et miella  sont different 
+le miellat sert de booster de morale pour l armée 
+plus ils en ont plus ils restent motivé meme apres un echec ou une defaite 
+
+
+les unité militaire et civile peuvent progresser de niveaux 
+ouvri = polyvalente 
+en revanche une ouvri specialisé ne peut plus redevenir autre chose et ne peux que faire le travail de sa specialisation ->sauf si techno reconversion
+techno 1 de reconversion debloque l'ouverture d'un batiment reconversion ( a nommer autrement ) ou on peut y placer des fourmis plus il y a de fourmis plus on gagne de point de reconversion 
+les pts de reconversion permettent de changer de specialisation d'une fourmis ( selon la specialite de la fourmis cela coute plus ou moin de point pour en changer)
+les autres niveau de la techno reconversion permettent d augmenter le nombre de point gagner par unité affecté
+
+
+le joueur qui determine si les unité peuvent etre promue ou non 
+exemple ouvri alloué a la couveuse il faut 30 exp pour evoluer une ouvri en nourrice une ouvrierre = 1 xp/j une nourrice 2xp/j
+60j de plus pour nourrice d elite 3xp/j
+90j de plus pour nourrice d'elite 2 etoile 4xp/j ect 
+plus l ouvri specialisé et haute plus elle gagne d xp par jour 
+un stock d xp max par batiment ( qui augmente avec le niveau du batiment puis par recherche )
+les unitépeuvent etre promu automatiquement 
+
+plus une ouvris  est specialisé plus elle est efficace dans sa tache exemple une ouvris s occupe de 1 oeuf une nourrice 1.2 ect 
+
+
+le joueur aura le choix de venerer une divinité 
+les divinité octroie des bonus 
+
+integrer un convertisseur de ressources -> acce pour les abo, % de collecte le % collecté servira a financer quelque chose mais quoi ?
+
+-----
+
+carte
+
+les tuile possedes :
+    - un biomme chaud froid temperé influe sur la meteo
+    - un relief influe sur les ressources
+    - un point d'interet ( si colonisé ne peut pas faire apparaitre de point d interet ex evenement mission archeo, monstre, mine( a revendiquer pour pouvoir etre exploité), trésor  )
+
+
+    Note : La race du nouveau joueur determine le biome de sa case ( qui l'avantage )
+        cases type merveille 1 chance sur 800 
+
+chaque biome possede ses propre espece a chasser qui offre different item pour la personalisation de son armée
+( favorisera le commerce )
+
+
+
+------
+
+Infos generale du site 
+compteur de bebette tuées
+par 24h
+par semaine 
+ voir vus detaillée par espece ( dont pnj )
+
+ selon nombre de bebete tuée par joueur octroi des badge, possibilite d activé ou non certain titre contre une ressource speciale 
+----
+
+
+Option pour joueur payant peut : 
+
+    - définir une vision de carte plus grande 
+    7*7 9*9  defaut 5*5 ( piste pour se faire sans avoir de trop grosse deformation creer des classe dynamique
+    chaque classe correspond a du css il sera juste activer o non)
+
+Achat de skin personalisés
+
+
+-------
+
+mode vacance :
+met tout le compte en mode stop si construction en cour = mise en stop ne perd pas ce qui est deja fait
+si armée en route deplacement annuler des la validation du mode vacance
+compte inataquable 
+prod ressource stoppé 
+prod armée stoppé
+mode vacance pour minimum 1 semaine pas possible d annuler mode vacance avant max deux mois 
+techno stoppé la ou elle en est 
+
+
+--------------
+
+
+ressource :
+on incremente toujours a l arrondis superieur
+ 

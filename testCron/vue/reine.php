@@ -2,8 +2,8 @@
 
 		$localisation = 'reine' ;
 		
-		include('../model/traitementAffichageInformation.php');
-		include('../model/fonction.php');
+		require_once('../modele/traitementAffichageInformation.php');
+		require_once('../modele/fonction.php');
 
 		$section = 'sectionReine';
 		require_once('template/skeleton.php');

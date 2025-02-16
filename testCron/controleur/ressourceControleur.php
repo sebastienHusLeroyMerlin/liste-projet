@@ -1,7 +1,7 @@
 <?php
 
     session_start();
-    require_once('../model/manager/ToolsManager.php');	
+    require_once('../modele/manager/ToolsManager.php');	
 
     if(isset($_GET['section']))
     {

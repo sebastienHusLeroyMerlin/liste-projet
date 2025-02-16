@@ -41,6 +41,7 @@ h1
 	border:solid aqua ;
 	text-align:center;
 	display:flex;
+	flex-direction: row;
 	flex-wrap:wrap;
 	justify-content:center;
 }	
@@ -48,15 +49,19 @@ h1
 .ressource
 {
 	
-	text-align:center;
+	display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 	color:white;
-	width:19%;
+	width:150px;
+	height: 60px;
 	margin:4px;
 	border:solid black ;
 	background-color:purple;
 	border-radius:15px;
-	 
-	text-align:center;
 }
 
 
@@ -210,12 +215,29 @@ h1
 
 form
 {
-	border:solid black 2px;
+	/* border:solid black 2px; */
 	border-radius:10px;
 	box-sizing:border-box;
+}
 
-	
-	--flex-direction:column;
+form input[type= submit]
+{
+	background-color: #1c521b;
+	border: none;
+	border-radius: 5px;
+	color: white;
+	padding: 10px;
+	text-decoration: none;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+form input[type= submit]:hover
+{
+	scale: 1.1;
+	color:#090E7C;
+	background-color:#0EA20B;
+	transition: 0.3s;
 }
 
 .formRessource
@@ -302,6 +324,7 @@ form
 	/*text-align:center;*/
      margin: 0 auto;
      width: 300px; 
+	/*border:solid orange 5px;*/
 
 }
 
@@ -1359,4 +1382,19 @@ h1,h2,h3
 .verti
 {
   transform:rotate(-45deg);
+}
+
+/********************/
+/***   BATIMENT   ***/
+/********************/
+
+.conteneurBatiment
+{
+	border:solid red;
+}
+
+.vignetteBatiment
+{
+	margin:5px;
+	width:180px;
 }

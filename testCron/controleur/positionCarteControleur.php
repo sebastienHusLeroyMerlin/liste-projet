@@ -1,8 +1,8 @@
 <?php
     session_start();
 
-    require_once('../model/constante.php');
-    require_once('../model/manager/WorldMapManager.php');
+    require_once('../modele/constante.php');
+    require_once('../modele/manager/WorldMapManager.php');
 
     //TODOgerer le cas ou une des coordonnee ou les deux sont en dehors de la map
 

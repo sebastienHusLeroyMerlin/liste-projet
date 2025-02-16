@@ -8,11 +8,11 @@
 
 		<div class="divGeneral">
 
-			<h2><?= ucfirst($destination); ?></h2>
+			<h2><?= ucfirst($localisation); ?></h2>
 
 			<?php
 				var_dump($_SESSION);
-				require_once('../vue/component/section/'. $section .'.php');
+				require_once('../vue/component/section/'. $localisation .'Section.php');
 			?>
 
 		</div>

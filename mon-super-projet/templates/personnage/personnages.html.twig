@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Personnages{% endblock %}
+
+{% block body %}
+<h1>Personnages</h1>
+
+    <p>Futur liste de tout les personnages</p>
+
+    Nom du personnage : {{perso_name}}</br>
+
+    {% for key, carac in caracteristiques %}
+        {{key}} : {{ carac }} </br>
+    {% endfor %}
+
+
+
+{% endblock %}

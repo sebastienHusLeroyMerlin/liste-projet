@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Image{% endblock %}
+
+{% block body %}
+
+    {% for img in tabImg  %}
+        
+        <img src="{{asset("images/armes/{{~img~}}.png")}}" />
+
+    {% endfor %}
+
+    
+
+{% endblock %}

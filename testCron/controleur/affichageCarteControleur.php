@@ -1,5 +1,5 @@
 <?php
-	require_once('../model/manager/WorldMapManager.php');
+	require_once('../modele/manager/WorldMapManager.php');
 	
 	//hypo a mettre sous forme de session sinon pb d affichage
 

@@ -28,3 +28,4 @@ TODO
 - ajouter un systeme de guilde
 - selon biome les batiment coutent plus ou moins cher dans la meme ressource par rapport a un autre 
 - creer une classe tuile (tile ) et y deporter tout ce qui s y refere dans la classe creation de carte
+- ajouter production par heure en dessous des ressources

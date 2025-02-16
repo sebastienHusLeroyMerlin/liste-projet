@@ -2,8 +2,8 @@
 
 //todo faire en sorte que le login soit unique
 
-    require_once ('../models/UserManager.php');
-    require_once ('../models/SaltManager.php');
+    require_once ('../modele/UserManager.php');
+    require_once ('../modele/SaltManager.php');
     
     // 1 - determination quel formulaire a �t� valid� ?
     // 1a - formulaire Inscription
