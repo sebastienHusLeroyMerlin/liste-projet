@@ -1,0 +1,4 @@
+id_bat1 --> solarium
+id_bat2 --> couveuse
+id_bat3 --> logeroyale
+id_bat5 --> digesteur

@@ -1,0 +1,31 @@
+page CONNEXION
+
+crypter mot de passe 
+verifier pk possible de se co avec champ vide
+implementer systeme d inscruption 
+
+Page inscription 
+a implementer 
+
+Page de deco 
+a implementer 
+
+Note reflexion a avoir autour du message de deco doit il avoir sa propre page ou doit il etre afficher sur la page d accueil / connexion 
+
+
+Page accueil 
+fct incrementer ok qd compte existe
+
+menu nav
+accueil ok 
+reine ok 
+ressources ok 
+marché ok
+
+
+
+TODO
+- ajouter un systeme de guilde
+- selon biome les batiment coutent plus ou moins cher dans la meme ressource par rapport a un autre 
+- creer une classe tuile (tile ) et y deporter tout ce qui s y refere dans la classe creation de carte
+- ajouter production par heure en dessous des ressources

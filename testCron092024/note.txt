@@ -1,0 +1,750 @@
+regle de jeux 
+
+Todo : a confirmer
+
+1 journée = 1 h 
+1 tour = 15 min = 1 journée dans le jeu 
+une saison = 1 semaine dans le jeu  saison = hiver, printemps, ete , automne
+
+***********************
+**                   **
+**      BATIMENT     **
+**                   **
+***********************
+
+loge royale:
+un level de batiment de logge royal permet d augmenter le nombre d oeuf produit de base , 
+la techno soin permet de diminuer le temps de prod, le niveau de la couveuse permet de debloquer plus de place de formation simultanée  
+
+Marché: 
+plus le marché est eleve plus on peut y mettre douvriere 
+la technologie permet de transporter plus de ressource par ouvri 
+vitesse de deplacement influ sur toute les unité 
+role  specifique commercante ect ...
+
+chambre sexué pour faire des unité qui essaimeron et avoir d autre colonie ...
+
+Laboratoire de recherche :
+les niveaus de base permettent de debloqué des recherches fondamentales
+puis avec une recherche specifique
++ le labo est eleve plus il confere un bonus a toutes les technologies de base
+ex techno 1 pre requis labo 1 si labo au niveau 10 alors la techno 1 de base amelioré de x%
+plus le labo se devellope plus il aura besoins de type de ressource differente
+
+Atelier de pollisage
+permet de transformer les pierres elements brute en pierre precieuses
+plus le niveau est elevé plus l atelier peut faire des pierre finie a partir d une pierre brute
+
+Stockage :
+Le stockage permet de stocker les different type de materiaux repartis en 3 type
+plus le batiment est devellopé plus le stockage de base augmente
+une technologie permet de donner un bonus sur le stockage de base du batiment et de debloquer des modules
+les modules permettent de stocker des ressources specifiques ( choisie par le joueur au moment du debloquage du module )
+
+
+    - grenier:
+      stocke les types de nourritures
+      un emplacement de base pour le type de nourriture de la race choisie
+
+    - entrepot de materiaux:
+      stock les different materiaux emplacement de base de la race + un emplacement pour les pierre brute associé a la race debloquable en meme temps qu un autre module de stockage
+
+    - Reservoir
+      stock les ressources liquide
+
+    - coffre
+      permet de stocker les pierre precieuse finie
+
+
+Temple
+ le temple permet de rendre hommage a sa divinite
+ c'est le batiment qui apporte le plus de point de prestige par niveau
+
+
+ techno theologie
+ permet de reduire la chute de satisfaction de sa divinité et permet d augmenter le niveau du temple
+
+
+
+Note :
+plus un batiment est eleve plus il demande de ressource et de type de ressource differente
+pour forcer les joueurs a utiliser piller acheter tout les types de ressources essayer d implementer un systeme
+qui definit aleatoirement un type de ressource
+
+chaque batiment rapporte des points de prestige 1 point de base par niveau de batiment chaque jour
+
+
+***************************
+**                       **
+**     regle general     **
+**                       **
+***************************
+
+un batiment dbloque des place ( pour y mettre des fourmis )
+le niveau d expertise de la fourmis permet de prendre en charge plus d element de base ) 
+la technologie debloque le niveau d expertise possible de la fourmis 
+la technologie permet les stat de base d un batiment
+
+
+inserer une durée de vie pour les fourmis et autre 
+ouvri 1 ans
+chaque ouvri specialise voit sa vie augmenté selon son grade de 10% 
+
+
+
+si plus asser de nourriture:
+- ponte de la reine stopé
+- a chaque nouveau tour perte d'une partie et des ouvriere ete entre 5 et 10% automne 10 -20 hivert 20 - 40 printemps 15 - 30
+( la technologie cannibalisme permet de reduire la probabilité de declencher un evenement cannibal en cas de manque de nourriture)
+
+possibilité de mettre des priorité pour les ouvriere et armée
+en cas de manque de nourriture les secteur a la priorité la plus basse meurent en premiere
+
+
+chaque unité a sa propre consommation de nourriture par tour 
+
+nourriture et miella  sont different 
+le miellat sert de booster de morale pour l armée 
+plus ils en ont plus ils restent motivé meme apres un echec ou une defaite 
+
+
+les unité militaire et civile peuvent progresser de niveaux 
+ouvri = polyvalente 
+en revanche une ouvri specialisé ne peut plus redevenir autre chose et ne peux que faire le travail de sa specialisation
+le joueur qui determine si les unité peuvent etre promue ou non 
+exemple ouvri alloué a la couveuse il faut 30 exp pour evoluer une ouvri en nourrice une ouvrierre = 1 xp/j une nourrice 2xp/j
+60j de plus pour nourrice d elite 3xp/j
+90j de plus pour nourrice d'elite 2 etoile 4xp/j ect 
+plus l ouvri specialisé et haute plus elle gagne d xp par jour 
+un stock d xp max par batiment ( qui augmente avec le niveau du batiment puis par recherche )
+les unitépeuvent etre promu automatiquement 
+
+
+le joueur aura le choix de venerer une divinité 
+les divinité octroie des bonus 
+
+integrer un convertisseur de ressources -> acce pour les abo, % de collecte le % collecté servira a financer quelque chose mais quoi ?
+
+**********************
+**     Divinité     **
+**********************
+
+
+
+
+carte
+
+les tuile possedes :
+    - un biomme chaud froid temperé influe sur la meteo
+    - un relief influe sur les ressources
+    - un point d'interet ( si colonisé ne peut pas faire apparaitre de point d interet ex evenement mission archeo, monstre, mine( a revendiquer pour pouvoir etre exploité), trésor  )
+
+
+    Note : La race du nouveau joueur determine le biome de sa case ( qui l'avantage )
+        cases type merveille 1 chance sur 800 
+
+chaque biome possede ses propre espece a chasser qui offre different item pour la personalisation de son armée
+( favorisera le commerce )
+
+
+*******************
+**     Races     **
+*******************
+
+Plusieurs races jouable de base
+Arraignée // eau
+termite // terre
+abeille // feu
+fourmis // vent
+
+deux races débloquable
+Frelon // ombre
+vers Luisant // lumiere
+
+Note
+- chaque race possede ses propre ressources mais aura aussi besoin des ressources des autre races pour continuer a se develloper
+- chaque race est associée à un element
+
+
+***********************
+**     Ressources    **
+***********************
+on incremente toujours a l arrondis superieur
+
+ressources de base
+
+ressources spéciale // race
+
+
+ressources speciale // element
+
+
+permet d extraire des pierre_brute de l element associé a la race
+seule cette race peut extraire et transformer les pierre qui lui sont associé ( lié a la morphologie de la race ^^ )
+il faut une ou un ensembe de techno pour debloquer la ressource brute
+il faut une techno ( pollisage ) pour ameliorer l efficacité de transformation de l atelier
+il faut une techno ou un ensemble de techno pour debloquer le batiment de transformation : atelier de polissage
+
+
+
+******************
+**     Carte    **
+******************
+
+les tuile possedes :
+
+    - un biomme chaud froid temperé influe sur la meteo
+
+    - un relief influe sur les ressources
+
+    - un point d'interet ( si colonisé ne peut pas faire apparaitre de point d interet ex evenement mission archeo, monstre, mine( a revendiquer pour pouvoir etre exploité), trésor  )
+
+
+
+
+
+    Note : La race du nouveau joueur determine le biome de sa case ( qui l'avantage )
+
+        cases type merveille 1 chance sur 800
+
+
+**************************
+
+
+Infos generale du site 
+compteur de bebette tuées
+par 24h
+par semaine 
+ voir vus detaillée par espece ( dont pnj )
+
+ selon nombre de bebete tuée par joueur octroi des badge, possibilite d activé ou non certain titre contre une ressource speciale 
+
+vue d empire pour gerer rapidement son empire lorsque celui ci se devellope
+
+
+Option pour joueur payant peut : 
+
+    - définir une vision de carte plus grande 
+    7*7 9*9  defaut 5*5 ( piste pour se faire sans avoir de trop grosse deformation creer des classe dynamique
+    chaque classe correspond a du css il sera juste activer o non)
+
+Achat de skin personalisés
+
+
+mode vacance :
+
+met tout le compte en mode stop si construction en cour = mise en stop ne perd pas ce qui est deja fait
+si armée en route deplacement annuler des la validation du mode vacance
+compte inataquable
+prod ressource stoppé
+prod armée stoppé
+mode vacance pour minimum 1 semaine pas possible d annuler mode vacance avant max deux mois
+techno stoppé la ou elle en est
+
+
+-----------------------------------
+
+********************************
+***                          ***
+***     NOTE ERGONOMIQUE     ***
+***                          ***
+********************************
+cliquer sur les ressource nous mene directement sur le lieu de prod si batiment deja debloque
+
+
+********************************
+***                          ***
+***     REGLES GENERALES     ***
+***                          ***
+********************************
+
+1 journée = 1 h
+1 tour = 15 min = 1 journée dans le jeu
+une saison = 1 semaine dans le jeu  saison = hiver, printemps, ete , automne
+
+
+un batiment dbloque des place ( pour y mettre des fourmis ) les place permettent de travailler plus vite
+Plus un batiment est eleve plus offre une contrepartie importante
+le niveau d expertise de la fourmis permet de prendre en charge plus d element de base
+la technologie debloque le niveau d expertise possible de la fourmis
+la technologie permet les stat de base d un batiment
+
+Le jeu comprend a minima 4 race jouable des le début et deux ia jouable par la suite selon critere a debloquer par l ensemble des joueurs
+
+inventaire present associé aux joueur : pourra contenir tout les objets specieuax
+pour les reine / generaux
+
+********************
+***              ***
+***     RACE     ***
+***              ***
+********************
+
+chaque race sait fabriquer une ressource qui lui est propre mais dont otu le monde a besoin pour se develloper
+Chaque race produit un type de nourriture qui lui est propre mais chaque race peut avoir besoin de tout les type de nourriture
+chaque race possede sa divinité
+chaque race est associée a un element
+
+abeille ---> vent
+fourmis ---> feu
+termite ---> terre
+arraignée -> eau
+
+frelon --> ombre
+ver luisant --> lumiere
+
+
+**********************
+***                ***
+***     Guilde     ***
+***                ***
+**********************
+
+Possibilite d adherer a une Guilde
+batisseur
+chercheur
+explorateur
+autodefense
+
+************************
+***                  ***
+***     DIVINITE     ***
+***                  ***
+************************
+
+chaque divinite aura une specialite propre
+chaque divinite possede des attribut qui offriront un bonus a tout les joueur de sa race
+chaque divinite pourra etre  loué par des offrandes des joueur pour monter leur different attribut
+les divinite ne peuvent etre loué que depuis le temple
+
+apis -- abeille m
+eralia -- termite f
+anansia -- araignée f
+mirtas -- fourmis m
+orokar -- frelon m
+meluzine -- vers luisant f
+
+humeur du dieu
+change selon les offrandes quotidienne de ses partisans
+
+chaque nouvelle journée ( une journée de dieu = de 12h a 12h) l'humeur du dieu de la veille est evalué si en desous de 30% 1 chance sur 3 de disparaitre en desous de 20% 1 chance sur 2 en desous de 15 il disparait
+disparition temporairement entre 1 et 5 j aleatoirement puis reaparait normalement
+
+pour la nouvelle journée humeur du dieu reste a 50% jusqu a 18h meme si aucun dons ( pour laisser le temps aux joueurs)
+apres 18h l humeur du dieu est reevaluée chaque heure
+
+attention un dieu en colere peut declencher des evenements aleatoirement
+
+Comment satisfaire un dieu:
+
+une offrande minimum est determiner par le nombre de joueur de sa race actif sur les 24 derniere heures
+les donneurs pris en compte ne sont que les joueur aillant debloqué la technologie ressources precieuse ( qui debloque le batiment mine)
+la production globale sur 24h( reelle ) de pierre precieuse est evalué au changement de journéé de dieu (a 12h ) 95% de la prod globale lui son necessaire pour avoir 100% de bonne humeur
+le global *0.95 / nb joueur actif et avec techo /5 pour 75% d humeur qd un seul type de pierre
+
+1 type 95% du global pour 100% d'humeur
+2 type 75% du global pour 100% d'humeur
+3 type 55% du global pour 100% d'humeur
+4 type 35% du global pour 100% d'humeur
+5 type 10% du global pour 100% d'humeur
+
+
+un joueur peut donner jusqu a 5 fois le minimum de maniere optimal au dela l efficacite baisse
+jusqu a 10 fois son don vaut pour 75%
+jusqu a 15 fois  son don vaut pour 50%
+au dela il ne vaut plus que 25%
+
+un dieux peut etre en colere s il se sent delaissé en desous de 50% triste
+a partir de 40% colere divine
+
+
+faveur des dieux
+convertir des ressource de l un a l autre ( selon taux de change qui differ selon humeur du dieu )
+
+possibilite de debloquer des dieux mineures : permet de cumuler les bonusattention les dieux mineure sont au choix
+et ne cumulent pas tout les attribus des dieux majeur ( determiner un nombre max pour dieux mineure )
+attention ils sont aussi exigent en ressource que les dieux majeure ( nombre de place pour les dieux debloqué selon niveau du temple)
+
+************************
+***                  ***
+***     BATIMENT     ***
+***                  ***
+************************
+
+regle general batiment
+tout les batiment fournissent des points de prestige
+
+depot :
+permet de stocker tout les equipements militaire civile ect
+peut debloquer plusieur module civile ( de base ), militaire , entreprise( si module integré)
+
+
+bourse
+
+
+Ambassade :
+necessaire pour rejoindre / fonder une alliance
+signer des traite a vec d autre joueur plus le niveau est haut plus on peut signer de traité
+
+ambassade d alliance
+
+
+entreprise
+pour produire les ressources rare consommera des ressources de base ( voir des pierre precieuse )
+
+banque
+
+
+taverne
+    recrutement generaux
+    depose de quete
+    effectuer des quetes
+
+
+
+solarium
+
+
+incubateur
+
+
+terrain d entrainement
+permet d augmenter le gain d xp au combat / chasse
+
+
+
+loge
+    soldat
+    ouvriere
+    royale:
+    pour faire des unité qui essaimeron et avoir d autre colonie ...
+
+batiment defensif
+    dome
+    loge imperiale
+
+temple
+plus le temple est eleve plus il fournit de point de prestige
+les points de prestige sont echangeable contre des faveur des divinite
+un seul temple possible de base possibilite d en construire plus si techno debloqué
+un seul temple par colo
+
+loge royale:
+un level de batiment de logge royal permet d augmenter le nombre d oeuf produit de base ,
+la techno soin permet de diminuer le temps de prod, le niveau de la couveuse permet de debloquer plus de place de formation simultanée
+
+Marché:
+plus le marché est eleve plus on peut y mettre douvriere
+la technologie permet de transporter plus de ressource par ouvri
+vitesse de deplacement influ sur toute les unité
+role  specifique commercante ect ...
+
+labo:
+Plus le labo est eleve plus on peut y mettre d'unite chercheuse ( techno pour augmenter le nombre de place )
+Plus le labo est elevee plus on debloque de techno
+Plus le labo est eleve plus il augmente l efficacite de base des technos (0.5% de base   techno labo pour augmenter l augmentation de base des techno )
+
+
+grenier :
+permet de stocker dans les limite du batiment sans degradation les different type de nourriture
+1 slot de base pour la nourriture associé a la race
+
+Entrepot :
+permet de stocker dans les limite du batiment sans degradation les ressource associée
+4 slot de base --> 3 pour les materiaux associé a la race 1 pour les pierre brute
+
+reservoir
+permet de stocker l'eau et le miellat
+le module pour le mielat se debloque au niveau 20 de la techno stockage
+
+Coffre :
+Permet de stocker les pierre precieuse raffinée ( issue des pierre brute )
+
+atelier de taille :
+seul batiment qui permette de tailler les pierre brute de la race en question
+
+mine :
+permet d extraire les pierre brute associé a la race destiné ala taille
+
+digesteur :
+plus le batiment est deve
+
+
+
+si plus asser de nourriture:
+- ponte de la reine stopée
+- a chaque nouveau tour perte d'une partie et des ouvriere ete entre 5 et 10% automne 10 -20 hivert 20 - 40 printemps 15 - 30
+( la technologie cannibalisme permet de reduire la probabilité de declencher un evenement cannibal en cas de manque de nourriture)
+
+possibilité de mettre des priorité pour les ouvriere et armée
+en cas de manque de nourriture les secteur a la priorité la plus basse meurent en premiere
+
+
+chaque unité a sa propre consommation de nourriture par tour
+
+nourriture et miella  sont different
+le miellat sert de booster de morale pour l armée
+plus ils en ont plus ils restent motivé meme apres un echec ou une defaite
+
+
+les unité militaire et civile peuvent progresser de niveaux
+ouvri = polyvalente
+en revanche une ouvri specialisé ne peut plus redevenir autre chose et ne peux que faire le travail de sa specialisation ->sauf si techno reconversion
+techno 1 de reconversion debloque l'ouverture d'un batiment reconversion ( a nommer autrement ) ou on peut y placer des fourmis plus il y a de fourmis plus on gagne de point de reconversion
+les pts de reconversion permettent de changer de specialisation d'une fourmis ( selon la specialite de la fourmis cela coute plus ou moin de point pour en changer)
+les autres niveau de la techno reconversion permettent d augmenter le nombre de point gagner par unité affecté
+
+
+le joueur qui determine si les unité peuvent etre promue ou non
+exemple ouvri alloué a la couveuse il faut 30 exp pour evoluer une ouvri en nourrice une ouvrierre = 1 xp/j une nourrice 2xp/j
+60j de plus pour nourrice d elite 3xp/j
+90j de plus pour nourrice d'elite 2 etoile 4xp/j ect
+plus l ouvri specialisé et haute plus elle gagne d xp par jour
+un stock d xp max par batiment ( qui augmente avec le niveau du batiment puis par recherche )
+les unitépeuvent etre promu automatiquement
+
+plus une ouvris  est specialisé plus elle est efficace dans sa tache exemple une ouvris s occupe de 1 oeuf une nourrice 1.2 ect
+
+
+le joueur aura le choix de venerer une divinité
+les divinité octroie des bonus
+
+integrer un convertisseur de ressources -> acce pour les abo, % de collecte le % collecté servira a financer quelque chose mais quoi ?
+
+
+*********************
+***               ***
+***     CARTE     ***
+***               ***
+*********************
+
+
+les tuile possedes :
+    - un biomme chaud froid temperé influe sur la meteo
+    - un relief influe sur les ressources
+    - un point d'interet ( si colonisé ne peut pas faire apparaitre de point d interet ex evenement mission archeo, monstre, mine( a revendiquer pour pouvoir etre exploité), trésor  )
+
+
+    Note : La race du nouveau joueur determine le biome de sa case ( qui l'avantage )
+        cases type merveille 1 chance sur 800
+
+chaque biome possede ses propre espece a chasser qui offre different item pour la personalisation de son armée
+( favorisera le commerce )
+
+
+********************************************
+***                                      ***
+***     INFOS GENERALES POUR LE SITE     ***
+***                                      ***
+********************************************
+
+
+compteur de bebette tuées
+par 24h
+par semaine
+ voir vus detaillée par espece ( dont pnj )
+
+ selon nombre de bebete tuée par joueur octroi des badge, possibilite d activé ou non certain titre contre une ressource speciale
+----
+
+
+*****************************
+***                       ***
+***     OPTION PAYANTE    ***
+***                       ***
+*****************************
+
+    - définir une vision de carte plus grande
+    7*7 9*9  defaut 5*5 ( piste pour se faire sans avoir de trop grosse deformation creer des classe dynamique
+    chaque classe correspond a du css il sera juste activer o non)
+
+Achat de skin personalisés
+
+
+***************************
+***                     ***
+***     MODE VACANCE    ***
+***                     ***
+***************************
+
+met tout le compte en mode stop si construction en cour = mise en stop ne perd pas ce qui est deja fait
+si armée en route deplacement annuler des la validation du mode vacance
+compte inataquable
+prod ressource stoppé
+prod armée stoppé
+mode vacance pour minimum 1 semaine pas possible d annuler mode vacance avant max deux mois
+techno stoppé la ou elle en est
+
+
+*************************
+***                   ***
+***     RESSOURCES    ***
+***                   ***
+*************************
+
+on incremente toujours a l arrondis superieur
+
+un joueur d une race commence toujours avec ses propre ressources ( 3 de base ou plus a definir ) ainsi que son type de nourriture
+l'eau est commune a toutes les races
+
+chaque race produit un type de nourriture speciale
+miel :
+chair d insecte :
+fibre vegetale :
+champignon :
+
+frelon ?
+vers luisant ?
+
+chaque race produit un type de materiaux speciale
+soie
+salive
+cire
+sable
+
+chaque race peut exploiter un type de pierre precieuse ( voir pour recouper avec les entreprises ??  quel interet d en avoir une ? quel avantage)
+pierre eau --> saphir
+pierre feu --> rubis
+pierre vent --> amethyste
+pierre terre --> emmeraude
+pierre ombre --> diamant noir
+pierre soleil --> diamant blanc
+
+un joueur ne peut evoluer que les ressource assigné a sa race ( a preciser )
+
+
+********************
+***              ***
+***     REINE    ***
+***              ***
+********************
+
+ possibilite d avoir plusieurs reine
+ possibilite de perde sa/ses reine
+ technologie multi reine
+
+ le cout des oeufs de la reine est fixe c'est leur specialisation qui ont un cout different
+qualite 1 etoile --> cout de base * 1
+qualite 2 etoile --> cout de base * 2 // stat de l'oeuf * 2
+qualite 3 etoile --> cout de base * 5 // stat de l'oeuf * 6
+qualite 4 etoile --> cout de base * 8 // stat de l'oeuf * 10
+qualite 5 etoile --> cout de base * 12 // stat de l'oeuf * 15
+
+systeme de ration
+la ration correspond a la quantité de nourriture distribuée a la reine elle influe sur la quantite de ponte
+exemple
+si ponte a 10 par min ( de base sans bonus ) a 1 ration ,alors  ponte 20 a 2 ration, 30 a 4 ration, 40 a 6 ration, 50 a 8 ration, puis augmentation selon suite fibo
+				13(ration), 21, 34 ect
+
+une ration correspond à cout de base selon qualite
+exemple ration * 8 pour une qualite 3 fera que la reine engloutira si cout de base à 5 net ponte de base a 5
+5 * 5 * 8 = 200 de ressource repartis en 80 / 80 / 40  pour un total de 25 oeuf de qualite 3
+meme quantite en qualite 1
+5*1*8 = 40  ressource pour 25 oeuf de qualite 1
+
+TODO A REPRENDRE SELON DIGESTEUR
+
+
+ ---
+
+ RECAP TECHNOLOGIE /
+
+ certaine technologie ne peuvent etre develloper que sur certain biome ( interet pour construire plusieur centre de recherche )
+ possibilite de declarer un centre de recherche maitre qui beneficie d un pourcentage de gain des autres centre de recherches
+ ( plus il y en a mieux c est )
+ q un seul centre de recherche permis au debut pour debloquer les autre besoinde dev une techno
+ besoin d une techno mise en relation des centre
+ besoin d une techno  quipermettent de construire d autre centre de recher
+
+ polygynie : debloque le fait de pouvoir avoir plusieur reine dans une colo
+ colonie : permet d avoir plusieur colo
+ transport : permet de transporter plus de ressource ( affecte les transporteuses )
+
+recolte : permet de recolter plus de ressource ( affecte les recolteuses )
+    bois
+    argile
+    ect
+
+terraformation : permet de changer les propriete d un biome vers un autre
+vitesse de ponte
+
+stockage :
+permet d'augmenter le stockage de base des batiments de stockage
+grace au batiment de stockage pas de degradations des materiaux
+
+le niveau 10, 20, 40, 80, et 160 debloque des modules à ajouter aux different batiment de stockage
+
+conservation des materiaux :
+permet de reduire la perte de materiaux en dehors des limite des entrepots chaque tour ou cela depasse
+ne fonctionne pas pour les liquide ( eau et miellat ) tout liquide suplementaire est perdus
+
+digesteur :
+ permet d augmenter le nombre de nourriture transformable en meme temps
+ permet d augmenter la quantite de base transformer par les ouvri
+
+
+
+
+************************
+***                  ***
+***       UNITE      ***
+***                  ***
+************************
+
+inserer une durée de vie pour les fourmis et autre
+ouvri 1 ans
+chaque ouvri specialise voit sa vie augmenté selon son grade de 10%
+--> une recherche permet d augmenter la base de vie de 0.2%
+
+classe ouvriere
+    recolteuses
+    transporteuse
+    nourrice
+
+classe armée
+
+
+
+possibilite d'équiper toutes les unités pour booster
+leur stats de bases
+leur competence ( possible juste pour les unite deja spécialisées )
+il faudra autant d équipement que d'unités les equipement sont stoker dans le depot
+ils seront volable
+
+------
+
+a la creation du joueur tout les batiment associé a sa race son initialisé a zero
+les batiment de base sont visible ceux non encore debloqué sont a false
+
+recherche diverse pour le jeu
+
+Ce sont certaines plantes herbacées mais surtout les arbres qui produisent la sève qui nourrit ces insectes piqueurs-suceurs :
+sapin, mélèze, chêne, pin, frêne, tilleul, cèdre, châtaignier, orme, érable, peuplier, saule, etc.
+
+
+
+***********************
+***                 ***
+***     HISTOIRE    ***
+***                 ***
+***********************
+
+suite a l effondrement de la civilisation des bipede la nature a repris ses droits
+comme la biodiversite s etait effondré de 90 %
+les especes survivante (principalement des insectes ) ont pu reconquerir les territoire autrefois perdus
+et se sont mis a evoluer evoluer evoluer a fin de ne plus revivre ce que les humain nous ont fait subir jadis
+Cependant plusieurs espece avec des visions differentes pour leur environement se rencontre la lutte pour la suprematie a commence .
+Qui sera la nouvelle espece dominante ?
+Le devellopement de votre civilisation pourra passer par la Guerre, le commerce, l'entre aide, les trahison ou que saije encore ?
+Toutes les opportunité sont bonne
+A toi de voir, le destin est entre tes pattes
+
+
+
+todo 11 09 2024
+l'accueil doit devenir un page recap de ce qui s est passé depuis la derniere connexion
+et ce qui est en cours chasse, attaque, construction, recherche ...
+
+
+
+

@@ -1,0 +1,1400 @@
+body
+{
+	margin:0 auto;
+	
+	border:solid aqua ;
+	background-color: rgb(179, 175, 175);
+}
+
+html
+{
+	border:solid red;
+}
+
+h1
+{
+	border:solid blue;
+}
+
+.divGeneral
+{
+	display: flex;
+	flex-direction: column;
+	width: 75%;
+	border:solid rgb(56, 142, 179);
+}
+
+.message
+{
+	text-align:center;
+	color:red;
+	font-size:20px;
+	background-color:yellow;
+	border:solid red ;
+	border-radius:10px ;
+	padding:4px;
+	margin:10px;
+}
+
+.conteneurRessource
+{
+	border:solid aqua ;
+	text-align:center;
+	display:flex;
+	flex-direction: row;
+	flex-wrap:wrap;
+	justify-content:center;
+}	
+
+.ressource
+{
+	
+	display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+	color:white;
+	width:150px;
+	height: 60px;
+	margin:4px;
+	border:solid black ;
+	background-color:purple;
+	border-radius:15px;
+}
+
+
+.conteneur
+{
+	display:flex;
+	border:solid grey;
+	margin-top:10px;
+	text-align:center;
+}
+
+.conteneurNavigation
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border:solid green 2px;  
+	text-align:center; 
+	width:24%; 
+}
+
+.navigation
+{
+	
+	border:solid black 2px;
+	text-align:center;
+	border-radius: 10px;
+	background-color:purple;
+	width:200px;
+}
+
+.navigation:hover
+{
+	background-color:blue;
+}
+
+.nav:hover
+{
+	color:white;
+}
+
+.nav
+{
+	color:black;
+	text-decoration:none;
+}
+
+
+
+
+
+/*************** mise en forme des vues sur les materiaux  ******************/
+.terrain
+{
+	border:solid black ;
+	border-radius:10px;
+	height :250px;
+	display:flex;
+	flex-wrap:wrap;
+	justify-content:space-around;
+	align-items:center;
+}
+
+
+.conteneurMateriaux
+{
+	
+	border:solid pink 2px;
+	min-width:75%;
+	
+	margin-right:0px;
+}
+
+
+.materiaux
+{
+	border:solid black 3px;
+	border-radius:10px;
+	width:100%;
+	text-align:center;
+	margin:0px;
+	overflow:hidden;
+	
+	
+}
+
+
+.infoMarecage,.infoPlaine,.infoForet,.infoColonie
+{
+	border:solid green;
+	/* flex-wrap:wrap; */
+	display:flex;
+	flex-direction:column;
+	text-align:center;
+	
+}
+
+.paragraphe
+{
+	flex:1;
+}
+
+.cadreRecap
+{
+	width:100%;
+	display:flex;
+	justify-content:space-between;
+	align-items:stretch;
+	border:solid yellow 3px;
+	box-sizing:border-box;
+}
+
+.cadreRessource
+{
+	border:solid brown ;
+	box-sizing:border-box;
+	padding:10px;
+	padding-bottom:10px;
+	height:50px;
+}
+
+.boutton
+{
+	margin-right:10px;
+	margin-left:10px;
+	
+}
+
+.boutton:hover
+{
+	width:90px;
+	height:25px;
+	box-shadow: 0px 0px 15px 4px aqua;
+}
+
+
+.infoPhoto
+{
+	
+	border:solid orange 3px;
+	
+}
+
+.titre
+{
+	border:solid brown;
+	
+}
+
+
+
+form
+{
+	/* border:solid black 2px; */
+	border-radius:10px;
+	box-sizing:border-box;
+}
+
+form input[type= submit]
+{
+	background-color: #1c521b;
+	border: none;
+	border-radius: 5px;
+	color: white;
+	padding: 10px;
+	text-decoration: none;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+form input[type= submit]:hover
+{
+	scale: 1.1;
+	color:#090E7C;
+	background-color:#0EA20B;
+	transition: 0.3s;
+}
+
+.formRessource
+{
+	border:none;
+	border-radius:0;
+}
+
+#bois
+{
+    height:auto;
+	border:solid red;
+	display:flex;
+}
+
+
+
+#eau
+{
+    
+	height:auto;
+	border:solid red;
+	display:block
+}
+
+
+
+#cadre:target 
+{
+    
+	height:380px;
+	border:solid red;
+	display:block
+}
+
+#cadre
+{
+    overflow:hidden;
+	height: 0px;
+	display:none;
+}
+
+#argile
+{
+    
+	height:auto;
+	border:solid red;
+	display:block
+}
+
+#cire
+{
+    
+	height:auto;
+	border:solid red;
+	display:block
+}
+
+#nourriture
+{
+    
+	height:auto;
+	border:solid red;
+	display:block
+}
+
+
+
+
+
+
+
+
+.formRessource:hover
+{
+	
+	 box-shadow: 0px 0px 5px 5px red;
+	 
+	
+}
+
+.encadreGeneral
+{
+	/*text-align:center;*/
+     margin: 0 auto;
+     width: 300px; 
+	/*border:solid orange 5px;*/
+
+}
+
+.encadrePhoto
+{
+	border:solid black 4px;
+	border-radius: 15px;
+	box-shadow: 6px 6px 9px grey;
+	margin-bottom:15px ;
+	 width:0 auto;
+	height:0 auto;
+	background-color:purple;
+	color:white;
+}
+
+h3
+{
+	color:black;
+}
+
+
+
+h1,h2,h3
+{
+	color:blue;
+	text-align:center;
+}
+
+.tchat
+{
+	border:solid black 2px;
+	border-radius:10px;
+	background-color:teal;
+	text-align:center;
+	padding:10px;
+}
+
+#tchatAlli,#tchatGeneral
+{
+	display:inline-block;
+	border:solid black 2px;
+	border-radius:10px;
+	background-color:grey;
+	width:20%;
+	text-decoration:none;
+}
+
+#fenetreAlliance:target 
+{
+    height: 100px;
+	border:solid red;
+	display:block;
+}
+
+#fenetreAlliance
+{
+    overflow:hidden;
+	height: 0px;
+	display:none;
+}
+
+
+#fenetreGenerale:target 
+{
+    height: 100px;
+	border:solid red;
+	display:block;
+}
+
+#fenetreGenerale
+{
+    overflow:hidden;
+	height: 0px;
+	display:none;
+}
+
+#tchatAlli:hover,#tchatGeneral:hover
+{
+	display:inline-block;
+	border:solid black 2px;
+	border-radius:10px;
+	background-color:aqua;
+	width:20%;
+}
+
+.img
+{
+	width:100%;
+}
+
+/* ---   --- */
+.corpPrincipal{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+/* --------------------------------------- */ 
+
+.hexagon {
+	position: relative;
+	width: 66.66px;
+	height: 43.33px;
+	border-left: solid 2px purple;
+	border-right: solid 2px purple;
+   display:flex;
+   align-items:center;
+   justify-content:center;
+   border-radius:2px;
+   margin-left:-2px;
+   transition: transform 0.2s;
+   
+ }
+ 
+ .hexagon:hover {
+	border-left: solid 2px green;
+	border-right: solid 2px green;
+	z-index:1;
+	transform:scale(1.3) translateX(-13px) translateY(-13px);
+	box-shadow: rgb(58, 58, 58) 6px 12px 10px;
+	background-color:cyan;
+	transition: transform 0.5s;
+ }
+ 
+ 
+ .hexagon:before,
+ .hexagon:after {
+	content: "";
+	position: absolute;
+	width: 48.08px;
+	height: 48.08px;
+	transform: scaleY(0.6) rotate(-45deg);
+   border-radius:3px;
+ }
+ 
+ .hexagon:before {
+	top: -24.66px;
+	border-top: solid 2.5px purple;
+	border-right: solid 2.5px purple;
+ }
+ 
+ .hexagon:hover:before {
+	border-top: solid 2.5px green;
+	border-right: solid 2.5px green;
+	background-color:cyan;
+ }
+ 
+ .hexagon:after {
+	bottom: -24.66px;
+	border-bottom: solid 2.5px purple;
+	border-left: solid 2.5px purple;
+ }
+ 
+ .hexagon:hover:after {
+	border-bottom: solid 2px green;
+	border-left: solid 2px green;
+	background-color:cyan;
+	box-shadow: rgb(58, 58, 58) -6px 18px 6px;
+ }
+
+ .ligne{
+	display:flex;
+	align-items:center;
+ }
+
+.carre{
+	--background-color: aquamarine;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position:relative;
+	--:solid red;
+	width: min-content;
+}
+ 
+ .conteneurCarte{
+
+	width:auto;
+	height: auto;
+	padding: auto;
+
+	--background-color: red;
+	position:relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center	;
+   	transform:skew(-65deg, 35deg) rotate(-35deg) scale(0.4);
+ }
+
+ .triangle
+{
+  border-top:solid 50px transparent ;
+  border-right:solid blue 50px;
+  width:0px;
+}
+
+.triangle:hover
+{
+	transform: scale(1.2);
+}
+
+#tr,
+#tl,
+#tt,
+#tb
+{
+	position:absolute;
+}
+
+#tr
+{
+	right:-105px;
+	transform:rotate(-45deg);
+}
+
+#tl
+{
+	left:-70px;
+	transform:rotate(-225deg);
+}
+
+#tb
+{
+	bottom:-70px;
+	transform:rotate(45deg);
+}
+
+#tt
+{
+	top:-70px;
+	transform:rotate(-135deg);
+}
+
+
+
+ .impair
+ {
+   position:relative;
+   left: 34.33px;
+   height:82px;
+ }
+
+ .carretile
+ {
+   height:700px;
+   display:flex;
+   align-items:center;
+   justify-content:center;
+   width:100%;
+   position:relative;
+ }
+
+ #idTile
+ {
+	position: absolute;
+ }
+
+ .spanTile{
+	border:solid red 2px;
+	position: absolute;
+	z-index: 2;
+ }
+
+ 
+
+ /* --- form position --- */
+ .conteneurFormPos{
+	position: absolute;
+	bottom: 110px;
+	right:-90px;
+ }
+
+ #formPos
+{	
+	border:none;
+	padding: 5px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#formPos input[type="text"]{
+	width:50px;
+	height: 25px;
+ }
+
+ #formPos input[type="submit"]{
+	margin:5px;
+	width:105px;
+	height: 25px;
+	border-radius: 5px;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+ }
+
+
+ /* --- Legende carte --- */
+
+ .conteneurLegende{
+	display: flex;
+	flex-direction: column;
+
+	width:275px;
+	height:100px;
+
+	border:solid black 3px;
+	border-radius: 10px;
+
+	position:absolute;
+	bottom:10px;
+	right: -80px;
+
+ }
+
+ /* --- Modal New Player --- */
+ #modalNewPlayer
+ {
+	visibility: hidden;
+
+	display: flex;
+
+	align-items: center;
+	position: absolute;
+
+	background-color: rgba(45, 38, 38, 0.885);
+
+	margin:0px;
+	padding: 15px 30px 15px 30px;
+
+	border:solid black 2px;
+	border-radius: 15px;
+	
+	--width:100%;
+	--height:100%;
+
+	z-index: 3;
+ }
+
+ #modalNewPlayer:target
+ {
+	visibility: visible;
+ }
+
+#modalNewPlayer form{
+	border:none;
+	margin:0px;
+
+	position:relative;
+}
+
+ /* --- Modal --- */ 
+ 
+
+ #idTuile00,
+ #idTuile10,
+ #idTuile20,
+ #idTuile30,
+ #idTuile40,
+ #idTuile50,
+ #idTuile60,
+ #idTuile70,
+ #idTuile80,
+ #idTuile01,
+ #idTuile11,
+ #idTuile21,
+ #idTuile31,
+ #idTuile41,
+ #idTuile51,
+ #idTuile61,
+ #idTuile71,
+ #idTuile81,
+ #idTuile02,
+ #idTuile12,
+ #idTuile22,
+ #idTuile32,
+ #idTuile42,
+ #idTuile52,
+ #idTuile62,
+ #idTuile72,
+ #idTuile82,
+ #idTuile03,
+ #idTuile13,
+ #idTuile23,
+ #idTuile33,
+ #idTuile43,
+ #idTuile53,
+ #idTuile63,
+ #idTuile73,
+ #idTuile83,
+ #idTuile04,
+ #idTuile14,
+ #idTuile24,
+ #idTuile34,
+ #idTuile44,
+ #idTuile54,
+ #idTuile64,
+ #idTuile74,
+ #idTuile84,
+ #idTuile05,
+ #idTuile15,
+ #idTuile25,
+ #idTuile35,
+ #idTuile45,
+ #idTuile55,
+ #idTuile65,
+ #idTuile75,
+ #idTuile85,
+ #idTuile06,
+ #idTuile16,
+ #idTuile26,
+ #idTuile36,
+ #idTuile46,
+ #idTuile56,
+ #idTuile66,
+ #idTuile76,
+ #idTuile86,
+ #idTuile07,
+ #idTuile17,
+ #idTuile27,
+ #idTuile37,
+ #idTuile47,
+ #idTuile57,
+ #idTuile67,
+ #idTuile77,
+ #idTuile87,
+ #idTuile08,
+ #idTuile18,
+ #idTuile28,
+ #idTuile38,
+ #idTuile48,
+ #idTuile58,
+ #idTuile68,
+ #idTuile78,
+ #idTuile88
+{
+	position: absolute;
+	left:-235px;
+	top: 15px;
+
+	width: 400px;
+	height: 200px;
+	border-left: solid 5px purple;
+	border-right: solid 5px purple;
+   --border-radius:15px;
+   transform: scale(0.65);
+   --transform:skew(-65deg, 35deg) rotate(-35deg) scale(0.4);
+   --transform:skew(30deg, 0deg) rotate(0deg) scale(0.8);
+ z-index: 2;
+   display: none;
+
+   color: white 2px;
+}
+
+#idTuile00:target,
+#idTuile10:target,
+#idTuile20:target,
+#idTuile30:target,
+#idTuile40:target,
+#idTuile50:target,
+#idTuile60:target,
+#idTuile70:target,
+#idTuile80:target,
+#idTuile01:target,
+#idTuile11:target,
+#idTuile21:target,
+#idTuile31:target,
+#idTuile41:target,
+#idTuile51:target,
+#idTuile61:target,
+#idTuile71:target,
+#idTuile81:target,
+#idTuile02:target,
+#idTuile12:target,
+#idTuile22:target,
+#idTuile32:target,
+#idTuile42:target,
+#idTuile52:target,
+#idTuile62:target,
+#idTuile72:target,
+#idTuile82:target,
+#idTuile03:target,
+#idTuile13:target,
+#idTuile23:target,
+#idTuile33:target,
+#idTuile43:target,
+#idTuile53:target,
+#idTuile63:target,
+#idTuile73:target,
+#idTuile83:target,
+#idTuile04:target,
+#idTuile14:target,
+#idTuile24:target,
+#idTuile34:target,
+#idTuile44:target,
+#idTuile54:target,
+#idTuile64:target,
+#idTuile74:target,
+#idTuile84:target,
+#idTuile05:target,
+#idTuile15:target,
+#idTuile25:target,
+#idTuile35:target,
+#idTuile45:target,
+#idTuile55:target,
+#idTuile65:target,
+#idTuile75:target,
+#idTuile85:target,
+#idTuile06:target,
+#idTuile16:target,
+#idTuile26:target,
+#idTuile36:target,
+#idTuile46:target,
+#idTuile56:target,
+#idTuile66:target,
+#idTuile76:target,
+#idTuile86:target,
+#idTuile07:target,
+#idTuile17:target,
+#idTuile27:target,
+#idTuile37:target,
+#idTuile47:target,
+#idTuile57:target,
+#idTuile67:target,
+#idTuile77:target,
+#idTuile87:target,
+#idTuile08:target,
+#idTuile18:target,
+#idTuile28:target,
+#idTuile38:target,
+#idTuile48:target,
+#idTuile58:target,
+#idTuile68:target,
+#idTuile78:target,
+#idTuile88:target
+ {
+	display: flex;
+	justify-content: center;
+ }
+
+ #idTuile00:before,
+ #idTuile10:before,
+ #idTuile20:before,
+ #idTuile30:before,
+ #idTuile40:before,
+ #idTuile50:before,
+ #idTuile60:before,
+ #idTuile70:before,
+ #idTuile80:before,
+ #idTuile01:before,
+ #idTuile11:before,
+ #idTuile21:before,
+ #idTuile31:before,
+ #idTuile41:before,
+ #idTuile51:before,
+ #idTuile61:before,
+ #idTuile71:before,
+ #idTuile81:before,
+ #idTuile02:before,
+ #idTuile12:before,
+ #idTuile22:before,
+ #idTuile32:before,
+ #idTuile42:before,
+ #idTuile52:before,
+ #idTuile62:before,
+ #idTuile72:before,
+ #idTuile82:before,
+ #idTuile03:before,
+ #idTuile13:before,
+ #idTuile23:before,
+ #idTuile33:before,
+ #idTuile43:before,
+ #idTuile53:before,
+ #idTuile63:before,
+ #idTuile73:before,
+ #idTuile83:before,
+ #idTuile04:before,
+ #idTuile14:before,
+ #idTuile24:before,
+ #idTuile34:before,
+ #idTuile44:before,
+ #idTuile54:before,
+ #idTuile64:before,
+ #idTuile74:before,
+ #idTuile84:before,
+ #idTuile05:before,
+ #idTuile15:before,
+ #idTuile25:before,
+ #idTuile35:before,
+ #idTuile45:before,
+ #idTuile55:before,
+ #idTuile65:before,
+ #idTuile75:before,
+ #idTuile85:before,
+ #idTuile06:before,
+ #idTuile16:before,
+ #idTuile26:before,
+ #idTuile36:before,
+ #idTuile46:before,
+ #idTuile56:before,
+ #idTuile66:before,
+ #idTuile76:before,
+ #idTuile86:before,
+ #idTuile07:before,
+ #idTuile17:before,
+ #idTuile27:before,
+ #idTuile37:before,
+ #idTuile47:before,
+ #idTuile57:before,
+ #idTuile67:before,
+ #idTuile77:before,
+ #idTuile87:before,
+ #idTuile08:before,
+ #idTuile18:before,
+ #idTuile28:before,
+ #idTuile38:before,
+ #idTuile48:before,
+ #idTuile58:before,
+ #idTuile68:before,
+ #idTuile78:before,
+ #idTuile88:before,
+ #idTuile00:after,
+ #idTuile10:after,
+ #idTuile20:after,
+ #idTuile30:after,
+ #idTuile40:after,
+ #idTuile50:after,
+ #idTuile60:after,
+ #idTuile70:after,
+ #idTuile80:after,
+ #idTuile01:after,
+ #idTuile11:after,
+ #idTuile21:after,
+ #idTuile31:after,
+ #idTuile41:after,
+ #idTuile51:after,
+ #idTuile61:after,
+ #idTuile71:after,
+ #idTuile81:after,
+ #idTuile02:after,
+ #idTuile12:after,
+ #idTuile22:after,
+ #idTuile32:after,
+ #idTuile42:after,
+ #idTuile52:after,
+ #idTuile62:after,
+ #idTuile72:after,
+ #idTuile82:after,
+ #idTuile03:after,
+ #idTuile13:after,
+ #idTuile23:after,
+ #idTuile33:after,
+ #idTuile43:after,
+ #idTuile53:after,
+ #idTuile63:after,
+ #idTuile73:after,
+ #idTuile83:after,
+ #idTuile04:after,
+ #idTuile14:after,
+ #idTuile24:after,
+ #idTuile34:after,
+ #idTuile44:after,
+ #idTuile54:after,
+ #idTuile64:after,
+ #idTuile74:after,
+ #idTuile84:after,
+ #idTuile05:after,
+ #idTuile15:after,
+ #idTuile25:after,
+ #idTuile35:after,
+ #idTuile45:after,
+ #idTuile55:after,
+ #idTuile65:after,
+ #idTuile75:after,
+ #idTuile85:after,
+ #idTuile06:after,
+ #idTuile16:after,
+ #idTuile26:after,
+ #idTuile36:after,
+ #idTuile46:after,
+ #idTuile56:after,
+ #idTuile66:after,
+ #idTuile76:after,
+ #idTuile86:after,
+ #idTuile07:after,
+ #idTuile17:after,
+ #idTuile27:after,
+ #idTuile37:after,
+ #idTuile47:after,
+ #idTuile57:after,
+ #idTuile67:after,
+ #idTuile77:after,
+ #idTuile87:after,
+ #idTuile08:after,
+ #idTuile18:after,
+ #idTuile28:after,
+ #idTuile38:after,
+ #idTuile48:after,
+ #idTuile58:after,
+ #idTuile68:after,
+ #idTuile78:after,
+ #idTuile88:after
+{
+   content: "";
+   position: absolute;
+   width: 282px;
+   height: 282px;
+   transform: scaleY(0.5) rotate(-45deg);
+  --border-radius:9px;
+  left:55px;
+}
+
+#idTuile00:before,
+#idTuile10:before,
+#idTuile20:before,
+#idTuile30:before,
+#idTuile40:before,
+#idTuile50:before,
+#idTuile60:before,
+#idTuile70:before,
+#idTuile80:before,
+#idTuile01:before,
+#idTuile11:before,
+#idTuile21:before,
+#idTuile31:before,
+#idTuile41:before,
+#idTuile51:before,
+#idTuile61:before,
+#idTuile71:before,
+#idTuile81:before,
+#idTuile02:before,
+#idTuile12:before,
+#idTuile22:before,
+#idTuile32:before,
+#idTuile42:before,
+#idTuile52:before,
+#idTuile62:before,
+#idTuile72:before,
+#idTuile82:before,
+#idTuile03:before,
+#idTuile13:before,
+#idTuile23:before,
+#idTuile33:before,
+#idTuile43:before,
+#idTuile53:before,
+#idTuile63:before,
+#idTuile73:before,
+#idTuile83:before,
+#idTuile04:before,
+#idTuile14:before,
+#idTuile24:before,
+#idTuile34:before,
+#idTuile44:before,
+#idTuile54:before,
+#idTuile64:before,
+#idTuile74:before,
+#idTuile84:before,
+#idTuile05:before,
+#idTuile15:before,
+#idTuile25:before,
+#idTuile35:before,
+#idTuile45:before,
+#idTuile55:before,
+#idTuile65:before,
+#idTuile75:before,
+#idTuile85:before,
+#idTuile06:before,
+#idTuile16:before,
+#idTuile26:before,
+#idTuile36:before,
+#idTuile46:before,
+#idTuile56:before,
+#idTuile66:before,
+#idTuile76:before,
+#idTuile86:before,
+#idTuile07:before,
+#idTuile17:before,
+#idTuile27:before,
+#idTuile37:before,
+#idTuile47:before,
+#idTuile57:before,
+#idTuile67:before,
+#idTuile77:before,
+#idTuile87:before,
+#idTuile08:before,
+#idTuile18:before,
+#idTuile28:before,
+#idTuile38:before,
+#idTuile48:before,
+#idTuile58:before,
+#idTuile68:before,
+#idTuile78:before,
+#idTuile88:before
+{
+   top: -145px;
+   border-top: solid 8px purple;
+   border-right: solid 8px purple;
+}
+
+#idTuile00:after,
+#idTuile10:after,
+#idTuile20:after,
+#idTuile30:after,
+#idTuile40:after,
+#idTuile50:after,
+#idTuile60:after,
+#idTuile70:after,
+#idTuile80:after,
+#idTuile01:after,
+#idTuile11:after,
+#idTuile21:after,
+#idTuile31:after,
+#idTuile41:after,
+#idTuile51:after,
+#idTuile61:after,
+#idTuile71:after,
+#idTuile81:after,
+#idTuile02:after,
+#idTuile12:after,
+#idTuile22:after,
+#idTuile32:after,
+#idTuile42:after,
+#idTuile52:after,
+#idTuile62:after,
+#idTuile72:after,
+#idTuile82:after,
+#idTuile03:after,
+#idTuile13:after,
+#idTuile23:after,
+#idTuile33:after,
+#idTuile43:after,
+#idTuile53:after,
+#idTuile63:after,
+#idTuile73:after,
+#idTuile83:after,
+#idTuile04:after,
+#idTuile14:after,
+#idTuile24:after,
+#idTuile34:after,
+#idTuile44:after,
+#idTuile54:after,
+#idTuile64:after,
+#idTuile74:after,
+#idTuile84:after,
+#idTuile05:after,
+#idTuile15:after,
+#idTuile25:after,
+#idTuile35:after,
+#idTuile45:after,
+#idTuile55:after,
+#idTuile65:after,
+#idTuile75:after,
+#idTuile85:after,
+#idTuile06:after,
+#idTuile16:after,
+#idTuile26:after,
+#idTuile36:after,
+#idTuile46:after,
+#idTuile56:after,
+#idTuile66:after,
+#idTuile76:after,
+#idTuile86:after,
+#idTuile07:after,
+#idTuile17:after,
+#idTuile27:after,
+#idTuile37:after,
+#idTuile47:after,
+#idTuile57:after,
+#idTuile67:after,
+#idTuile77:after,
+#idTuile87:after,
+#idTuile08:after,
+#idTuile18:after,
+#idTuile28:after,
+#idTuile38:after,
+#idTuile48:after,
+#idTuile58:after,
+#idTuile68:after,
+#idTuile78:after,
+#idTuile88:after
+{
+   bottom: -145px;
+   border-bottom: solid 8px purple;
+   border-left: solid 8px purple;
+}
+
+ /* --- Tempo classe biome --- */ 
+.desert,
+.desert:after,
+.desert:before,
+.desert:hover,
+.desert:hover:after,
+.desert:hover:before /*--1*/ 
+{
+	background-color: red;
+ }
+
+.tundras,
+.tundras:after,
+.tundras:before,
+.tundras:hover,
+.tundras:hover:after,
+.tundras:hover:before /*--2*/ 
+{
+	background-color: blue;
+ }
+
+.wet_forest,
+.wet_forest:after,
+.wet_forest:before,
+.wet_forest:hover,
+.wet_forest:hover:after,
+.wet_forest:hover:before /*--3*/ 
+{
+	background-color: green;
+ }
+
+ .temperate_forest,
+ .temperate_forest:after,
+ .temperate_forest:before,
+ .temperate_forest:hover,
+ .temperate_forest:hover:after,
+ .temperate_forest:hover:before /*--4*/ 
+ {
+	background-color: rgb(106, 103, 64);
+ }
+
+ .dry_maquis,
+ .dry_maquis:after,
+ .dry_maquis:before,
+ .dry_maquis:hover,
+ .dry_maquis:hover:after,
+ .dry_maquis:hover:before /*--5*/ 
+ {
+	background-color: brown;
+ }
+
+ .steppe,
+ .steppe:after,
+ .steppe:before,
+ .steppe:hover,
+ .steppe:hover:after,
+ .steppe:hover:before /*--6*/ 
+ {
+	background-color: yellow;
+ }
+
+ .dry_forest,
+ .dry_forest:after,
+ .dry_forest:before,
+ .dry_forest:hover,
+ .dry_forest:hover:after,
+ .dry_forest:hover:before /*--7*/ 
+ {
+	background-color: pink;
+ }
+
+ .maquis,
+ .maquis:after,
+ .maquis:before,
+ .maquis:hover,
+ .maquis:hover:after,
+ .maquis:hover:before /*--8*/ 
+ {
+	background-color: orange;
+ }
+
+ .tropical_forest,
+ .tropical_forest:after,
+ .tropical_forest:before,
+ .tropical_forest:hover,
+ .tropical_forest:hover:after,
+ .tropical_forest:hover:before /*--9*/ 
+ {
+	background-color: white;
+ }
+
+ .rainforest,
+ .rainforest:after,
+ .rainforest:before,
+ .rainforest:hover,
+ .rainforest:hover:after,
+ .rainforest:hover:before /*--10*/
+ {
+	background-color: rgb(32, 178, 168);
+ }
+
+
+ /* --- interface test --- */
+
+ .interfaceTest{
+	position: absolute;
+	display: flex;
+	bottom: 0px;
+	left: 0px;
+	border:solid red 2px;
+	padding:15px;
+	border-radius: 10px;
+	margin-bottom: 15px;
+ }
+
+ .supp
+{
+  border:solid red 4px;
+  width:50px;
+  height:50px;
+  
+  border-radius:100%;
+  
+  position:relative;
+  
+  opacity:0.5;
+  transform: scale(0.4);
+  
+}
+
+#close
+{
+	position:absolute;
+	top:-30px;
+	right: -45px;
+}
+
+.supp:hover
+{
+  opacity:1;
+  transition-property: transform;
+  transition: 0.5s;
+  transform: scale(0.45);
+}
+
+.verti,
+.hori
+{
+  border:solid red 4px;
+  width:35px;
+  border-radius:100%;
+  
+  background-color:red;
+  
+  left:3px;
+  top:20.5px;
+  
+  position:absolute;
+}
+
+.hori
+{
+  transform:rotate(45deg);
+}
+
+.verti
+{
+  transform:rotate(-45deg);
+}
+
+/********************/
+/***   BATIMENT   ***/
+/********************/
+
+.conteneurBatiment
+{
+	border:solid red;
+}
+
+.vignetteBatiment
+{
+	margin:5px;
+	width:180px;
+}
